@@ -1,6 +1,6 @@
 
 public abstract class User {
-	private String login;
+	private String username;
 	private String password;
 	private String fName;
 	private String lName;
@@ -8,12 +8,12 @@ public abstract class User {
 	private String EID;
 	private String jobTitle;
 	
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
 	
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	public String getPassword() {
