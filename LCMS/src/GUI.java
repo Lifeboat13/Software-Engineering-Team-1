@@ -1,4 +1,7 @@
 
+import javax.swing.JOptionPane;
+
+
 public class GUI extends javax.swing.JFrame {
 
     /**
@@ -28,8 +31,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textFieldUsername = new javax.swing.JTextField();
-        textFieldPassword = new javax.swing.JTextField();
         buttonSignIn = new javax.swing.JButton();
+        textFieldPassword = new javax.swing.JPasswordField();
         panelAppMain = new javax.swing.JPanel();
         panelHeader = new javax.swing.JPanel();
         labelUsername = new javax.swing.JLabel();
@@ -69,13 +72,17 @@ public class GUI extends javax.swing.JFrame {
 
         textFieldUsername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        textFieldPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         buttonSignIn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         buttonSignIn.setText("Sign In");
         buttonSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSignInActionPerformed(evt);
+            }
+        });
+
+        textFieldPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPasswordActionPerformed(evt);
             }
         });
 
@@ -85,18 +92,20 @@ public class GUI extends javax.swing.JFrame {
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoginLayout.createSequentialGroup()
                 .addGap(237, 237, 237)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelLoginLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(textFieldUsername))
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLoginLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(22, 22, 22)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(253, Short.MAX_VALUE))
+                            .addGroup(panelLoginLayout.createSequentialGroup()
+                                .addComponent(buttonSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(textFieldPassword)))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(textFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(271, 271, 271))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,11 +116,11 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(textFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(buttonSignIn)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         panelMain.add(panelLogin, "panelLogin");
@@ -399,22 +408,28 @@ public class GUI extends javax.swing.JFrame {
     private void buttonSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignInActionPerformed
 
         // Check user log in code here
-        
-        
-        // Send user log in time to database
-        
-        
-        // Switch panelMain card to main app panel
-        java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
-        card.show(panelMain, "panelAppMain");
-        
-        // Set labelUsername to user's name
-        
-        
-        // Set panelContent card to appropriate content panel
-        card = (java.awt.CardLayout) panelContent.getLayout();   
-        // if (user == employee) card.show(panelContent, "pEmployeeHome"); etc...
-        
+        String username = textFieldUsername.getText();
+        char[] password = textFieldPassword.getPassword();
+        if(username.length() < 6 || password.length < 8){
+            JOptionPane.showMessageDialog(null, "Invalid Username/Password");
+            textFieldUsername.setText("");
+            textFieldPassword.setText("");
+        }
+        else{
+            // Send user log in time to database
+               
+
+            // Switch panelMain card to main app panel
+            java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
+            card.show(panelMain, "panelAppMain");
+
+            // Set labelUsername to user's name
+            labelUsername.setText(username);
+
+            // Set panelContent card to appropriate content panel
+            card = (java.awt.CardLayout) panelContent.getLayout();   
+            // if (user == employee) card.show(panelContent, "pEmployeeHome"); etc...
+       } 
     }//GEN-LAST:event_buttonSignInActionPerformed
 
     private void buttonSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignOutActionPerformed
@@ -426,6 +441,10 @@ public class GUI extends javax.swing.JFrame {
         java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelLogin");        
     }//GEN-LAST:event_buttonSignOutActionPerformed
+
+    private void textFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldPasswordActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -490,7 +509,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelMain;
-    private javax.swing.JTextField textFieldPassword;
+    private javax.swing.JPasswordField textFieldPassword;
     private javax.swing.JTextField textFieldUsername;
     // End of variables declaration//GEN-END:variables
 }
