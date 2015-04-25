@@ -1,11 +1,23 @@
 
-public class GUI extends javax.swing.JFrame {
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
+
+public class GUI extends javax.swing.JFrame {
+    private DatabaseConnector db;
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+         db = new DatabaseConnector();
+        try{
+        db.getConnection();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 
     
@@ -590,25 +602,42 @@ public class GUI extends javax.swing.JFrame {
     
     /** Log in button clicked */
     private void buttonSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignInActionPerformed
-
+        boolean userfound = true; //set to false when users table is setup with login information
+        
         // Check user log in code here
+        /*ArrayList<String> users = db.getUserLoginInformation();
+        for(int i = 0; i < users.size(); i+=2){
+          
+            if(textFieldUsername.getText().equals(users.get(i)))
+                if(textFieldPassword.getText().equals(users.get(i+1))){
+                    userfound = true;
+                }
+        }        
+        */
         
         
         // Send user log in time to database
         
         
         // Switch panelMain card to main app panel
-        java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
-        card.show(panelMain, "panelAppMain");
-        
-        // Set labelUsername to user's name
-        //labelUsername.setText(db.GetEmployeeName(id));
-        
-        // Set panelContent card to appropriate content panel
-        card = (java.awt.CardLayout) panelContent.getLayout();  
-        card.show(panelContent, "pManagerHome");
-        // if (user == employee) card.show(panelContent, "pEmployeeHome"); etc...
-        
+        if(userfound){
+            java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
+            card.show(panelMain, "panelAppMain");
+
+            // Set labelUsername to user's name
+            //labelUsername.setText(db.GetEmployeeName(id));
+
+            // Set panelContent card to appropriate content panel
+            card = (java.awt.CardLayout) panelContent.getLayout();  
+            card.show(panelContent, "pManagerHome");
+            // if (user == employee) card.show(panelContent, "pEmployeeHome"); etc...
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Invalid Username/Password");
+            textFieldPassword.setText("");
+            textFieldUsername.setText("");
+            
+        }
     }//GEN-LAST:event_buttonSignInActionPerformed
 
     private void buttonSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignOutActionPerformed

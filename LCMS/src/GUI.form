@@ -334,7 +334,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="bManagerEmployeeEdit" max="32767" attributes="0"/>
-                                  <Component id="bManagerEmployeReport" alignment="0" pref="79" max="32767" attributes="0"/>
+                                  <Component id="bManagerEmployeReport" alignment="0" max="32767" attributes="0"/>
                                   <Component id="bManagerEmployeeAdd" max="32767" attributes="0"/>
                                   <Component id="bManagerEmployeeLog" max="32767" attributes="0"/>
                               </Group>
