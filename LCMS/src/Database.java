@@ -16,6 +16,11 @@ public class Database {
     //db.getUserLoginInformation();
     //db.updateLog(id, "Signed In", time);
     
+    //db.updateUserAddress(address);
+    //db.getUserAddress(id);
+    //db.getUserPassword(id);
+    //db.setUserPassword(id, password);
+    
     //db.GetEmployeeName(id);
     //db.updateEmployeeInfo(id, fName, lName, address, etc...); 
     //db.addNewEmployee(id, fName, lName, address, etc...);  

@@ -187,6 +187,15 @@ public class GUI extends javax.swing.JFrame {
         pSettings = new javax.swing.JPanel();
         bSettingsSave = new javax.swing.JButton();
         bSettingsCancel = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        tf_currentPassword = new javax.swing.JTextField();
+        tf_newPassword = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        tf_confirmPassword = new javax.swing.JTextField();
+        tf_settingsAddress = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Air Traffic Control LCMS");
@@ -416,7 +425,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEmployeeHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeHomeLayout.setVerticalGroup(
@@ -656,7 +665,7 @@ public class GUI extends javax.swing.JFrame {
         pAuditorHomeLayout.setHorizontalGroup(
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
-                .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -928,7 +937,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerEmployeesLayout.setHorizontalGroup(
             pManagerEmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerEmployeesLayout.createSequentialGroup()
-                .addComponent(pManagerContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pManagerContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pManagerSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1116,7 +1125,7 @@ public class GUI extends javax.swing.JFrame {
             pManagerHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pManagerHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pManagerHomeLayout.setVerticalGroup(
@@ -1787,21 +1796,84 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel21.setText("Settings");
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel22.setText("Current Password");
+
+        tf_currentPassword.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        tf_newPassword.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel23.setText("New Password");
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel27.setText("Confirm Password");
+
+        tf_confirmPassword.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        tf_settingsAddress.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel28.setText("Address");
+
         javax.swing.GroupLayout pSettingsLayout = new javax.swing.GroupLayout(pSettings);
         pSettings.setLayout(pSettingsLayout);
         pSettingsLayout.setHorizontalGroup(
             pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pSettingsLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(bSettingsSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSettingsCancel)
-                .addContainerGap(605, Short.MAX_VALUE))
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pSettingsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel21))
+                    .addGroup(pSettingsLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pSettingsLayout.createSequentialGroup()
+                                .addComponent(bSettingsSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bSettingsCancel)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(pSettingsLayout.createSequentialGroup()
+                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel28)
+                                    .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel27)
+                                        .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel23)
+                                            .addComponent(jLabel22))))
+                                .addGap(24, 24, 24)
+                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tf_currentPassword)
+                                        .addComponent(tf_newPassword)
+                                        .addComponent(tf_settingsAddress))
+                                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(323, 323, 323))
         );
         pSettingsLayout.setVerticalGroup(
             pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSettingsLayout.createSequentialGroup()
-                .addContainerGap(473, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(18, 18, 18)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(tf_currentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(tf_newPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSettingsSave)
                     .addComponent(bSettingsCancel))
@@ -1816,7 +1888,7 @@ public class GUI extends javax.swing.JFrame {
             panelAppMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelAppMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
         );
         panelAppMainLayout.setVerticalGroup(
             panelAppMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1875,11 +1947,8 @@ public class GUI extends javax.swing.JFrame {
             // Set labelUsername to user's name
 //            labelUsername.setText(db.GetEmployeeName(id));
 
-            // Set panelContent card to appropriate content panel       
-//            if (user == employee) showEmployeeHome();
-//            else if (user == manager) showManagerHome();
-//            else if (user == auditor) showAuditorHome();
-            showManagerHome(); 
+            // Set panelContent card to appropriate content panel
+            showHomePanel();
         }
         else {
             JOptionPane.showMessageDialog(this, "Invalid Username/Password");
@@ -2319,26 +2388,36 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bSimulatorCancelActionPerformed
 
     private void bSettingsSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsSaveActionPerformed
-        // TODO add your handling code here:
+        
+        
+//        if (!tf_newPassword.getText().equals(db.getUserPassword(id))) {
+//            JOptionPane.showMessageDialog(this, "Error, incorrect password entered.");
+//        }
+        
+        if (!tf_newPassword.getText().equals(tf_confirmPassword.getText())) {
+            JOptionPane.showMessageDialog(this, "Error, passwords do not match.");
+        }    
+        else {
+
+            // Update databse with info
+    //        if (!tf_confirmPassword.getText().equals("")) {
+    //            db.setUserPassword(id, tf_confirmPassword.getText());
+    //        }
+
+    //        db.updateUserAddress(tf_settingsAddress.getText());
+
+
+            // Go back to home panel
+            showHomePanel(); 
+        }
     }//GEN-LAST:event_bSettingsSaveActionPerformed
 
     private void buttonSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSettingsActionPerformed
-
-        // Fill in appropriate info from database
-        
-        
-
-        // Go back to pSettings card
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-        card.show(panelContent, "pSettings");
+        showSettings();
     }//GEN-LAST:event_buttonSettingsActionPerformed
 
     private void bSettingsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsCancelActionPerformed
-        // Set panelContent card to appropriate content panel       
-//            if (user == employee) showEmployeeHome();
-//            else if (user == manager) showManagerHome();
-//            else if (user == auditor) showAuditorHome();
-            showManagerHome(); 
+        showHomePanel(); 
     }//GEN-LAST:event_bSettingsCancelActionPerformed
 
     
@@ -2379,6 +2458,14 @@ public class GUI extends javax.swing.JFrame {
 //    }
     
     
+    
+    /** Set panelContent card to appropriate content panel */
+    private void showHomePanel() {      
+//        if (user == employee) showEmployeeHome();
+//        else if (user == manager) showManagerHome();
+//        else if (user == auditor) showAuditorHome();
+        showManagerHome(); 
+    }
     
     /** Shows the employee home panel */
     private void showEmployeeHome() {
@@ -2427,6 +2514,18 @@ public class GUI extends javax.swing.JFrame {
         // Set card to add goal add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerGoalEdit");
+    }
+    
+    
+    private void showSettings() {
+        
+        // Fill in appropriate info from database
+//        tf_settingsAddress.setText(db.getUserAddress(id));
+        
+
+        // Set card to pSettings
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pSettings");
     }
     
     
@@ -2503,9 +2602,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2598,11 +2702,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField tf_SimVarValue2;
     private javax.swing.JTextField tf_SimVarValue3;
     private javax.swing.JTextField tf_address;
+    private javax.swing.JTextField tf_confirmPassword;
+    private javax.swing.JTextField tf_currentPassword;
     private javax.swing.JTextField tf_fName;
     private javax.swing.JTextField tf_goalDescription;
     private javax.swing.JTextField tf_goalName;
     private javax.swing.JTextField tf_id;
     private javax.swing.JTextField tf_lName;
     private javax.swing.JTextField tf_lessonName;
+    private javax.swing.JTextField tf_newPassword;
+    private javax.swing.JTextField tf_settingsAddress;
     // End of variables declaration//GEN-END:variables
 }
