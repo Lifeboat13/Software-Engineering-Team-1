@@ -3,8 +3,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Database {
@@ -40,8 +40,6 @@ public class Database {
             String sql = "SELECT * FROM Users WHERE username='" + username + "' AND password='" + String.valueOf(password) + "'";
             ResultSet results = query.executeQuery(sql);
            
-            
-            
             while(results.next()){
                 toReturn.add(results.getString("usertype"));
                 toReturn.add(results.getString("eid"));
@@ -63,9 +61,30 @@ public class Database {
        return toReturn;
     }
     
+    //db.updateLog(id, "Signed In", time);
+    public boolean updateLog(String eid, String text, long time){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT log FROM Users WHERE eid='" + eid + "'";
+            ResultSet results = query.executeQuery(sql);
+            if(!results.first())
+                return false;
+            String oldLog = results.getString("log");
+            String newLog = oldLog + '\n';
+            newLog += time + " " + text;
+            
+            sql = "UPDATE Users SET log='" + newLog + "' WHERE eid='" + eid + "'";
+            query.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+    
     /* Placeholders currently used in GUI */
     
-    //db.updateLog(id, "Signed In", time);
+    
     
     //db.updateUserAddress(address);
     //db.getUserAddress(id);

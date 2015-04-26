@@ -1862,8 +1862,8 @@ public class GUI extends javax.swing.JFrame {
             
             // Send user log in time to database
             // db.updateLog(id, "Signed In", time);
-            User currentUser = new Employee(userInformation.get(1), userInformation.get(2), userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6), userInformation.get(7));;
-            
+            User currentUser = new Employee(userInformation.get(1), userInformation.get(2), userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6), userInformation.get(7));
+            db.updateLog(currentUser.getEID(), "Signed In", System.currentTimeMillis());
             
             
             // Switch panelMain card to main app panel
