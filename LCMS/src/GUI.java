@@ -172,8 +172,17 @@ public class GUI extends javax.swing.JFrame {
         tf_SimVarValue3 = new javax.swing.JTextField();
         tf_SimVarValue2 = new javax.swing.JTextField();
         pLesson = new javax.swing.JPanel();
+        labelLessonName = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        ta_lessonText = new javax.swing.JTextArea();
+        bLessonBack = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         pSimulator = new javax.swing.JPanel();
+        pATCsim = new javax.swing.JPanel();
+        bSimulatorCancel = new javax.swing.JButton();
         pSettings = new javax.swing.JPanel();
+        bSettingsSave = new javax.swing.JButton();
+        bSettingsCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Air Traffic Control LCMS");
@@ -249,6 +258,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         buttonSettings.setText("Settings");
+        buttonSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSettingsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
         panelHeader.setLayout(panelHeaderLayout);
@@ -281,6 +295,11 @@ public class GUI extends javax.swing.JFrame {
         pEmployeeSidePanel.setBackground(new java.awt.Color(230, 230, 230));
 
         bEmployeeTakeLesson.setText("Take Lesson");
+        bEmployeeTakeLesson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEmployeeTakeLessonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pEmployeeSidePanelLayout = new javax.swing.GroupLayout(pEmployeeSidePanel);
         pEmployeeSidePanel.setLayout(pEmployeeSidePanelLayout);
@@ -340,7 +359,7 @@ public class GUI extends javax.swing.JFrame {
         pEmployeeLessonsLayout.setVerticalGroup(
             pEmployeeLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pEmployeeSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(spEmployeeLessons, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(spEmployeeLessons, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Lessons", pEmployeeLessons);
@@ -382,7 +401,7 @@ public class GUI extends javax.swing.JFrame {
         );
         pEmployeeLogLayout.setVerticalGroup(
             pEmployeeLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(spEmployeeLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(spEmployeeLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Log", pEmployeeLog);
@@ -456,7 +475,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+                .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
 
         pAuditorContentPanel.add(pAuditorEmployeeTable, "pAuditorEmployeeTable");
@@ -522,7 +541,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bAuditorEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spAuditorReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+                .addComponent(spAuditorReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
 
         pAuditorContentPanel.add(pAuditorReportTable, "pAuditorReportTable");
@@ -589,7 +608,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bAuditorEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spAuditorLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+                .addComponent(spAuditorLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
 
         pAuditorContentPanel.add(pAuditorLogTable, "pAuditorLogTable");
@@ -703,7 +722,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spManagerEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+                .addComponent(spManagerEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
         );
 
         pManagerContentPanel.add(pManagerEmployeeTable, "pManagerEmployeeTable");
@@ -769,7 +788,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bManagerEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spManagerReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+                .addComponent(spManagerReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
         );
 
         pManagerContentPanel.add(pManagerReportTable, "pManagerReportTable");
@@ -836,7 +855,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bManagerEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spManagerLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+                .addComponent(spManagerLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
         );
 
         pManagerContentPanel.add(pManagerLogTable, "pManagerLogTable");
@@ -995,7 +1014,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerLessonsLayout.setVerticalGroup(
             pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Lessons", pManagerLessons);
@@ -1080,7 +1099,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerGoalsLayout.setVerticalGroup(
             pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Goals", pManagerGoals);
@@ -1216,7 +1235,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
                 .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bEmployeeEditSave)
                     .addComponent(bEmployeeEditCancel)
@@ -1355,25 +1374,36 @@ public class GUI extends javax.swing.JFrame {
         });
 
         ta_type1description.setEditable(false);
+        ta_type1description.setBackground(new java.awt.Color(245, 245, 245));
         ta_type1description.setColumns(20);
         ta_type1description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ta_type1description.setRows(5);
+        ta_type1description.setText("[goal description]");
         jScrollPane6.setViewportView(ta_type1description);
 
         ta_type2description.setEditable(false);
+        ta_type2description.setBackground(new java.awt.Color(245, 245, 245));
         ta_type2description.setColumns(20);
         ta_type2description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ta_type2description.setRows(5);
+        ta_type2description.setText("[goal description]");
         jScrollPane7.setViewportView(ta_type2description);
 
         ta_type3description.setEditable(false);
+        ta_type3description.setBackground(new java.awt.Color(245, 245, 245));
         ta_type3description.setColumns(20);
         ta_type3description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ta_type3description.setRows(5);
+        ta_type3description.setText("[goal description]");
         jScrollPane8.setViewportView(ta_type3description);
 
         bLessonPreview.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bLessonPreview.setText("Preview Lesson");
+        bLessonPreview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLessonPreviewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pManagerLessonEditLayout = new javax.swing.GroupLayout(pManagerLessonEdit);
         pManagerLessonEdit.setLayout(pManagerLessonEditLayout);
@@ -1405,17 +1435,15 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pManagerLessonEditLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane7)
-                                    .addComponent(jScrollPane8)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonEditLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bLessonPreview)
-                                .addGap(39, 39, 39)))))
+                                .addGap(39, 39, 39))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addContainerGap())
         );
         pManagerLessonEditLayout.setVerticalGroup(
@@ -1445,7 +1473,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane8)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bLessonEditCancel)
                     .addComponent(bLessonEditSave)
@@ -1629,46 +1657,149 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(bGoalEditSave)
                     .addComponent(bGoalEditCancel)
                     .addComponent(bGoalEditDelete))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         panelContent.add(pManagerGoalEdit, "pManagerGoalEdit");
+
+        labelLessonName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelLessonName.setText("[lesson name]");
+
+        ta_lessonText.setEditable(false);
+        ta_lessonText.setBackground(new java.awt.Color(245, 245, 245));
+        ta_lessonText.setColumns(20);
+        ta_lessonText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ta_lessonText.setRows(5);
+        ta_lessonText.setText("[lesson text]");
+        jScrollPane10.setViewportView(ta_lessonText);
+
+        bLessonBack.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bLessonBack.setText("Go Back");
+        bLessonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLessonBackActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButton1.setText("Start Simulation");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pLessonLayout = new javax.swing.GroupLayout(pLesson);
         pLesson.setLayout(pLessonLayout);
         pLessonLayout.setHorizontalGroup(
             pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(pLessonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addGroup(pLessonLayout.createSequentialGroup()
+                        .addComponent(labelLessonName)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pLessonLayout.createSequentialGroup()
+                        .addComponent(bLessonBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         pLessonLayout.setVerticalGroup(
             pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
+            .addGroup(pLessonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelLessonName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bLessonBack)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
 
         panelContent.add(pLesson, "pLesson");
+
+        javax.swing.GroupLayout pATCsimLayout = new javax.swing.GroupLayout(pATCsim);
+        pATCsim.setLayout(pATCsimLayout);
+        pATCsimLayout.setHorizontalGroup(
+            pATCsimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pATCsimLayout.setVerticalGroup(
+            pATCsimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 512, Short.MAX_VALUE)
+        );
+
+        bSimulatorCancel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bSimulatorCancel.setText("Cancel");
+        bSimulatorCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSimulatorCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pSimulatorLayout = new javax.swing.GroupLayout(pSimulator);
         pSimulator.setLayout(pSimulatorLayout);
         pSimulatorLayout.setHorizontalGroup(
             pSimulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(pSimulatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pSimulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pATCsim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pSimulatorLayout.createSequentialGroup()
+                        .addComponent(bSimulatorCancel)
+                        .addGap(0, 707, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pSimulatorLayout.setVerticalGroup(
             pSimulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
+            .addGroup(pSimulatorLayout.createSequentialGroup()
+                .addComponent(pATCsim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bSimulatorCancel)
+                .addContainerGap())
         );
 
         panelContent.add(pSimulator, "pSimulator");
+
+        bSettingsSave.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bSettingsSave.setText("Save");
+        bSettingsSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSettingsSaveActionPerformed(evt);
+            }
+        });
+
+        bSettingsCancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bSettingsCancel.setText("Cancel");
+        bSettingsCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSettingsCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pSettingsLayout = new javax.swing.GroupLayout(pSettings);
         pSettings.setLayout(pSettingsLayout);
         pSettingsLayout.setHorizontalGroup(
             pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(pSettingsLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(bSettingsSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bSettingsCancel)
+                .addContainerGap(605, Short.MAX_VALUE))
         );
         pSettingsLayout.setVerticalGroup(
             pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSettingsLayout.createSequentialGroup()
+                .addContainerGap(473, Short.MAX_VALUE)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bSettingsSave)
+                    .addComponent(bSettingsCancel))
+                .addGap(52, 52, 52))
         );
 
         panelContent.add(pSettings, "pSettings");
@@ -1688,8 +1819,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(0, 555, Short.MAX_VALUE))
             .addGroup(panelAppMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAppMainLayout.createSequentialGroup()
-                    .addGap(0, 44, Short.MAX_VALUE)
-                    .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 46, Short.MAX_VALUE)
+                    .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         panelMain.add(panelAppMain, "panelAppMain");
@@ -1755,7 +1886,7 @@ public class GUI extends javax.swing.JFrame {
     private void buttonSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignOutActionPerformed
         
         // Sign user out, record time, etc...
-        //db.updateLog(id, "Signed Out", time);
+//        db.updateLog(id, "Signed Out", time);
         
         
         // Switch panelMain card back to login panel
@@ -2114,6 +2245,96 @@ public class GUI extends javax.swing.JFrame {
         card.show(pAuditorContentPanel, "pAuditorLogTable");   
     }//GEN-LAST:event_bAuditorEmployeeLogActionPerformed
 
+    private void bEmployeeTakeLessonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeTakeLessonActionPerformed
+
+        // Check selected column, get lesson id
+        int lessonID = 0;
+//        int lessonID = tEmployeeLessons.getSelectedColumn();
+        
+        
+        // Set lesson panel text
+        
+        
+        
+        // Show card pLesson
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pLesson");   
+    }//GEN-LAST:event_bEmployeeTakeLessonActionPerformed
+
+    private void bLessonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonBackActionPerformed
+        
+        if (labelLessonName.getText().contains("[Preview]")) {
+            // Go back to edit lesson
+            java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+            card.show(panelContent, "pManagerLessonEdit");   
+        }
+        else {
+            showEmployeeHome();
+        }
+    }//GEN-LAST:event_bLessonBackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        // Prepare simulator
+           
+        
+        
+        // Show card pSimulator
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pSimulator");  
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bLessonPreviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonPreviewActionPerformed
+        // Set and append lesson name with [Preview]
+        labelLessonName.setText(tf_lessonName.getText() + " [Preview]");
+        
+        
+        // Set lesson panel text
+//        String lessonText1 = db.getGoalText(tGoalType1.getSelectedColumn());
+//        String lessonText2 = db.getGoalText(tGoalType2.getSelectedColumn());
+//        String lessonText3 = db.getGoalText(tGoalType3.getSelectedColumn());
+//        ta_lessonText.setText(lessonText1 + lessonText2 + lessonText3);
+        
+        
+        // Show card pLesson
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pLesson");
+    }//GEN-LAST:event_bLessonPreviewActionPerformed
+
+    private void bSimulatorCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCancelActionPerformed
+        
+        // 'Are you sure?' prompt
+        
+        
+        
+        // Go back to pLesson card
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pLesson");
+    }//GEN-LAST:event_bSimulatorCancelActionPerformed
+
+    private void bSettingsSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bSettingsSaveActionPerformed
+
+    private void buttonSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSettingsActionPerformed
+
+        // Fill in appropriate info from database
+        
+        
+
+        // Go back to pSettings card
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pSettings");
+    }//GEN-LAST:event_buttonSettingsActionPerformed
+
+    private void bSettingsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsCancelActionPerformed
+        // Set panelContent card to appropriate content panel       
+//            if (user == employee) showEmployeeHome();
+//            else if (user == manager) showManagerHome();
+//            else if (user == auditor) showAuditorHome();
+            showManagerHome(); 
+    }//GEN-LAST:event_bSettingsCancelActionPerformed
+
     
     
 //    /**
@@ -2238,6 +2459,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton bGoalEditDelete;
     private javax.swing.JButton bGoalEditSave;
     private javax.swing.JButton bLessonAdd;
+    private javax.swing.JButton bLessonBack;
     private javax.swing.JButton bLessonEdit;
     private javax.swing.JButton bLessonEditCancel;
     private javax.swing.JButton bLessonEditDelete;
@@ -2249,6 +2471,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton bManagerEmployeeList1;
     private javax.swing.JButton bManagerEmployeeList2;
     private javax.swing.JButton bManagerEmployeeLog;
+    private javax.swing.JButton bSettingsCancel;
+    private javax.swing.JButton bSettingsSave;
+    private javax.swing.JButton bSimulatorCancel;
     private javax.swing.JButton buttonSettings;
     private javax.swing.JButton buttonSignIn;
     private javax.swing.JButton buttonSignOut;
@@ -2256,6 +2481,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_SimVar2;
     private javax.swing.JComboBox cb_SimVar3;
     private javax.swing.JComboBox cb_goalType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2285,6 +2511,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2298,7 +2525,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelEmployeeEdit;
     private javax.swing.JLabel labelGoalEdit;
     private javax.swing.JLabel labelLessonEdit;
+    private javax.swing.JLabel labelLessonName;
     private javax.swing.JLabel labelUsername;
+    private javax.swing.JPanel pATCsim;
     private javax.swing.JPanel pAuditorContentPanel;
     private javax.swing.JPanel pAuditorEmployeeTable;
     private javax.swing.JPanel pAuditorHome;
@@ -2351,6 +2580,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTable tManagerLogTable;
     private javax.swing.JTable tManagerReportTable;
     private javax.swing.JTextArea ta_goalText;
+    private javax.swing.JTextArea ta_lessonText;
     private javax.swing.JTextArea ta_type1description;
     private javax.swing.JTextArea ta_type2description;
     private javax.swing.JTextArea ta_type3description;
