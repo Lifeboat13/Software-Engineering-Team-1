@@ -56,6 +56,27 @@ public class GUI extends javax.swing.JFrame {
         spEmployeeLessons = new javax.swing.JScrollPane();
         tEmployeeLessons = new javax.swing.JTable();
         pEmployeeLog = new javax.swing.JPanel();
+        spEmployeeLogTable = new javax.swing.JScrollPane();
+        tEmployeeLogTable = new javax.swing.JTable();
+        pAuditorHome = new javax.swing.JPanel();
+        pAuditorContentPanel = new javax.swing.JPanel();
+        pAuditorEmployeeTable = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        spAuditorEmployeeTable = new javax.swing.JScrollPane();
+        tAuditorEmployeeTable = new javax.swing.JTable();
+        pAuditorReportTable = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        spAuditorReportTable = new javax.swing.JScrollPane();
+        tAuditorReportTable = new javax.swing.JTable();
+        bAuditorEmployeeList1 = new javax.swing.JButton();
+        pAuditorLogTable = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        spAuditorLogTable = new javax.swing.JScrollPane();
+        tAuditorLogTable = new javax.swing.JTable();
+        bAuditorEmployeeList2 = new javax.swing.JButton();
+        pAuditorSidePanel = new javax.swing.JPanel();
+        bAuditorEmployeReport = new javax.swing.JButton();
+        bAuditorEmployeeLog = new javax.swing.JButton();
         pManagerHome = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pManagerEmployees = new javax.swing.JPanel();
@@ -84,13 +105,13 @@ public class GUI extends javax.swing.JFrame {
         bLessonAdd = new javax.swing.JButton();
         bLessonEdit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tManagerLessonTable = new javax.swing.JTable();
         pManagerGoals = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         bGoalAdd = new javax.swing.JButton();
         bGoalEdit = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tManagerGoalTable = new javax.swing.JTable();
         pManagerEmployeeEdit = new javax.swing.JPanel();
         labelEmployeeEdit = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -150,7 +171,7 @@ public class GUI extends javax.swing.JFrame {
         tf_SimVarValue1 = new javax.swing.JTextField();
         tf_SimVarValue3 = new javax.swing.JTextField();
         tf_SimVarValue2 = new javax.swing.JTextField();
-        pAuditorHome = new javax.swing.JPanel();
+        pLesson = new javax.swing.JPanel();
         pSimulator = new javax.swing.JPanel();
         pSettings = new javax.swing.JPanel();
 
@@ -324,15 +345,44 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Lessons", pEmployeeLessons);
 
+        tEmployeeLogTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tEmployeeLogTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Time", "Action"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        spEmployeeLogTable.setViewportView(tEmployeeLogTable);
+
         javax.swing.GroupLayout pEmployeeLogLayout = new javax.swing.GroupLayout(pEmployeeLog);
         pEmployeeLog.setLayout(pEmployeeLogLayout);
         pEmployeeLogLayout.setHorizontalGroup(
             pEmployeeLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addComponent(spEmployeeLogTable, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         pEmployeeLogLayout.setVerticalGroup(
             pEmployeeLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 514, Short.MAX_VALUE)
+            .addComponent(spEmployeeLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Log", pEmployeeLog);
@@ -354,6 +404,249 @@ public class GUI extends javax.swing.JFrame {
         );
 
         panelContent.add(pEmployeeHome, "pEmployeeHome");
+
+        pAuditorContentPanel.setLayout(new java.awt.CardLayout());
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel24.setText("Employee List");
+
+        tAuditorEmployeeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "First Name", "Last Name", "Address"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        spAuditorEmployeeTable.setViewportView(tAuditorEmployeeTable);
+
+        javax.swing.GroupLayout pAuditorEmployeeTableLayout = new javax.swing.GroupLayout(pAuditorEmployeeTable);
+        pAuditorEmployeeTable.setLayout(pAuditorEmployeeTableLayout);
+        pAuditorEmployeeTableLayout.setHorizontalGroup(
+            pAuditorEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAuditorEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spAuditorEmployeeTable)
+                    .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addContainerGap(579, Short.MAX_VALUE))))
+        );
+        pAuditorEmployeeTableLayout.setVerticalGroup(
+            pAuditorEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+        );
+
+        pAuditorContentPanel.add(pAuditorEmployeeTable, "pAuditorEmployeeTable");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel25.setText("[employee name]'s Report");
+
+        tAuditorReportTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tAuditorReportTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Lesson", "Score", "Time Started", "Time Completed"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        spAuditorReportTable.setViewportView(tAuditorReportTable);
+
+        bAuditorEmployeeList1.setText("Back");
+        bAuditorEmployeeList1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAuditorEmployeeList1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAuditorReportTableLayout = new javax.swing.GroupLayout(pAuditorReportTable);
+        pAuditorReportTable.setLayout(pAuditorReportTableLayout);
+        pAuditorReportTableLayout.setHorizontalGroup(
+            pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorReportTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spAuditorReportTable, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(pAuditorReportTableLayout.createSequentialGroup()
+                        .addComponent(bAuditorEmployeeList1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel25)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        pAuditorReportTableLayout.setVerticalGroup(
+            pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorReportTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bAuditorEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spAuditorReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+        );
+
+        pAuditorContentPanel.add(pAuditorReportTable, "pAuditorReportTable");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel26.setText("[employee name]'s Log");
+        jLabel26.setToolTipText("");
+
+        tAuditorLogTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tAuditorLogTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Time", "Action"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        spAuditorLogTable.setViewportView(tAuditorLogTable);
+
+        bAuditorEmployeeList2.setText("Back");
+        bAuditorEmployeeList2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAuditorEmployeeList2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAuditorLogTableLayout = new javax.swing.GroupLayout(pAuditorLogTable);
+        pAuditorLogTable.setLayout(pAuditorLogTableLayout);
+        pAuditorLogTableLayout.setHorizontalGroup(
+            pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorLogTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spAuditorLogTable, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(pAuditorLogTableLayout.createSequentialGroup()
+                        .addComponent(bAuditorEmployeeList2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel26)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        pAuditorLogTableLayout.setVerticalGroup(
+            pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorLogTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bAuditorEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spAuditorLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+        );
+
+        pAuditorContentPanel.add(pAuditorLogTable, "pAuditorLogTable");
+
+        pAuditorSidePanel.setBackground(new java.awt.Color(230, 230, 230));
+
+        bAuditorEmployeReport.setText("View Report");
+        bAuditorEmployeReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAuditorEmployeReportActionPerformed(evt);
+            }
+        });
+
+        bAuditorEmployeeLog.setText("View Log");
+        bAuditorEmployeeLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAuditorEmployeeLogActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pAuditorSidePanelLayout = new javax.swing.GroupLayout(pAuditorSidePanel);
+        pAuditorSidePanel.setLayout(pAuditorSidePanelLayout);
+        pAuditorSidePanelLayout.setHorizontalGroup(
+            pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorSidePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pAuditorSidePanelLayout.setVerticalGroup(
+            pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAuditorSidePanelLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(bAuditorEmployeReport)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bAuditorEmployeeLog)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pAuditorHomeLayout = new javax.swing.GroupLayout(pAuditorHome);
+        pAuditorHome.setLayout(pAuditorHomeLayout);
+        pAuditorHomeLayout.setHorizontalGroup(
+            pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
+                .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pAuditorHomeLayout.setVerticalGroup(
+            pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        panelContent.add(pAuditorHome, "pAuditorHome");
 
         pManagerHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -661,8 +954,8 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tManagerLessonTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tManagerLessonTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -688,7 +981,7 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tManagerLessonTable);
 
         javax.swing.GroupLayout pManagerLessonsLayout = new javax.swing.GroupLayout(pManagerLessons);
         pManagerLessons.setLayout(pManagerLessonsLayout);
@@ -746,8 +1039,8 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tManagerGoalTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tManagerGoalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -773,7 +1066,7 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tManagerGoalTable);
 
         javax.swing.GroupLayout pManagerGoalsLayout = new javax.swing.GroupLayout(pManagerGoals);
         pManagerGoals.setLayout(pManagerGoalsLayout);
@@ -1341,18 +1634,18 @@ public class GUI extends javax.swing.JFrame {
 
         panelContent.add(pManagerGoalEdit, "pManagerGoalEdit");
 
-        javax.swing.GroupLayout pAuditorHomeLayout = new javax.swing.GroupLayout(pAuditorHome);
-        pAuditorHome.setLayout(pAuditorHomeLayout);
-        pAuditorHomeLayout.setHorizontalGroup(
-            pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pLessonLayout = new javax.swing.GroupLayout(pLesson);
+        pLesson.setLayout(pLessonLayout);
+        pLessonLayout.setHorizontalGroup(
+            pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
         );
-        pAuditorHomeLayout.setVerticalGroup(
-            pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pLessonLayout.setVerticalGroup(
+            pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 556, Short.MAX_VALUE)
         );
 
-        panelContent.add(pAuditorHome, "pAuditorHome");
+        panelContent.add(pLesson, "pLesson");
 
         javax.swing.GroupLayout pSimulatorLayout = new javax.swing.GroupLayout(pSimulator);
         pSimulator.setLayout(pSimulatorLayout);
@@ -1378,7 +1671,7 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 556, Short.MAX_VALUE)
         );
 
-        panelContent.add(pSettings, "card9");
+        panelContent.add(pSettings, "pSettings");
 
         javax.swing.GroupLayout panelAppMainLayout = new javax.swing.GroupLayout(panelAppMain);
         panelAppMain.setLayout(panelAppMainLayout);
@@ -1436,18 +1729,20 @@ public class GUI extends javax.swing.JFrame {
         //db.updateLog(id, "Signed In", time);
         
         
-        // Switch panelMain card to main app panel
+
         if(userfound){
+            // Switch panelMain card to main app panel
             java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
             card.show(panelMain, "panelAppMain");
 
             // Set labelUsername to user's name
-            //labelUsername.setText(db.GetEmployeeName(id));
+//            labelUsername.setText(db.GetEmployeeName(id));
 
-            // Set panelContent card to appropriate content panel
-            card = (java.awt.CardLayout) panelContent.getLayout();  
-            card.show(panelContent, "pManagerHome");            
-            // if (user == employee) card.show(panelContent, "pEmployeeHome"); etc...
+            // Set panelContent card to appropriate content panel       
+//            if (user == employee) showEmployeeHome();
+//            else if (user == manager) showManagerHome();
+//            else if (user == auditor) showAuditorHome();
+            showManagerHome(); 
         }
         else {
             JOptionPane.showMessageDialog(this, "Invalid Username/Password");
@@ -1471,11 +1766,12 @@ public class GUI extends javax.swing.JFrame {
     private void bManagerEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeReportActionPerformed
        
         // Check selected column, get employee id (unless already on Log page, then use that employee)
-//        pManagerReportTable.getSelectedColumn();
+        int employeeID = 0;
+//        int employeeID = tManagerReportTable.getSelectedColumn();
         
         
         // Fill tManagerReportTable
-        
+        fillEmployeeReportTable(employeeID, tManagerReportTable); 
         
         // Show card pManagerReportTable
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
@@ -1531,11 +1827,12 @@ public class GUI extends javax.swing.JFrame {
     private void bManagerEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeLogActionPerformed
                
         // Check selected column, get employee id (unless already on Report page, then use that employee)
-//        tManagerLogTable.getSelectedColumn();
+        int employeeID = 0;
+//        int employeeID = tManagerLogTable.getSelectedColumn();
         
         
         // Fill tManagerLogTable
-        
+        fillEmployeeLogTable(employeeID, tManagerLogTable);        
         
         // Show card pManagerLogTable
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
@@ -1552,14 +1849,14 @@ public class GUI extends javax.swing.JFrame {
             
             // Save existing employee
             if (labelEmployeeEdit.getText().equals("Edit Employee")) {
-                //db.updateEmployeeInfo(id, fName, lName, address);   
+//                db.updateEmployeeInfo(id, fName, lName, address);   
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee info saved.");
             }
             // Add new employee
             else {
-                //db.addNewEmployee(id, fName, lName, address);  
+//                db.addNewEmployee(id, fName, lName, address);  
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee added.");
@@ -1583,7 +1880,7 @@ public class GUI extends javax.swing.JFrame {
         
 
         // Delete employee from database
-        //db.deleteEmployee(id);       
+//        db.deleteEmployee(id);       
     }//GEN-LAST:event_bEmployeeEditDeleteActionPerformed
 
     private void bLessonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonAddActionPerformed
@@ -1601,6 +1898,7 @@ public class GUI extends javax.swing.JFrame {
     private void bLessonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditActionPerformed
         
         // Check table for highlighted lesson, get lesson id
+//        int lesson_id = tManagerLessonTable.getSelectedColumn();
 
 
         // Change labels for 'Edit Lesson'
@@ -1639,14 +1937,14 @@ public class GUI extends javax.swing.JFrame {
             
             // Save existing lesson
             if (labelLessonEdit.getText().equals("Edit Lesson")) {
-                //db.updateLessonInfo(lessonName, goal1, goal2, goal3);   
+//                db.updateLessonInfo(lessonName, goal1, goal2, goal3);   
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson saved.");
             }
             // Add new lesson
             else {
-                //db.addNewLesson(lessonName, goal1, goal2, goal3);  
+//                db.addNewLesson(lessonName, goal1, goal2, goal3);  
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson added.");
@@ -1670,7 +1968,7 @@ public class GUI extends javax.swing.JFrame {
         
 
         // Delete lesson from database
-        //db.deleteLesson(lesson_id);    
+//        db.deleteLesson(lesson_id);    
     }//GEN-LAST:event_bLessonEditDeleteActionPerformed
 
     private void bGoalAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalAddActionPerformed
@@ -1688,7 +1986,8 @@ public class GUI extends javax.swing.JFrame {
     private void bGoalEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditActionPerformed
                 
         // Check table for highlighted goal, get goal id
-
+//        int goal_id = tManagerGoalTable.getSelectedColumn();
+        
 
         // Change labels for 'Edit Goal'
         labelGoalEdit.setText("Edit Goal");
@@ -1698,6 +1997,7 @@ public class GUI extends javax.swing.JFrame {
         bGoalEditDelete.setVisible(true);
         
         // Populate goal simVars 1, 2, 3 comboboxes
+        
         
         
         // Select proper goal simVars 1, 2, 3 comboboxes
@@ -1769,8 +2069,50 @@ public class GUI extends javax.swing.JFrame {
         
 
         // Delete goal from database
-        //db.deleteGoal(goal_id);   
+//        db.deleteGoal(goal_id);   
     }//GEN-LAST:event_bGoalEditDeleteActionPerformed
+
+    private void bAuditorEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList1ActionPerformed
+        // Go back to auditor's employee table
+        java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
+        card.show(pAuditorContentPanel, "pAuditorEmployeeTable"); 
+    }//GEN-LAST:event_bAuditorEmployeeList1ActionPerformed
+
+    private void bAuditorEmployeeList2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList2ActionPerformed
+        // Go back to auditor's employee table
+        java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
+        card.show(pAuditorContentPanel, "pAuditorEmployeeTable"); 
+    }//GEN-LAST:event_bAuditorEmployeeList2ActionPerformed
+
+    private void bAuditorEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeReportActionPerformed
+               
+        // Check selected column, get employee id (unless already on Log page, then use that employee)
+        int employeeID = 0;
+//        int employeeID = tAuditorReportTable.getSelectedColumn();
+        
+        
+        // Fill tAuditorReportTable
+        fillEmployeeReportTable(employeeID, tAuditorReportTable);
+        
+        // Show card pAuditorReportTable
+        java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
+        card.show(pAuditorContentPanel, "pAuditorReportTable");   
+    }//GEN-LAST:event_bAuditorEmployeReportActionPerformed
+
+    private void bAuditorEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeLogActionPerformed
+               
+        // Check selected column, get employee id (unless already on Report page, then use that employee)
+        int employeeID = 0;
+//        int employeeID = tAuditorLogTable.getSelectedColumn();
+        
+        
+        // Fill tAuditorLogTable
+        fillEmployeeLogTable(employeeID, tAuditorLogTable);        
+        
+        // Show card pAuditorLogTable
+        java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
+        card.show(pAuditorContentPanel, "pAuditorLogTable");   
+    }//GEN-LAST:event_bAuditorEmployeeLogActionPerformed
 
     
     
@@ -1810,10 +2152,46 @@ public class GUI extends javax.swing.JFrame {
 //    }
     
     
+    
+    /** Shows the employee home panel */
+    private void showEmployeeHome() {
+        // Populatate employee tables with database info
+//        tEmployeeLessons.
+//        tEmployeeLog.
+        
+        
+        
+        // Set card to employee home panel
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
+        card.show(panelContent, "pEmployeeHome");
+    }
+    
     /** Shows the manager home panel */
     private void showManagerHome() {
+        // Populatate employee tables with database info
+//        tManagerEmployeeTable.
+//        tManagerReportTable.
+//        tManagerLogTable. 
+        
+        
+        
+        // Set card to manager home panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
         card.show(panelContent, "pManagerHome");
+    }
+    
+    /** Shows the auditor home panel */
+    private void showAuditorHome() {
+        // Populatate employee tables with database info
+//        tAuditorEmployeeTable.
+//        tAuditorReportTable.
+//        tAuditorLogTable.
+        
+        
+        
+        // Set card to auditor home panel
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
+        card.show(panelContent, "pAuditorHome");
     }
     
     /** Shows the lesson edit panel */
@@ -1830,8 +2208,26 @@ public class GUI extends javax.swing.JFrame {
         card.show(panelContent, "pManagerGoalEdit");
     }
     
+    /** Fills an employee report table with appropriate information */
+    private void fillEmployeeReportTable(int employeeID, javax.swing.JTable table) {
+        
+        
+        
+    }
+    
+    /** Fills an employee log table with appropriate information */
+    private void fillEmployeeLogTable(int employeeID, javax.swing.JTable table) {
+        
+        
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAuditorEmployeReport;
+    private javax.swing.JButton bAuditorEmployeeList1;
+    private javax.swing.JButton bAuditorEmployeeList2;
+    private javax.swing.JButton bAuditorEmployeeLog;
     private javax.swing.JButton bEmployeeEditCancel;
     private javax.swing.JButton bEmployeeEditDelete;
     private javax.swing.JButton bEmployeeEditSave;
@@ -1873,6 +2269,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1896,17 +2295,21 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelEmployeeEdit;
     private javax.swing.JLabel labelGoalEdit;
     private javax.swing.JLabel labelLessonEdit;
     private javax.swing.JLabel labelUsername;
+    private javax.swing.JPanel pAuditorContentPanel;
+    private javax.swing.JPanel pAuditorEmployeeTable;
     private javax.swing.JPanel pAuditorHome;
+    private javax.swing.JPanel pAuditorLogTable;
+    private javax.swing.JPanel pAuditorReportTable;
+    private javax.swing.JPanel pAuditorSidePanel;
     private javax.swing.JPanel pEmployeeHome;
     private javax.swing.JPanel pEmployeeLessons;
     private javax.swing.JPanel pEmployeeLog;
     private javax.swing.JPanel pEmployeeSidePanel;
+    private javax.swing.JPanel pLesson;
     private javax.swing.JPanel pManagerContentPanel;
     private javax.swing.JPanel pManagerEmployeeEdit;
     private javax.swing.JPanel pManagerEmployeeTable;
@@ -1926,15 +2329,25 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelMain;
+    private javax.swing.JScrollPane spAuditorEmployeeTable;
+    private javax.swing.JScrollPane spAuditorLogTable;
+    private javax.swing.JScrollPane spAuditorReportTable;
     private javax.swing.JScrollPane spEmployeeLessons;
+    private javax.swing.JScrollPane spEmployeeLogTable;
     private javax.swing.JScrollPane spManagerEmployeeTable;
     private javax.swing.JScrollPane spManagerLogTable;
     private javax.swing.JScrollPane spManagerReportTable;
+    private javax.swing.JTable tAuditorEmployeeTable;
+    private javax.swing.JTable tAuditorLogTable;
+    private javax.swing.JTable tAuditorReportTable;
     private javax.swing.JTable tEmployeeLessons;
+    private javax.swing.JTable tEmployeeLogTable;
     private javax.swing.JTable tGoalType1;
     private javax.swing.JTable tGoalType2;
     private javax.swing.JTable tGoalType3;
     private javax.swing.JTable tManagerEmployeeTable;
+    private javax.swing.JTable tManagerGoalTable;
+    private javax.swing.JTable tManagerLessonTable;
     private javax.swing.JTable tManagerLogTable;
     private javax.swing.JTable tManagerReportTable;
     private javax.swing.JTextArea ta_goalText;
