@@ -5,15 +5,19 @@ import javax.swing.JOptionPane;
 
 
 public class GUI extends javax.swing.JFrame {
+    
     private DatabaseConnector db;
+    
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
-         db = new DatabaseConnector();
+        
+        /* This should be done in the Driver or Database class */
+        db = new DatabaseConnector();        
         try{
-        db.getConnection();
+            db.getConnection();
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -472,7 +476,6 @@ public class GUI extends javax.swing.JFrame {
         pAuditorEmployeeTableLayout.setVerticalGroup(
             pAuditorEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
@@ -536,10 +539,9 @@ public class GUI extends javax.swing.JFrame {
         pAuditorReportTableLayout.setVerticalGroup(
             pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAuditorReportTableLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spAuditorReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
@@ -603,10 +605,9 @@ public class GUI extends javax.swing.JFrame {
         pAuditorLogTableLayout.setVerticalGroup(
             pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAuditorLogTableLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spAuditorLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         );
@@ -643,11 +644,11 @@ public class GUI extends javax.swing.JFrame {
         pAuditorSidePanelLayout.setVerticalGroup(
             pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAuditorSidePanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addComponent(bAuditorEmployeReport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bAuditorEmployeeLog)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(457, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pAuditorHomeLayout = new javax.swing.GroupLayout(pAuditorHome);
@@ -661,8 +662,13 @@ public class GUI extends javax.swing.JFrame {
         );
         pAuditorHomeLayout.setVerticalGroup(
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
+                .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pAuditorHomeLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         panelContent.add(pAuditorHome, "pAuditorHome");
@@ -1857,7 +1863,7 @@ public class GUI extends javax.swing.JFrame {
         
         
         // Send user log in time to database
-        //db.updateLog(id, "Signed In", time);
+//        db.updateLog(id, "Signed In", time);
         
         
 
@@ -2163,16 +2169,16 @@ public class GUI extends javax.swing.JFrame {
             String goalDescription  = tf_goalDescription.getText();
             String goalText     = ta_goalText.getText();
             
-            // Save existing lesson
+            // Save existing goal
             if (labelGoalEdit.getText().equals("Edit Goal")) {
-//                db.updateGoalnInfo(goalName, goalType, simVar1, simVarValue1, 
+//                db.updateGoalInfo(goalName, goalType, simVar1, simVarValue1, 
 //                        simVar2, simVarValue2, simVar3, simVarValue3,
 //                        goalDescription, goalText);   
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Goal saved.");
             }
-            // Add new lesson
+            // Add new goal
             else {
 //                db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
 //                        simVar2, simVarValue2, simVar3, simVarValue3,
@@ -2389,11 +2395,8 @@ public class GUI extends javax.swing.JFrame {
     
     /** Shows the manager home panel */
     private void showManagerHome() {
-        // Populatate employee tables with database info
-//        tManagerEmployeeTable.
-//        tManagerReportTable.
-//        tManagerLogTable. 
-        
+        // Populatate employee table with database info
+        fillEmployeeTable(tManagerEmployeeTable);        
         
         
         // Set card to manager home panel
@@ -2403,11 +2406,8 @@ public class GUI extends javax.swing.JFrame {
     
     /** Shows the auditor home panel */
     private void showAuditorHome() {
-        // Populatate employee tables with database info
-//        tAuditorEmployeeTable.
-//        tAuditorReportTable.
-//        tAuditorLogTable.
-        
+        // Populatate employee tableswith database info
+        fillEmployeeTable(tAuditorEmployeeTable);        
         
         
         // Set card to auditor home panel
@@ -2427,6 +2427,14 @@ public class GUI extends javax.swing.JFrame {
         // Set card to add goal add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerGoalEdit");
+    }
+    
+    
+     /** Fills the employee table with appropriate information */
+    private void fillEmployeeTable(javax.swing.JTable table) {
+        
+        
+        
     }
     
     /** Fills an employee report table with appropriate information */
