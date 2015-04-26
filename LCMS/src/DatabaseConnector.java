@@ -43,30 +43,4 @@ public class DatabaseConnector {
         return connection;
     }
     
-    
-    public ArrayList<String> getUserLoginInformation(){
-        Statement query = null;
-        ArrayList<String> toReturn = new ArrayList<>();
-        
-        try{
-            query = connection.createStatement();
-            String sql = "SELECT username, password FROM Users";
-            ResultSet results = query.executeQuery(sql);
-           
-            while(results.next()){
-                toReturn.add(results.getString("username"));
-                toReturn.add(results.getString("password"));                
-            }
-            results.close();
-            query.close();
-                        
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        
-        
-       return toReturn;
-    }
-    
-    
 }

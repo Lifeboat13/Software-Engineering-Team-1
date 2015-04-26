@@ -7,6 +7,15 @@ public abstract class User {
 	private String address;
 	private String EID;
 	private String jobTitle;
+        private String log;
+
+    public String getLog() {
+        return log;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
 	
 	public String getUsername() {
 		return username;

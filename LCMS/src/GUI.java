@@ -5,23 +5,15 @@ import javax.swing.JOptionPane;
 
 
 public class GUI extends javax.swing.JFrame {
-    
-    private DatabaseConnector db;
+    private final Database db;
+
     
     /**
      * Creates new form GUI
      */
     public GUI() {
-        initComponents();
-        
-        /* This should be done in the Driver or Database class */
-        db = new DatabaseConnector();        
-        try{
-            db.getConnection();
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
+        db = new Database();
+        initComponents();        
     }
 
     
@@ -44,8 +36,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textFieldUsername = new javax.swing.JTextField();
-        textFieldPassword = new javax.swing.JTextField();
         buttonSignIn = new javax.swing.JButton();
+        textFieldPassword = new javax.swing.JPasswordField();
         panelAppMain = new javax.swing.JPanel();
         panelHeader = new javax.swing.JPanel();
         labelUsername = new javax.swing.JLabel();
@@ -213,13 +205,18 @@ public class GUI extends javax.swing.JFrame {
 
         textFieldUsername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        textFieldPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         buttonSignIn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         buttonSignIn.setText("Sign In");
         buttonSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSignInActionPerformed(evt);
+            }
+        });
+
+        textFieldPassword.setPreferredSize(new java.awt.Dimension(6, 28));
+        textFieldPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPasswordActionPerformed(evt);
             }
         });
 
@@ -233,14 +230,14 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(panelLoginLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(textFieldUsername))
+                        .addComponent(textFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLoginLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(22, 22, 22)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(253, Short.MAX_VALUE))
+                            .addComponent(buttonSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,13 +246,13 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(buttonSignIn)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(254, 254, 254))
         );
 
         panelMain.add(panelLogin, "panelLogin");
@@ -320,7 +317,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -647,7 +644,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -673,7 +670,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -974,7 +971,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bLessonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(bLessonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(bLessonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1140,30 +1137,16 @@ public class GUI extends javax.swing.JFrame {
         labelEmployeeEdit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelEmployeeEdit.setText("Add/Edit Employee");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel8.setText("ID");
 
-        tf_id.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("First Name");
 
-        tf_fName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel10.setText("Last Name");
 
-        tf_lName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel11.setText("Address");
 
-        tf_address.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel12.setText("etc...");
 
-        bEmployeeEditCancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bEmployeeEditCancel.setText("Cancel");
         bEmployeeEditCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1171,7 +1154,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bEmployeeEditSave.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bEmployeeEditSave.setText("Add/Save");
         bEmployeeEditSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1179,7 +1161,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bEmployeeEditDelete.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bEmployeeEditDelete.setText("Delete");
         bEmployeeEditDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1263,12 +1244,8 @@ public class GUI extends javax.swing.JFrame {
         labelLessonEdit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelLessonEdit.setText("Add/Edit Lesson");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Name");
 
-        tf_lessonName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel13.setText("Type 1:");
 
         tGoalType1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -1300,7 +1277,6 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tGoalType1);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel14.setText("Type 2:");
 
         tGoalType2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -1332,7 +1308,6 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tGoalType2);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel15.setText("Type 3:");
 
         tGoalType3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -1364,7 +1339,6 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tGoalType3);
 
-        bLessonEditSave.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bLessonEditSave.setText("Add/Save");
         bLessonEditSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1372,7 +1346,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bLessonEditCancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bLessonEditCancel.setText("Cancel");
         bLessonEditCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1380,7 +1353,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bLessonEditDelete.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bLessonEditDelete.setText("Delete");
         bLessonEditDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1412,7 +1384,6 @@ public class GUI extends javax.swing.JFrame {
         ta_type3description.setText("[goal description]");
         jScrollPane8.setViewportView(ta_type3description);
 
-        bLessonPreview.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bLessonPreview.setText("Preview Lesson");
         bLessonPreview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1502,23 +1473,14 @@ public class GUI extends javax.swing.JFrame {
         labelGoalEdit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelGoalEdit.setText("Add/Edit Goal");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel16.setText("Name");
 
-        tf_goalName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel3.setText("Type");
 
-        cb_goalType.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cb_goalType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Type 1", "Type 2", "Type 3" }));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel17.setText("Description");
 
-        tf_goalDescription.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel18.setText("Full Text");
 
         ta_goalText.setColumns(20);
@@ -1526,7 +1488,6 @@ public class GUI extends javax.swing.JFrame {
         ta_goalText.setRows(5);
         jScrollPane9.setViewportView(ta_goalText);
 
-        bGoalEditSave.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bGoalEditSave.setText("Add/Save");
         bGoalEditSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1534,7 +1495,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bGoalEditCancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bGoalEditCancel.setText("Cancel");
         bGoalEditCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1542,7 +1502,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bGoalEditDelete.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bGoalEditDelete.setText("Delect");
         bGoalEditDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1550,26 +1509,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel19.setText("Simulation Variables");
 
-        cb_SimVar1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cb_SimVar1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(none)", "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cb_SimVar2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cb_SimVar2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(none)", "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cb_SimVar3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cb_SimVar3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(none)", "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel20.setText("Value");
-
-        tf_SimVarValue1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tf_SimVarValue3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tf_SimVarValue2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout pManagerGoalEditLayout = new javax.swing.GroupLayout(pManagerGoalEdit);
         pManagerGoalEdit.setLayout(pManagerGoalEditLayout);
@@ -1672,7 +1620,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(bGoalEditSave)
                     .addComponent(bGoalEditCancel)
                     .addComponent(bGoalEditDelete))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelContent.add(pManagerGoalEdit, "pManagerGoalEdit");
@@ -1688,7 +1636,6 @@ public class GUI extends javax.swing.JFrame {
         ta_lessonText.setText("[lesson text]");
         jScrollPane10.setViewportView(ta_lessonText);
 
-        bLessonBack.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bLessonBack.setText("Go Back");
         bLessonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1696,7 +1643,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton1.setText("Start Simulation");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1780,7 +1726,6 @@ public class GUI extends javax.swing.JFrame {
 
         panelContent.add(pSimulator, "pSimulator");
 
-        bSettingsSave.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bSettingsSave.setText("Save");
         bSettingsSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1788,7 +1733,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bSettingsCancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         bSettingsCancel.setText("Cancel");
         bSettingsCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1799,24 +1743,12 @@ public class GUI extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel21.setText("Settings");
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel22.setText("Current Password");
 
-        tf_currentPassword.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tf_newPassword.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel23.setText("New Password");
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel27.setText("Confirm Password");
 
-        tf_confirmPassword.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tf_settingsAddress.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel28.setText("Address");
 
         javax.swing.GroupLayout pSettingsLayout = new javax.swing.GroupLayout(pSettings);
@@ -1920,32 +1852,27 @@ public class GUI extends javax.swing.JFrame {
     
     /** Log in button clicked */
     private void buttonSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignInActionPerformed
-        boolean userfound = true; //set to false when users table is setup with login information
+        
         
         // Check user log in code here
-        /*ArrayList<String> users = db.getUserLoginInformation();
-        for(int i = 0; i < users.size(); i+=2){
-          
-            if(textFieldUsername.getText().equals(users.get(i)))
-                if(textFieldPassword.getText().equals(users.get(i+1))){
-                    userfound = true;
-                }
-        }        
-        */
         
-        
-        // Send user log in time to database
-//        db.updateLog(id, "Signed In", time);
-        
-        
-
-        if(userfound){
+        ArrayList<String> userInformation = db.checkLogin(textFieldUsername.getText(), textFieldPassword.getPassword());
+      
+        if(!userInformation.isEmpty()){
+            
+            // Send user log in time to database
+            // db.updateLog(id, "Signed In", time);
+            User currentUser = new Employee(userInformation.get(1), userInformation.get(2), userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6), userInformation.get(7));;
+            
+            
+            
             // Switch panelMain card to main app panel
             java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
             card.show(panelMain, "panelAppMain");
 
             // Set labelUsername to user's name
-//            labelUsername.setText(db.GetEmployeeName(id));
+            // labelUsername.setText(db.GetEmployeeName(id));
+            labelUsername.setText(currentUser.getfName() + " " + currentUser.getlName());
 
             // Set panelContent card to appropriate content panel
             showHomePanel();
@@ -2420,6 +2347,10 @@ public class GUI extends javax.swing.JFrame {
         showHomePanel(); 
     }//GEN-LAST:event_bSettingsCancelActionPerformed
 
+    private void textFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldPasswordActionPerformed
+
     
     
 //    /**
@@ -2619,9 +2550,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2696,7 +2624,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea ta_type1description;
     private javax.swing.JTextArea ta_type2description;
     private javax.swing.JTextArea ta_type3description;
-    private javax.swing.JTextField textFieldPassword;
+    private javax.swing.JPasswordField textFieldPassword;
     private javax.swing.JTextField textFieldUsername;
     private javax.swing.JTextField tf_SimVarValue1;
     private javax.swing.JTextField tf_SimVarValue2;

@@ -1,19 +1,70 @@
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
 public class Database {
-    
+    private DatabaseConnector db;
+    private Connection connection;
     //Connection connection;    
     
+    public Database(){
+        db = new DatabaseConnector();        
+        try{
+            connection = db.getConnection();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
     
-    
+        
     /** 
      * Query wrapper methods 
      */
     
-    
+    /*
+    *   Checks the user login information, based on the passed parameters
+    *   Returns all of the user information, used to create the current_user
+    */
+    public ArrayList<String> checkLogin(String username, char[] password){
+        Statement query = null;
+        ArrayList<String> toReturn = new ArrayList<>();
+        
+        try{
+            query = connection.createStatement();
+            String sql = "SELECT * FROM Users WHERE username='" + username + "' AND password='" + String.valueOf(password) + "'";
+            ResultSet results = query.executeQuery(sql);
+           
+            
+            
+            while(results.next()){
+                toReturn.add(results.getString("usertype"));
+                toReturn.add(results.getString("eid"));
+                toReturn.add(results.getString("username"));
+                toReturn.add(results.getString("password"));
+                toReturn.add(results.getString("firstname"));
+                toReturn.add(results.getString("lastname"));
+                toReturn.add(results.getString("address"));
+                toReturn.add(results.getString("log"));                
+            }
+            results.close();
+            query.close();
+                        
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        
+       return toReturn;
+    }
     
     /* Placeholders currently used in GUI */
     
-    //db.getUserLoginInformation();
     //db.updateLog(id, "Signed In", time);
     
     //db.updateUserAddress(address);
