@@ -52,6 +52,7 @@ public class GUI extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pEmployeeLessons = new javax.swing.JPanel();
         pEmployeeSidePanel = new javax.swing.JPanel();
+        bEmployeeTakeLesson = new javax.swing.JButton();
         spEmployeeLessons = new javax.swing.JScrollPane();
         tEmployeeLessons = new javax.swing.JTable();
         pEmployeeLog = new javax.swing.JPanel();
@@ -80,10 +81,14 @@ public class GUI extends javax.swing.JFrame {
         bManagerEmployeeLog = new javax.swing.JButton();
         pManagerLessons = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        bLessonAdd = new javax.swing.JButton();
+        bLessonEdit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         pManagerGoals = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        bGoalAdd = new javax.swing.JButton();
+        bGoalEdit = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         pManagerEmployeeEdit = new javax.swing.JPanel();
@@ -100,10 +105,54 @@ public class GUI extends javax.swing.JFrame {
         bEmployeeEditCancel = new javax.swing.JButton();
         bEmployeeEditSave = new javax.swing.JButton();
         bEmployeeEditDelete = new javax.swing.JButton();
-        pManagerGoalEdit = new javax.swing.JPanel();
         pManagerLessonEdit = new javax.swing.JPanel();
+        labelLessonEdit = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tf_lessonName = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tGoalType1 = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tGoalType2 = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tGoalType3 = new javax.swing.JTable();
+        bLessonEditSave = new javax.swing.JButton();
+        bLessonEditCancel = new javax.swing.JButton();
+        bLessonEditDelete = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        ta_type1description = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        ta_type2description = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        ta_type3description = new javax.swing.JTextArea();
+        bLessonPreview = new javax.swing.JButton();
+        pManagerGoalEdit = new javax.swing.JPanel();
+        labelGoalEdit = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        tf_goalName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        cb_goalType = new javax.swing.JComboBox();
+        jLabel17 = new javax.swing.JLabel();
+        tf_goalDescription = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        ta_goalText = new javax.swing.JTextArea();
+        bGoalEditSave = new javax.swing.JButton();
+        bGoalEditCancel = new javax.swing.JButton();
+        bGoalEditDelete = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        cb_SimVar1 = new javax.swing.JComboBox();
+        cb_SimVar2 = new javax.swing.JComboBox();
+        cb_SimVar3 = new javax.swing.JComboBox();
+        jLabel20 = new javax.swing.JLabel();
+        tf_SimVarValue1 = new javax.swing.JTextField();
+        tf_SimVarValue3 = new javax.swing.JTextField();
+        tf_SimVarValue2 = new javax.swing.JTextField();
         pAuditorHome = new javax.swing.JPanel();
         pSimulator = new javax.swing.JPanel();
+        pSettings = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Air Traffic Control LCMS");
@@ -210,15 +259,23 @@ public class GUI extends javax.swing.JFrame {
 
         pEmployeeSidePanel.setBackground(new java.awt.Color(230, 230, 230));
 
+        bEmployeeTakeLesson.setText("Take Lesson");
+
         javax.swing.GroupLayout pEmployeeSidePanelLayout = new javax.swing.GroupLayout(pEmployeeSidePanel);
         pEmployeeSidePanel.setLayout(pEmployeeSidePanelLayout);
         pEmployeeSidePanelLayout.setHorizontalGroup(
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 121, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 514, Short.MAX_VALUE)
+            .addGroup(pEmployeeSidePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bEmployeeTakeLesson)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tEmployeeLessons.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -262,7 +319,7 @@ public class GUI extends javax.swing.JFrame {
         pEmployeeLessonsLayout.setVerticalGroup(
             pEmployeeLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pEmployeeSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(spEmployeeLessons)
+            .addComponent(spEmployeeLessons, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Lessons", pEmployeeLessons);
@@ -315,7 +372,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "id", "First Name", "Last Name", "Address"
+                "ID", "First Name", "Last Name", "Address"
             }
         ) {
             Class[] types = new Class [] {
@@ -569,28 +626,68 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(230, 230, 230));
 
+        bLessonAdd.setText("Add Lesson");
+        bLessonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLessonAddActionPerformed(evt);
+            }
+        });
+
+        bLessonEdit.setText("Edit Lesson");
+        bLessonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLessonEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 121, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bLessonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(bLessonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bLessonAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bLessonEdit)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Name", "Goal 1", "Goal 2", "Goal 3"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout pManagerLessonsLayout = new javax.swing.GroupLayout(pManagerLessons);
@@ -614,17 +711,42 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(230, 230, 230));
 
+        bGoalAdd.setText("Add Goal");
+        bGoalAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGoalAddActionPerformed(evt);
+            }
+        });
+
+        bGoalEdit.setText("Edit Goal");
+        bGoalEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGoalEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 121, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bGoalAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(bGoalEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 514, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bGoalAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bGoalEdit)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTable2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -633,9 +755,24 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Name", "Type", "Description"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout pManagerGoalsLayout = new javax.swing.GroupLayout(pManagerGoals);
@@ -650,7 +787,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerGoalsLayout.setVerticalGroup(
             pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Goals", pManagerGoals);
@@ -796,31 +933,413 @@ public class GUI extends javax.swing.JFrame {
 
         panelContent.add(pManagerEmployeeEdit, "pManagerEmployeeEdit");
 
-        javax.swing.GroupLayout pManagerGoalEditLayout = new javax.swing.GroupLayout(pManagerGoalEdit);
-        pManagerGoalEdit.setLayout(pManagerGoalEditLayout);
-        pManagerGoalEditLayout.setHorizontalGroup(
-            pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        pManagerGoalEditLayout.setVerticalGroup(
-            pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
-        );
+        labelLessonEdit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelLessonEdit.setText("Add/Edit Lesson");
 
-        panelContent.add(pManagerGoalEdit, "pManagerGoalEdit");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel4.setText("Name");
+
+        tf_lessonName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel13.setText("Type 1:");
+
+        tGoalType1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tGoalType1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Goal"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tGoalType1);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel14.setText("Type 2:");
+
+        tGoalType2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tGoalType2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Goal"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tGoalType2);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel15.setText("Type 3:");
+
+        tGoalType3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tGoalType3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Goal"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tGoalType3);
+
+        bLessonEditSave.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bLessonEditSave.setText("Add/Save");
+        bLessonEditSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLessonEditSaveActionPerformed(evt);
+            }
+        });
+
+        bLessonEditCancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bLessonEditCancel.setText("Cancel");
+        bLessonEditCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLessonEditCancelActionPerformed(evt);
+            }
+        });
+
+        bLessonEditDelete.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bLessonEditDelete.setText("Delete");
+        bLessonEditDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLessonEditDeleteActionPerformed(evt);
+            }
+        });
+
+        ta_type1description.setEditable(false);
+        ta_type1description.setColumns(20);
+        ta_type1description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ta_type1description.setRows(5);
+        jScrollPane6.setViewportView(ta_type1description);
+
+        ta_type2description.setEditable(false);
+        ta_type2description.setColumns(20);
+        ta_type2description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ta_type2description.setRows(5);
+        jScrollPane7.setViewportView(ta_type2description);
+
+        ta_type3description.setEditable(false);
+        ta_type3description.setColumns(20);
+        ta_type3description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ta_type3description.setRows(5);
+        jScrollPane8.setViewportView(ta_type3description);
+
+        bLessonPreview.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bLessonPreview.setText("Preview Lesson");
 
         javax.swing.GroupLayout pManagerLessonEditLayout = new javax.swing.GroupLayout(pManagerLessonEdit);
         pManagerLessonEdit.setLayout(pManagerLessonEditLayout);
         pManagerLessonEditLayout.setHorizontalGroup(
             pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(pManagerLessonEditLayout.createSequentialGroup()
+                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pManagerLessonEditLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelLessonEdit)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pManagerLessonEditLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel13)
+                            .addGroup(pManagerLessonEditLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(29, 29, 29)
+                                .addComponent(tf_lessonName, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addGroup(pManagerLessonEditLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(bLessonEditSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bLessonEditCancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bLessonEditDelete))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pManagerLessonEditLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane7)
+                                    .addComponent(jScrollPane8)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonEditLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bLessonPreview)
+                                .addGap(39, 39, 39)))))
+                .addContainerGap())
         );
         pManagerLessonEditLayout.setVerticalGroup(
             pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
+            .addGroup(pManagerLessonEditLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelLessonEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tf_lessonName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane7)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane8)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bLessonEditCancel)
+                    .addComponent(bLessonEditSave)
+                    .addComponent(bLessonEditDelete)
+                    .addComponent(bLessonPreview))
+                .addGap(46, 46, 46))
         );
 
         panelContent.add(pManagerLessonEdit, "pManagerLessonEdit");
+
+        labelGoalEdit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelGoalEdit.setText("Add/Edit Goal");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel16.setText("Name");
+
+        tf_goalName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel3.setText("Type");
+
+        cb_goalType.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cb_goalType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Type 1", "Type 2", "Type 3" }));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel17.setText("Description");
+
+        tf_goalDescription.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel18.setText("Full Text");
+
+        ta_goalText.setColumns(20);
+        ta_goalText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ta_goalText.setRows(5);
+        jScrollPane9.setViewportView(ta_goalText);
+
+        bGoalEditSave.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bGoalEditSave.setText("Add/Save");
+        bGoalEditSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGoalEditSaveActionPerformed(evt);
+            }
+        });
+
+        bGoalEditCancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bGoalEditCancel.setText("Cancel");
+        bGoalEditCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGoalEditCancelActionPerformed(evt);
+            }
+        });
+
+        bGoalEditDelete.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        bGoalEditDelete.setText("Delect");
+        bGoalEditDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGoalEditDeleteActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel19.setText("Simulation Variables");
+
+        cb_SimVar1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cb_SimVar1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(none)", "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_SimVar2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cb_SimVar2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(none)", "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cb_SimVar3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cb_SimVar3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(none)", "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel20.setText("Value");
+
+        tf_SimVarValue1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        tf_SimVarValue3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        tf_SimVarValue2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        javax.swing.GroupLayout pManagerGoalEditLayout = new javax.swing.GroupLayout(pManagerGoalEdit);
+        pManagerGoalEdit.setLayout(pManagerGoalEditLayout);
+        pManagerGoalEditLayout.setHorizontalGroup(
+            pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelGoalEdit))
+                    .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tf_goalDescription))
+                            .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                                        .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cb_SimVar2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cb_SimVar3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(34, 34, 34)
+                                        .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tf_SimVarValue3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tf_SimVarValue2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerGoalEditLayout.createSequentialGroup()
+                                        .addGap(218, 218, 218)
+                                        .addComponent(tf_SimVarValue1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel19)
+                                    .addComponent(cb_SimVar1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                                        .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel16)
+                                            .addComponent(jLabel3))
+                                        .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                                                .addGap(177, 177, 177)
+                                                .addComponent(jLabel20))
+                                            .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                                                .addGap(60, 60, 60)
+                                                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(tf_goalName, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cb_goalType, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(0, 313, Short.MAX_VALUE))))
+                    .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                                .addComponent(bGoalEditSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bGoalEditCancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bGoalEditDelete)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane9))))
+                .addContainerGap())
+        );
+        pManagerGoalEditLayout.setVerticalGroup(
+            pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pManagerGoalEditLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelGoalEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(tf_goalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cb_goalType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_SimVar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_SimVarValue1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_SimVar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_SimVarValue2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_SimVar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_SimVarValue3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(tf_goalDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bGoalEditSave)
+                    .addComponent(bGoalEditCancel)
+                    .addComponent(bGoalEditDelete))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        panelContent.add(pManagerGoalEdit, "pManagerGoalEdit");
 
         javax.swing.GroupLayout pAuditorHomeLayout = new javax.swing.GroupLayout(pAuditorHome);
         pAuditorHome.setLayout(pAuditorHomeLayout);
@@ -847,6 +1366,19 @@ public class GUI extends javax.swing.JFrame {
         );
 
         panelContent.add(pSimulator, "pSimulator");
+
+        javax.swing.GroupLayout pSettingsLayout = new javax.swing.GroupLayout(pSettings);
+        pSettings.setLayout(pSettingsLayout);
+        pSettingsLayout.setHorizontalGroup(
+            pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        pSettingsLayout.setVerticalGroup(
+            pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 556, Short.MAX_VALUE)
+        );
+
+        panelContent.add(pSettings, "card9");
 
         javax.swing.GroupLayout panelAppMainLayout = new javax.swing.GroupLayout(panelAppMain);
         panelAppMain.setLayout(panelAppMainLayout);
@@ -939,6 +1471,7 @@ public class GUI extends javax.swing.JFrame {
     private void bManagerEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeReportActionPerformed
        
         // Check selected column, get employee id (unless already on Log page, then use that employee)
+//        pManagerReportTable.getSelectedColumn();
         
         
         // Fill tManagerReportTable
@@ -975,6 +1508,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bManagerEmployeeAddActionPerformed
 
     private void bManagerEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeEditActionPerformed
+        
+        // Check table for highlighted employee, get employee id
+//        tManagerEmployeeTable.getSelectedColumn();
+        
+
         // Change labels for 'Edit Employee'
         labelEmployeeEdit.setText("Edit Employee");
         bEmployeeEditSave.setText("Save");
@@ -982,7 +1520,7 @@ public class GUI extends javax.swing.JFrame {
         // Show 'Delete Employee' button
         bEmployeeEditDelete.setVisible(true);
         
-        // Fill in text field with appropriate information
+        // Fill in text fields with appropriate information
         
 
         // Set card to employee add/edit panel
@@ -993,6 +1531,7 @@ public class GUI extends javax.swing.JFrame {
     private void bManagerEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeLogActionPerformed
                
         // Check selected column, get employee id (unless already on Report page, then use that employee)
+//        tManagerLogTable.getSelectedColumn();
         
         
         // Fill tManagerLogTable
@@ -1027,8 +1566,7 @@ public class GUI extends javax.swing.JFrame {
             }   
             
             // Go back to manager home panel
-            java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
-            card.show(panelContent, "pManagerHome");
+            showManagerHome();
         }
         catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid ID, must be an integer.");
@@ -1036,9 +1574,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bEmployeeEditSaveActionPerformed
 
     private void bEmployeeEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditCancelActionPerformed
-        // Go back to manager home panel
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
-        card.show(panelContent, "pManagerHome");
+        showManagerHome();
     }//GEN-LAST:event_bEmployeeEditCancelActionPerformed
 
     private void bEmployeeEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditDeleteActionPerformed
@@ -1049,6 +1585,192 @@ public class GUI extends javax.swing.JFrame {
         // Delete employee from database
         //db.deleteEmployee(id);       
     }//GEN-LAST:event_bEmployeeEditDeleteActionPerformed
+
+    private void bLessonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonAddActionPerformed
+        // Change labels for 'Add Lesson'
+        labelLessonEdit.setText("Add Lesson");
+        bLessonEditSave.setText("Add");
+        
+        // Hide 'Delete Lesson' button
+        bLessonEditDelete.setVisible(false);
+
+        // Set lesson edit panel
+        showLessonEdit();
+    }//GEN-LAST:event_bLessonAddActionPerformed
+
+    private void bLessonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditActionPerformed
+        
+        // Check table for highlighted lesson, get lesson id
+
+
+        // Change labels for 'Edit Lesson'
+        labelLessonEdit.setText("Edit Lesson");
+        bLessonEditSave.setText("Save");
+        
+        // Show 'Delete Lesson' button
+        bLessonEditDelete.setVisible(true);
+        
+        // Populate goal type 1, 2, 3 tables
+        
+
+        // Select appropriate goal types
+//        tGoalType1.setColumnSelectionInterval(WIDTH, WIDTH);
+//        tGoalType2.setColumnSelectionInterval(WIDTH, WIDTH);
+//        tGoalType3.setColumnSelectionInterval(WIDTH, WIDTH);
+        
+        // Fill in text fields with appropriate information
+//        tf_lessonName.setText(db.getLessonName(lesson_id));
+//        ta_type1description.setText(db.getGoalDescription(tGoalType1.getSelectedColumn()));
+//        ta_type2description.setText(db.getGoalDescription(tGoalType2.getSelectedColumn()));
+//        ta_type3description.setText(db.getGoalDescription(tGoalType3.getSelectedColumn()));
+
+        
+        // Set lesson edit panel
+        showLessonEdit();
+    }//GEN-LAST:event_bLessonEditActionPerformed
+
+    private void bLessonEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditSaveActionPerformed
+        try {
+            // Get form info
+            String lessonName  = tf_lessonName.getText();
+            //int goal1        = 
+            //int goal2        = 
+            //int goal3        = 
+            
+            // Save existing lesson
+            if (labelLessonEdit.getText().equals("Edit Lesson")) {
+                //db.updateLessonInfo(lessonName, goal1, goal2, goal3);   
+                
+                // Verification message
+                JOptionPane.showMessageDialog(this, "Lesson saved.");
+            }
+            // Add new lesson
+            else {
+                //db.addNewLesson(lessonName, goal1, goal2, goal3);  
+                
+                // Verification message
+                JOptionPane.showMessageDialog(this, "Lesson added.");
+            }   
+            
+            // Go back to manager home panel
+            showManagerHome();
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error, action was not completed.");
+        }    
+    }//GEN-LAST:event_bLessonEditSaveActionPerformed
+
+    private void bLessonEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditCancelActionPerformed
+        showManagerHome();
+    }//GEN-LAST:event_bLessonEditCancelActionPerformed
+
+    private void bLessonEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditDeleteActionPerformed
+        
+        // 'Are you sure?' prompt
+        
+
+        // Delete lesson from database
+        //db.deleteLesson(lesson_id);    
+    }//GEN-LAST:event_bLessonEditDeleteActionPerformed
+
+    private void bGoalAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalAddActionPerformed
+        // Change labels for 'Add Goal'
+        labelGoalEdit.setText("Add Goal");
+        bGoalEditSave.setText("Add");
+        
+        // Hide 'Delete Goal' button
+        bGoalEditDelete.setVisible(false);
+
+        // Set goal edit panel
+        showGoalEdit();
+    }//GEN-LAST:event_bGoalAddActionPerformed
+
+    private void bGoalEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditActionPerformed
+                
+        // Check table for highlighted goal, get goal id
+
+
+        // Change labels for 'Edit Goal'
+        labelGoalEdit.setText("Edit Goal");
+        bGoalEditSave.setText("Save");
+        
+        // Show 'Delete Goal' button
+        bGoalEditDelete.setVisible(true);
+        
+        // Populate goal simVars 1, 2, 3 comboboxes
+        
+        
+        // Select proper goal simVars 1, 2, 3 comboboxes
+//        cb_SimVar1.setSelectedItem(db.getGoalSimVar1(goal_id));
+//        cb_SimVar2.setSelectedItem(db.getGoalSimVar2(goal_id));
+//        cb_SimVar3.setSelectedItem(db.getGoalSimVar3(goal_id));
+        
+        // Fill in goal simVarValue 1, 2, 3 text fields
+//        tf_SimVarValue1.setText(db.getGoalSimVarValue1(goal_id));
+//        tf_SimVarValue2.setText(db.getGoalSimVarValue2(goal_id));
+//        tf_SimVarValue3.setText(db.getGoalSimVarValue3(goal_id));
+        
+        // Fill in goal description and text text fields        
+//        tf_goalDescription.setText(db.getGoalDescription(goal_id));
+//        ta_goalText.setText(db.getGoalText(goal_id));               
+        
+        // Set goal edit panel
+        showGoalEdit();
+    }//GEN-LAST:event_bGoalEditActionPerformed
+
+    private void bGoalEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditSaveActionPerformed
+        try {
+            // Get form info
+            String goalName     = tf_goalName.getText();
+            int goalType        = cb_goalType.getSelectedIndex();
+            int simVar1         = cb_SimVar1.getSelectedIndex();
+            int simVar2         = cb_SimVar2.getSelectedIndex();
+            int simVar3         = cb_SimVar3.getSelectedIndex();
+            String simVarValue1 = tf_SimVarValue1.getText();
+            String simVarValue2 = tf_SimVarValue2.getText();
+            String simVarValue3 = tf_SimVarValue3.getText();
+            String goalDescription  = tf_goalDescription.getText();
+            String goalText     = ta_goalText.getText();
+            
+            // Save existing lesson
+            if (labelGoalEdit.getText().equals("Edit Goal")) {
+//                db.updateGoalnInfo(goalName, goalType, simVar1, simVarValue1, 
+//                        simVar2, simVarValue2, simVar3, simVarValue3,
+//                        goalDescription, goalText);   
+                
+                // Verification message
+                JOptionPane.showMessageDialog(this, "Goal saved.");
+            }
+            // Add new lesson
+            else {
+//                db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
+//                        simVar2, simVarValue2, simVar3, simVarValue3,
+//                        goalDescription, goalText);    
+                
+                // Verification message
+                JOptionPane.showMessageDialog(this, "Goal added.");
+            }   
+            
+            // Go back to manager home panel
+            showManagerHome();
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error, action was not completed.");
+        }   
+    }//GEN-LAST:event_bGoalEditSaveActionPerformed
+
+    private void bGoalEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditCancelActionPerformed
+        showManagerHome();
+    }//GEN-LAST:event_bGoalEditCancelActionPerformed
+
+    private void bGoalEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditDeleteActionPerformed
+        
+        // 'Are you sure?' prompt
+        
+
+        // Delete goal from database
+        //db.deleteGoal(goal_id);   
+    }//GEN-LAST:event_bGoalEditDeleteActionPerformed
 
     
     
@@ -1086,11 +1808,45 @@ public class GUI extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    
+    
+    /** Shows the manager home panel */
+    private void showManagerHome() {
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
+        card.show(panelContent, "pManagerHome");
+    }
+    
+    /** Shows the lesson edit panel */
+    private void showLessonEdit() {
+        // Set card to add lesson add/edit panel
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pManagerLessonEdit");
+    }
+    
+    /** Shows the goal edit panel */
+    private void showGoalEdit() {
+        // Set card to add goal add/edit panel
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pManagerGoalEdit");
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bEmployeeEditCancel;
     private javax.swing.JButton bEmployeeEditDelete;
     private javax.swing.JButton bEmployeeEditSave;
+    private javax.swing.JButton bEmployeeTakeLesson;
+    private javax.swing.JButton bGoalAdd;
+    private javax.swing.JButton bGoalEdit;
+    private javax.swing.JButton bGoalEditCancel;
+    private javax.swing.JButton bGoalEditDelete;
+    private javax.swing.JButton bGoalEditSave;
+    private javax.swing.JButton bLessonAdd;
+    private javax.swing.JButton bLessonEdit;
+    private javax.swing.JButton bLessonEditCancel;
+    private javax.swing.JButton bLessonEditDelete;
+    private javax.swing.JButton bLessonEditSave;
+    private javax.swing.JButton bLessonPreview;
     private javax.swing.JButton bManagerEmployeReport;
     private javax.swing.JButton bManagerEmployeeAdd;
     private javax.swing.JButton bManagerEmployeeEdit;
@@ -1100,11 +1856,25 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonSettings;
     private javax.swing.JButton buttonSignIn;
     private javax.swing.JButton buttonSignOut;
+    private javax.swing.JComboBox cb_SimVar1;
+    private javax.swing.JComboBox cb_SimVar2;
+    private javax.swing.JComboBox cb_SimVar3;
+    private javax.swing.JComboBox cb_goalType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1117,11 +1887,20 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelEmployeeEdit;
+    private javax.swing.JLabel labelGoalEdit;
+    private javax.swing.JLabel labelLessonEdit;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JPanel pAuditorHome;
     private javax.swing.JPanel pEmployeeHome;
@@ -1140,6 +1919,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel pManagerLogTable;
     private javax.swing.JPanel pManagerReportTable;
     private javax.swing.JPanel pManagerSidePanel;
+    private javax.swing.JPanel pSettings;
     private javax.swing.JPanel pSimulator;
     private javax.swing.JPanel panelAppMain;
     private javax.swing.JPanel panelContent;
@@ -1151,14 +1931,27 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane spManagerLogTable;
     private javax.swing.JScrollPane spManagerReportTable;
     private javax.swing.JTable tEmployeeLessons;
+    private javax.swing.JTable tGoalType1;
+    private javax.swing.JTable tGoalType2;
+    private javax.swing.JTable tGoalType3;
     private javax.swing.JTable tManagerEmployeeTable;
     private javax.swing.JTable tManagerLogTable;
     private javax.swing.JTable tManagerReportTable;
+    private javax.swing.JTextArea ta_goalText;
+    private javax.swing.JTextArea ta_type1description;
+    private javax.swing.JTextArea ta_type2description;
+    private javax.swing.JTextArea ta_type3description;
     private javax.swing.JTextField textFieldPassword;
     private javax.swing.JTextField textFieldUsername;
+    private javax.swing.JTextField tf_SimVarValue1;
+    private javax.swing.JTextField tf_SimVarValue2;
+    private javax.swing.JTextField tf_SimVarValue3;
     private javax.swing.JTextField tf_address;
     private javax.swing.JTextField tf_fName;
+    private javax.swing.JTextField tf_goalDescription;
+    private javax.swing.JTextField tf_goalName;
     private javax.swing.JTextField tf_id;
     private javax.swing.JTextField tf_lName;
+    private javax.swing.JTextField tf_lessonName;
     // End of variables declaration//GEN-END:variables
 }
