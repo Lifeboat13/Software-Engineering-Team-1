@@ -1,11 +1,11 @@
 
 public class Driver {
 	public static void main(String[] args){
-//		GUI gui = GUI.getInstance();
+            
+                Database db = new Database();
                 
                 GUI gui = new GUI();
                 gui.setVisible(true);
                 
-//		gui.displaySimulator();
 	}
 }

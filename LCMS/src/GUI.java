@@ -49,14 +49,18 @@ public class GUI extends javax.swing.JFrame {
         buttonSettings = new javax.swing.JButton();
         panelContent = new javax.swing.JPanel();
         pEmployeeHome = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        pEmployeeInfo = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        pEmployeeLessons = new javax.swing.JPanel();
+        pEmployeeSidePanel = new javax.swing.JPanel();
         spEmployeeLessons = new javax.swing.JScrollPane();
         tEmployeeLessons = new javax.swing.JTable();
+        pEmployeeLog = new javax.swing.JPanel();
         pManagerHome = new javax.swing.JPanel();
-        pManagerContentTable = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pManagerEmployees = new javax.swing.JPanel();
+        pManagerContentPanel = new javax.swing.JPanel();
         pManagerEmployeeTable = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         spManagerEmployeeTable = new javax.swing.JScrollPane();
         tManagerEmployeeTable = new javax.swing.JTable();
         pManagerReportTable = new javax.swing.JPanel();
@@ -74,6 +78,14 @@ public class GUI extends javax.swing.JFrame {
         bManagerEmployeeEdit = new javax.swing.JButton();
         bManagerEmployeReport = new javax.swing.JButton();
         bManagerEmployeeLog = new javax.swing.JButton();
+        pManagerLessons = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        pManagerGoals = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         pManagerEmployeeEdit = new javax.swing.JPanel();
         labelEmployeeEdit = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -88,9 +100,7 @@ public class GUI extends javax.swing.JFrame {
         bEmployeeEditCancel = new javax.swing.JButton();
         bEmployeeEditSave = new javax.swing.JButton();
         bEmployeeEditDelete = new javax.swing.JButton();
-        pManagerGoals = new javax.swing.JPanel();
         pManagerGoalEdit = new javax.swing.JPanel();
-        pManagerLessons = new javax.swing.JPanel();
         pManagerLessonEdit = new javax.swing.JPanel();
         pAuditorHome = new javax.swing.JPanel();
         pSimulator = new javax.swing.JPanel();
@@ -196,23 +206,43 @@ public class GUI extends javax.swing.JFrame {
 
         panelContent.setLayout(new java.awt.CardLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Current Lessons");
+        jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        pEmployeeSidePanel.setBackground(new java.awt.Color(230, 230, 230));
+
+        javax.swing.GroupLayout pEmployeeSidePanelLayout = new javax.swing.GroupLayout(pEmployeeSidePanel);
+        pEmployeeSidePanel.setLayout(pEmployeeSidePanelLayout);
+        pEmployeeSidePanelLayout.setHorizontalGroup(
+            pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 121, Short.MAX_VALUE)
+        );
+        pEmployeeSidePanelLayout.setVerticalGroup(
+            pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 514, Short.MAX_VALUE)
+        );
 
         tEmployeeLessons.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tEmployeeLessons.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Lesson", "Date", "Completed"
+                "Lesson", "Time"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -220,16 +250,35 @@ public class GUI extends javax.swing.JFrame {
         });
         spEmployeeLessons.setViewportView(tEmployeeLessons);
 
-        javax.swing.GroupLayout pEmployeeInfoLayout = new javax.swing.GroupLayout(pEmployeeInfo);
-        pEmployeeInfo.setLayout(pEmployeeInfoLayout);
-        pEmployeeInfoLayout.setHorizontalGroup(
-            pEmployeeInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(spEmployeeLessons, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+        javax.swing.GroupLayout pEmployeeLessonsLayout = new javax.swing.GroupLayout(pEmployeeLessons);
+        pEmployeeLessons.setLayout(pEmployeeLessonsLayout);
+        pEmployeeLessonsLayout.setHorizontalGroup(
+            pEmployeeLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeLessonsLayout.createSequentialGroup()
+                .addComponent(spEmployeeLessons, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pEmployeeSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pEmployeeInfoLayout.setVerticalGroup(
-            pEmployeeInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(spEmployeeLessons, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+        pEmployeeLessonsLayout.setVerticalGroup(
+            pEmployeeLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pEmployeeSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(spEmployeeLessons)
         );
+
+        jTabbedPane2.addTab("Lessons", pEmployeeLessons);
+
+        javax.swing.GroupLayout pEmployeeLogLayout = new javax.swing.GroupLayout(pEmployeeLog);
+        pEmployeeLog.setLayout(pEmployeeLogLayout);
+        pEmployeeLogLayout.setHorizontalGroup(
+            pEmployeeLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 775, Short.MAX_VALUE)
+        );
+        pEmployeeLogLayout.setVerticalGroup(
+            pEmployeeLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 514, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Log", pEmployeeLog);
 
         javax.swing.GroupLayout pEmployeeHomeLayout = new javax.swing.GroupLayout(pEmployeeHome);
         pEmployeeHome.setLayout(pEmployeeHomeLayout);
@@ -237,31 +286,27 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEmployeeHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pEmployeeHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pEmployeeInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pEmployeeHomeLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jTabbedPane2)
                 .addContainerGap())
         );
         pEmployeeHomeLayout.setVerticalGroup(
             pEmployeeHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEmployeeHomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pEmployeeInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2)
                 .addContainerGap())
         );
 
         panelContent.add(pEmployeeHome, "pEmployeeHome");
 
-        pManagerContentTable.setLayout(new java.awt.CardLayout());
+        pManagerHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Employee List");
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        tManagerEmployeeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        pManagerContentPanel.setLayout(new java.awt.CardLayout());
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Employee List");
+
         tManagerEmployeeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -297,22 +342,21 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pManagerEmployeeTableLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pManagerEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spManagerEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                    .addComponent(spManagerEmployeeTable)
                     .addGroup(pManagerEmployeeTableLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel7)
+                        .addContainerGap(554, Short.MAX_VALUE))))
         );
         pManagerEmployeeTableLayout.setVerticalGroup(
             pManagerEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pManagerEmployeeTableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spManagerEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(spManagerEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
 
-        pManagerContentTable.add(pManagerEmployeeTable, "pManagerEmployeeTable");
+        pManagerContentPanel.add(pManagerEmployeeTable, "pManagerEmployeeTable");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("[employee name]'s Report");
@@ -360,7 +404,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pManagerReportTableLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pManagerReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spManagerReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                    .addComponent(spManagerReportTable, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pManagerReportTableLayout.createSequentialGroup()
                         .addComponent(bManagerEmployeeList1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -371,17 +415,14 @@ public class GUI extends javax.swing.JFrame {
             pManagerReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pManagerReportTableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pManagerReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pManagerReportTableLayout.createSequentialGroup()
-                        .addComponent(bManagerEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, Short.MAX_VALUE)
-                        .addGap(2, 2, 2))
-                    .addComponent(jLabel5))
+                .addGroup(pManagerReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bManagerEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spManagerReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(spManagerReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
 
-        pManagerContentTable.add(pManagerReportTable, "pManagerReportTable");
+        pManagerContentPanel.add(pManagerReportTable, "pManagerReportTable");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("[employee name]'s Log");
@@ -430,7 +471,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pManagerLogTableLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pManagerLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spManagerLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                    .addComponent(spManagerLogTable, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pManagerLogTableLayout.createSequentialGroup()
                         .addComponent(bManagerEmployeeList2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -441,17 +482,14 @@ public class GUI extends javax.swing.JFrame {
             pManagerLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pManagerLogTableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pManagerLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pManagerLogTableLayout.createSequentialGroup()
-                        .addComponent(bManagerEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, Short.MAX_VALUE)
-                        .addGap(2, 2, 2))
-                    .addComponent(jLabel6))
+                .addGroup(pManagerLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bManagerEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spManagerLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(spManagerLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
 
-        pManagerContentTable.add(pManagerLogTable, "pManagerLogTable");
+        pManagerContentPanel.add(pManagerLogTable, "pManagerLogTable");
 
         pManagerSidePanel.setBackground(new java.awt.Color(230, 230, 230));
 
@@ -490,10 +528,10 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pManagerSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pManagerSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bManagerEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bManagerEmployeeAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                     .addComponent(bManagerEmployeeEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bManagerEmployeReport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bManagerEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bManagerEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bManagerEmployeeAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pManagerSidePanelLayout.setVerticalGroup(
@@ -503,29 +541,133 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(bManagerEmployeeAdd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bManagerEmployeeEdit)
-                .addGap(33, 33, 33)
+                .addGap(38, 38, 38)
                 .addComponent(bManagerEmployeReport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bManagerEmployeeLog)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        javax.swing.GroupLayout pManagerEmployeesLayout = new javax.swing.GroupLayout(pManagerEmployees);
+        pManagerEmployees.setLayout(pManagerEmployeesLayout);
+        pManagerEmployeesLayout.setHorizontalGroup(
+            pManagerEmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerEmployeesLayout.createSequentialGroup()
+                .addComponent(pManagerContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pManagerSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pManagerEmployeesLayout.setVerticalGroup(
+            pManagerEmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pManagerSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pManagerContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Employees", pManagerEmployees);
+
+        pManagerLessons.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(230, 230, 230));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 121, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout pManagerLessonsLayout = new javax.swing.GroupLayout(pManagerLessons);
+        pManagerLessons.setLayout(pManagerLessonsLayout);
+        pManagerLessonsLayout.setHorizontalGroup(
+            pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonsLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pManagerLessonsLayout.setVerticalGroup(
+            pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Lessons", pManagerLessons);
+
+        pManagerGoals.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jPanel2.setBackground(new java.awt.Color(230, 230, 230));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 121, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 514, Short.MAX_VALUE)
+        );
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        javax.swing.GroupLayout pManagerGoalsLayout = new javax.swing.GroupLayout(pManagerGoals);
+        pManagerGoals.setLayout(pManagerGoalsLayout);
+        pManagerGoalsLayout.setHorizontalGroup(
+            pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerGoalsLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pManagerGoalsLayout.setVerticalGroup(
+            pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
+        );
+
+        jTabbedPane1.addTab("Goals", pManagerGoals);
 
         javax.swing.GroupLayout pManagerHomeLayout = new javax.swing.GroupLayout(pManagerHome);
         pManagerHome.setLayout(pManagerHomeLayout);
         pManagerHomeLayout.setHorizontalGroup(
             pManagerHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pManagerHomeLayout.createSequentialGroup()
-                .addComponent(pManagerContentTable, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pManagerSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         pManagerHomeLayout.setVerticalGroup(
             pManagerHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pManagerContentTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerHomeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pManagerSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -654,19 +796,6 @@ public class GUI extends javax.swing.JFrame {
 
         panelContent.add(pManagerEmployeeEdit, "pManagerEmployeeEdit");
 
-        javax.swing.GroupLayout pManagerGoalsLayout = new javax.swing.GroupLayout(pManagerGoals);
-        pManagerGoals.setLayout(pManagerGoalsLayout);
-        pManagerGoalsLayout.setHorizontalGroup(
-            pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        pManagerGoalsLayout.setVerticalGroup(
-            pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
-        );
-
-        panelContent.add(pManagerGoals, "pManagerGoals");
-
         javax.swing.GroupLayout pManagerGoalEditLayout = new javax.swing.GroupLayout(pManagerGoalEdit);
         pManagerGoalEdit.setLayout(pManagerGoalEditLayout);
         pManagerGoalEditLayout.setHorizontalGroup(
@@ -679,19 +808,6 @@ public class GUI extends javax.swing.JFrame {
         );
 
         panelContent.add(pManagerGoalEdit, "pManagerGoalEdit");
-
-        javax.swing.GroupLayout pManagerLessonsLayout = new javax.swing.GroupLayout(pManagerLessons);
-        pManagerLessons.setLayout(pManagerLessonsLayout);
-        pManagerLessonsLayout.setHorizontalGroup(
-            pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        pManagerLessonsLayout.setVerticalGroup(
-            pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
-        );
-
-        panelContent.add(pManagerLessons, "pManagerLessons");
 
         javax.swing.GroupLayout pManagerLessonEditLayout = new javax.swing.GroupLayout(pManagerLessonEdit);
         pManagerLessonEdit.setLayout(pManagerLessonEditLayout);
@@ -798,7 +914,7 @@ public class GUI extends javax.swing.JFrame {
 
             // Set panelContent card to appropriate content panel
             card = (java.awt.CardLayout) panelContent.getLayout();  
-            card.show(panelContent, "pManagerHome");
+            card.show(panelContent, "pManagerHome");            
             // if (user == employee) card.show(panelContent, "pEmployeeHome"); etc...
         }
         else {
@@ -822,27 +938,27 @@ public class GUI extends javax.swing.JFrame {
 
     private void bManagerEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeReportActionPerformed
        
-        // Check selected column, get employee id (unless already on Log page)
+        // Check selected column, get employee id (unless already on Log page, then use that employee)
         
         
         // Fill tManagerReportTable
         
         
         // Show card pManagerReportTable
-        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentTable.getLayout();
-        card.show(pManagerContentTable, "pManagerReportTable");        
+        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
+        card.show(pManagerContentPanel, "pManagerReportTable");        
     }//GEN-LAST:event_bManagerEmployeReportActionPerformed
 
     private void bManagerEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeList1ActionPerformed
         // Go back to manager's employee table
-        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentTable.getLayout();
-        card.show(pManagerContentTable, "pManagerEmployeeTable"); 
+        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
+        card.show(pManagerContentPanel, "pManagerEmployeeTable"); 
     }//GEN-LAST:event_bManagerEmployeeList1ActionPerformed
 
     private void bManagerEmployeeList2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeList2ActionPerformed
         // Go back to manager's employee table
-        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentTable.getLayout();
-        card.show(pManagerContentTable, "pManagerEmployeeTable");         
+        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
+        card.show(pManagerContentPanel, "pManagerEmployeeTable");         
     }//GEN-LAST:event_bManagerEmployeeList2ActionPerformed
 
     private void bManagerEmployeeAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeAddActionPerformed
@@ -876,21 +992,21 @@ public class GUI extends javax.swing.JFrame {
 
     private void bManagerEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeLogActionPerformed
                
-        // Check selected column, get employee id (unless already on Report page)
+        // Check selected column, get employee id (unless already on Report page, then use that employee)
         
         
         // Fill tManagerLogTable
         
         
         // Show card pManagerLogTable
-        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentTable.getLayout();
-        card.show(pManagerContentTable, "pManagerLogTable");        
+        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
+        card.show(pManagerContentPanel, "pManagerLogTable");        
     }//GEN-LAST:event_bManagerEmployeeLogActionPerformed
 
     private void bEmployeeEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditSaveActionPerformed
-        // Get form info
         try {
-            int id = Integer.parseInt(tf_id.getText());
+            // Get form info
+            int id          = Integer.parseInt(tf_id.getText());
             String fName    = tf_fName.getText();
             String lName    = tf_lName.getText();
             String address  = tf_address.getText();
@@ -926,10 +1042,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bEmployeeEditCancelActionPerformed
 
     private void bEmployeeEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditDeleteActionPerformed
+        
+        // 'Are you sure?' prompt
+        
+
         // Delete employee from database
-        
-        
-        
+        //db.deleteEmployee(id);       
     }//GEN-LAST:event_bEmployeeEditDeleteActionPerformed
 
     
@@ -987,20 +1105,33 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelEmployeeEdit;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JPanel pAuditorHome;
     private javax.swing.JPanel pEmployeeHome;
-    private javax.swing.JPanel pEmployeeInfo;
-    private javax.swing.JPanel pManagerContentTable;
+    private javax.swing.JPanel pEmployeeLessons;
+    private javax.swing.JPanel pEmployeeLog;
+    private javax.swing.JPanel pEmployeeSidePanel;
+    private javax.swing.JPanel pManagerContentPanel;
     private javax.swing.JPanel pManagerEmployeeEdit;
     private javax.swing.JPanel pManagerEmployeeTable;
+    private javax.swing.JPanel pManagerEmployees;
     private javax.swing.JPanel pManagerGoalEdit;
     private javax.swing.JPanel pManagerGoals;
     private javax.swing.JPanel pManagerHome;
