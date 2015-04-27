@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class GUI extends javax.swing.JFrame {
     private final Database db;
-
+    private User currentUser;
     
     /**
      * Creates new form GUI
@@ -1862,8 +1862,8 @@ public class GUI extends javax.swing.JFrame {
             
             // Send user log in time to database
             // db.updateLog(id, "Signed In", time);
-            User currentUser = new Employee(userInformation.get(1), userInformation.get(2), userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6), userInformation.get(7));
-            db.updateLog(currentUser.getEID(), "Signed In", System.currentTimeMillis());
+            currentUser = new Employee(userInformation.get(1), userInformation.get(2), userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6), userInformation.get(7));
+            db.updateLog(currentUser.getEID(), "Signed In");
             
             
             // Switch panelMain card to main app panel
@@ -1889,7 +1889,7 @@ public class GUI extends javax.swing.JFrame {
         
         // Sign user out, record time, etc...
 //        db.updateLog(id, "Signed Out", time);
-        
+        db.updateLog(currentUser.getEID(), "Signed Out");
         
         // Switch panelMain card back to login panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
