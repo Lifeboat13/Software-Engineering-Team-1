@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 
@@ -62,7 +62,7 @@ public class Database {
     }
     
     //db.updateLog(id, "Signed In", time);
-    public boolean updateLog(String eid, String text, long time){
+    public boolean updateLog(String eid, String text){
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT log FROM Users WHERE eid='" + eid + "'";
@@ -71,7 +71,7 @@ public class Database {
                 return false;
             String oldLog = results.getString("log");
             String newLog = oldLog + '\n';
-            newLog += time + " " + text;
+            newLog += new Timestamp(System.currentTimeMillis()) + " " + text;
             
             sql = "UPDATE Users SET log='" + newLog + "' WHERE eid='" + eid + "'";
             query.executeUpdate(sql);
