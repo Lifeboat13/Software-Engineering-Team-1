@@ -82,13 +82,57 @@ public class Database {
         return true;
     }
     
+    //db.updateUserAddress(eid, address);
+    public boolean updateUserAddress(String eid, String address){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "UPDATE Users SET address='" + address + "' WHERE eid='" + eid + "'";
+            query.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+    
+    //db.getUserAddress(id);
+    public String getUserAdress(String eid){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT address FROM Users WHERE eid='" + eid + "'";
+            ResultSet results = query.executeQuery(sql);
+            return results.getString("address");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return "";
+        
+    }
+    
+    //db.getUserPassword(id);
+    public String getUserPassword(String eid){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT password FROM Users WHERE eid='" + eid + "'";
+            ResultSet results = query.executeQuery(sql);
+            return results.getString("password");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return "";
+        
+    }
+    
+    
     /* Placeholders currently used in GUI */
     
     
     
-    //db.updateUserAddress(address);
-    //db.getUserAddress(id);
-    //db.getUserPassword(id);
+    
+    
+    
     //db.setUserPassword(id, password);
     
     //db.GetEmployeeName(id);
