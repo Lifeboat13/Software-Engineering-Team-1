@@ -110,7 +110,7 @@ public class Database {
         
     }
     
-    //db.getUserPassword(id);
+    //db.getUserPassword(eid);
     public String getUserPassword(String eid){
         try{
             Statement query = connection.createStatement();
@@ -125,6 +125,64 @@ public class Database {
         
     }
     
+    //db.setUserPassword(eid, password);
+    public boolean updateUserPassword(String eid, String password){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "UPDATE Users SET password='" + password + "' WHERE eid='" + eid + "'";
+            query.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+    
+    //db.GetEmployeeName(eid);
+    public String getEmployeeName(String eid){
+         try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT firstname, lastname FROM Users WHERE eid='" + eid + "'";
+            ResultSet results = query.executeQuery(sql);
+            return results.getString("firstname") + " " + results.getString("lastname");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return "";
+    }
+    
+    //db.updateEmployeeInfo(eid, fName, lName, address); 
+    public boolean updateEmployeeInfo(String eid, String firstname, String lastname, String address){
+        
+        try{
+            Statement query = connection.createStatement();
+            String sql = "UPDATE Users SET firstname='" + firstname + "', lastname='" + lastname + "', address='" + address + "' WHERE eid='" + eid + "'";
+            query.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return true;
+    }
+    
+    //db.addNewEmployee(eid, fName, lName, address, etc...);  
+    public boolean addNewEmployee(String eid, String username, String password, String firstname, String lastname, String address){
+        
+        try{
+            Statement query = connection.createStatement();
+            String sql = "INSERT INTO Users (eid, username, password, firstname, lastname, address, usertype) VALUES ('" 
+                    + eid + "','" + username + "','" + password + "','" + firstname + "','" + lastname + "','" + address + "'," + 1 + ")";
+            query.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return true;
+    }
+    
     
     /* Placeholders currently used in GUI */
     
@@ -133,11 +191,11 @@ public class Database {
     
     
     
-    //db.setUserPassword(id, password);
     
-    //db.GetEmployeeName(id);
-    //db.updateEmployeeInfo(id, fName, lName, address, etc...); 
-    //db.addNewEmployee(id, fName, lName, address, etc...);  
+    
+   
+    
+    
     //db.deleteEmployee(id);  
     
     //db.getLessonName(lesson_id);    

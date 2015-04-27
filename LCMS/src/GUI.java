@@ -1852,8 +1852,7 @@ public class GUI extends javax.swing.JFrame {
     
     /** Log in button clicked */
     private void buttonSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignInActionPerformed
-        
-        
+                
         // Check user log in code here
         
         ArrayList<String> userInformation = db.checkLogin(textFieldUsername.getText(), textFieldPassword.getPassword());
