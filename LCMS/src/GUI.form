@@ -158,7 +158,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panelHeader" alignment="0" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Component id="panelContent" alignment="0" pref="800" max="32767" attributes="0"/>
+                      <Component id="panelContent" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -251,7 +251,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTabbedPane2" pref="780" max="32767" attributes="0"/>
+                              <Component id="jTabbedPane2" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -425,7 +425,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="pAuditorContentPanel" pref="673" max="32767" attributes="0"/>
+                              <Component id="pAuditorContentPanel" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pAuditorSidePanel" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -478,7 +478,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="spAuditorEmployeeTable" pref="520" max="32767" attributes="0"/>
+                                      <Component id="spAuditorEmployeeTable" pref="497" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -503,7 +503,7 @@
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="4" rowCount="4">
-                                        <Column editable="false" title="ID" type="java.lang.Integer"/>
+                                        <Column editable="false" title="EID" type="java.lang.Integer"/>
                                         <Column editable="false" title="First Name" type="java.lang.String"/>
                                         <Column editable="false" title="Last Name" type="java.lang.String"/>
                                         <Column editable="false" title="Address" type="java.lang.String"/>
@@ -547,7 +547,7 @@
                                           <Component id="bAuditorEmployeeList1" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="spAuditorReportTable" pref="520" max="32767" attributes="0"/>
+                                      <Component id="spAuditorReportTable" pref="497" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -627,7 +627,7 @@
                                           <Component id="bAuditorEmployeeList2" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="spAuditorLogTable" pref="520" max="32767" attributes="0"/>
+                                      <Component id="spAuditorLogTable" pref="497" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -746,7 +746,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTabbedPane1" pref="780" max="32767" attributes="0"/>
+                              <Component id="jTabbedPane1" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -783,7 +783,7 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="pManagerContentPanel" pref="648" max="32767" attributes="0"/>
+                                      <Component id="pManagerContentPanel" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="pManagerSidePanel" min="-2" max="-2" attributes="0"/>
                                   </Group>

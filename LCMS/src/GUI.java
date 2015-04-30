@@ -1,7 +1,12 @@
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class GUI extends javax.swing.JFrame {
@@ -317,7 +322,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -422,7 +427,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEmployeeHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2)
                 .addContainerGap())
         );
         pEmployeeHomeLayout.setVerticalGroup(
@@ -447,7 +452,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "First Name", "Last Name", "Address"
+                "EID", "First Name", "Last Name", "Address"
             }
         ) {
             Class[] types = new Class [] {
@@ -644,7 +649,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -662,7 +667,7 @@ public class GUI extends javax.swing.JFrame {
         pAuditorHomeLayout.setHorizontalGroup(
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
-                .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+                .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -934,7 +939,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerEmployeesLayout.setHorizontalGroup(
             pManagerEmployeesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerEmployeesLayout.createSequentialGroup()
-                .addComponent(pManagerContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addComponent(pManagerContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pManagerSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1122,7 +1127,7 @@ public class GUI extends javax.swing.JFrame {
             pManagerHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pManagerHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         pManagerHomeLayout.setVerticalGroup(
@@ -1820,7 +1825,7 @@ public class GUI extends javax.swing.JFrame {
             panelAppMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelAppMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelContent, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
+                .addComponent(panelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelAppMainLayout.setVerticalGroup(
             panelAppMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1861,7 +1866,16 @@ public class GUI extends javax.swing.JFrame {
             
             // Send user log in time to database
             // db.updateLog(id, "Signed In", time);
-            currentUser = new Employee(userInformation.get(1), userInformation.get(2), userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6), userInformation.get(7));
+            if(userInformation.get(6).equals("1"))
+                currentUser = new Employee(userInformation.get(0), userInformation.get(1), userInformation.get(2), 
+                        userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6));          
+            else if(userInformation.get(6).equals("2"))                
+                currentUser = new TrainingManager(userInformation.get(0), userInformation.get(1), userInformation.get(2), 
+                        userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6));
+            else if(userInformation.get(6).equals("3"))
+                currentUser = new Auditor(userInformation.get(0), userInformation.get(1), userInformation.get(2), 
+                        userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6));
+            
             db.updateLog(currentUser.getEID(), "Signed In");
             
             
@@ -1964,7 +1978,7 @@ public class GUI extends javax.swing.JFrame {
         
         
         // Fill tManagerLogTable
-        fillEmployeeLogTable(employeeID, tManagerLogTable);        
+        fillLogTable("1", tManagerLogTable);        
         
         // Show card pManagerLogTable
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
@@ -2009,7 +2023,11 @@ public class GUI extends javax.swing.JFrame {
     private void bEmployeeEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditDeleteActionPerformed
         
         // 'Are you sure?' prompt
-        
+        int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
+        //Delete the user if they confirm the deletion
+        if(selection == 1){
+            db.deleteEmployee(tf_id.getText());
+        }
 
         // Delete employee from database
 //        db.deleteEmployee(id);       
@@ -2234,12 +2252,12 @@ public class GUI extends javax.swing.JFrame {
     private void bAuditorEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeLogActionPerformed
                
         // Check selected column, get employee id (unless already on Report page, then use that employee)
-        int employeeID = 0;
-//        int employeeID = tAuditorLogTable.getSelectedColumn();
+        System.out.print(tAuditorLogTable.getSelectedRow());
+        String employeeID = tAuditorLogTable.getModel().getValueAt(tAuditorLogTable.getSelectedRow(), 0).toString();
         
         
         // Fill tAuditorLogTable
-        fillEmployeeLogTable(employeeID, tAuditorLogTable);        
+        fillLogTable(employeeID, tAuditorLogTable);        
         
         // Show card pAuditorLogTable
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
@@ -2390,11 +2408,17 @@ public class GUI extends javax.swing.JFrame {
     
     
     /** Set panelContent card to appropriate content panel */
-    private void showHomePanel() {      
-//        if (user == employee) showEmployeeHome();
-//        else if (user == manager) showManagerHome();
-//        else if (user == auditor) showAuditorHome();
-        showManagerHome(); 
+    private void showHomePanel() {
+        
+        if (currentUser.getUserType().equals("1"))
+            showEmployeeHome();
+        else if (currentUser.getUserType().equals("2")) 
+            showManagerHome();
+        else if (currentUser.getUserType().equals("3")) 
+            showAuditorHome();
+        else
+            System.out.println("No User type found");
+        
     }
     
     /** Shows the employee home panel */
@@ -2402,8 +2426,8 @@ public class GUI extends javax.swing.JFrame {
         // Populatate employee tables with database info
 //        tEmployeeLessons.
 //        tEmployeeLog.
-        
-        
+      
+        fillLogTable(currentUser.getEID(), tEmployeeLogTable);
         
         // Set card to employee home panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
@@ -2462,8 +2486,13 @@ public class GUI extends javax.swing.JFrame {
      /** Fills the employee table with appropriate information */
     private void fillEmployeeTable(javax.swing.JTable table) {
         
-        
-        
+       try{
+            ResultSet rs = db.getEmployees();
+            table.setModel(buildTableModel(rs));
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
     
     /** Fills an employee report table with appropriate information */
@@ -2474,12 +2503,41 @@ public class GUI extends javax.swing.JFrame {
     }
     
     /** Fills an employee log table with appropriate information */
-    private void fillEmployeeLogTable(int employeeID, javax.swing.JTable table) {
-        
-        
+    private void fillLogTable(String employeeID, javax.swing.JTable table) {
+        try{
+            ResultSet rs = db.getEmployeeLog(employeeID);
+            table.setModel(buildTableModel(rs));
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         
     }
-    
+    public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
+
+        ResultSetMetaData metaData = rs.getMetaData();
+
+        // names of columns
+        Vector<String> columnNames = new Vector<String>();
+        int columnCount = metaData.getColumnCount();
+        for (int column = 1; column <= columnCount; column++) {
+            columnNames.add(metaData.getColumnName(column));
+            
+        }
+
+        // data of the table
+        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> vector = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                vector.add(rs.getObject(columnIndex));
+            }
+            data.add(vector);
+        }
+
+        return new DefaultTableModel(data, columnNames);
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAuditorEmployeReport;
