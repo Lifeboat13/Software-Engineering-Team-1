@@ -41,14 +41,14 @@ public class Database {
             ResultSet results = query.executeQuery(sql);
            
             while(results.next()){
-                toReturn.add(results.getString("usertype"));
+                
                 toReturn.add(results.getString("eid"));
                 toReturn.add(results.getString("username"));
                 toReturn.add(results.getString("password"));
                 toReturn.add(results.getString("firstname"));
                 toReturn.add(results.getString("lastname"));
                 toReturn.add(results.getString("address"));
-                toReturn.add(results.getString("log"));                
+                toReturn.add(results.getString("usertype"));              
             }
             results.close();
             query.close();
@@ -183,6 +183,45 @@ public class Database {
         return true;
     }
     
+    //db.deleteEmployee(id); 
+    public boolean deleteEmployee(String id){
+         try{
+            Statement query = connection.createStatement();
+            String sql = "DELETE FROM Users WHERE eid='" + id + "'";
+            query.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return true;
+    }
+    
+    
+    public ResultSet getEmployees(){
+        
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT firstname, lastname, address FROM Users";
+            return query.executeQuery(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ResultSet getEmployeeLog(String id){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT action, timestamp FROM log WHERE eid='" + id + "'";
+            return query.executeQuery(sql);
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     
     /* Placeholders currently used in GUI */
     
@@ -196,7 +235,7 @@ public class Database {
    
     
     
-    //db.deleteEmployee(id);  
+     
     
     //db.getLessonName(lesson_id);    
     //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 

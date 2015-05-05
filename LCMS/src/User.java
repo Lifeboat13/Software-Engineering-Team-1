@@ -7,14 +7,14 @@ public abstract class User {
 	private String address;
 	private String EID;
 	private String jobTitle;
-        private String log;
+        private String userType;
 
-    public String getLog() {
-        return log;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setLog(String log) {
-        this.log = log;
+    public void setLog(String type) {
+        this.userType = type;
     }
 	
 	public String getUsername() {
