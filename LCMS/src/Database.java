@@ -65,15 +65,7 @@ public class Database {
     public boolean updateLog(String eid, String text){
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT log FROM Users WHERE eid='" + eid + "'";
-            ResultSet results = query.executeQuery(sql);
-            if(!results.first())
-                return false;
-            String oldLog = results.getString("log");
-            String newLog = oldLog + '\n';
-            newLog += new Timestamp(System.currentTimeMillis()) + " " + text;
-            
-            sql = "UPDATE Users SET log='" + newLog + "' WHERE eid='" + eid + "'";
+            String sql = "INSERT INTO log VALUES (eid='" + eid + "', action='" + text + "', timestamp='" + new Timestamp(System.currentTimeMillis()) + "')";
             query.executeUpdate(sql);
             
         }catch(SQLException e){
