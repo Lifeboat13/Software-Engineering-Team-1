@@ -215,6 +215,62 @@ public class Database {
         return null;
     }
     
+     //db.getLessonName(lesson_id); 
+    public String getLessonName(String lesson_id){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT LESSON_NAME FROM lesson WHERE LESSON_ID='" + lesson_id + "'";
+            return query.executeQuery(sql).getString("LESSON_NAME");
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 
+    
+    //db.deleteLesson(lesson_id); 
+    public boolean deleteLesson(String lesson_id){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "DELETE FROM lesson WHERE LESSON_ID='" + lesson_id + "'";
+            query.executeQuery(sql);
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    //db.getGoalDescription(goal_id);
+    public String getGoalDescription(String goal_id){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT DESCRIPTION FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            return query.executeQuery(sql).getString("DESCRIPTION");
+        
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
+    //db.getGoalText(goal_id);
+    public String getGoalText(String goal_id){
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT FULL_TEXT FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            return query.executeQuery(sql).getString("DESCRIPTION");
+        
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
     /* Placeholders currently used in GUI */
     
     
@@ -229,10 +285,10 @@ public class Database {
     
      
     
-    //db.getLessonName(lesson_id);    
-    //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 
+      
+    
     //db.addNewLesson(lessonName, goal1, goal2, goal3, etc...); 
-    //db.deleteLesson(lesson_id); 
+    
     
     //db.getGoalSimVar1(goal_id);
     //db.getGoalSimVar2(goal_id);
@@ -241,8 +297,7 @@ public class Database {
     //db.getGoalSimVarValue2(goal_id);
     //db.getGoalSimVarValue3(goal_id);
     
-    //db.getGoalDescription(goal_id);
-    //db.getGoalText(goal_id);
+    
     
 //    db.updateGoalInfo(goalName, goalType, simVar1, simVarValue1, 
 //                        simVar2, simVarValue2, simVar3, simVarValue3,
