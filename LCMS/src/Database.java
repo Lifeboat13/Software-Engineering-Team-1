@@ -134,10 +134,11 @@ public class Database {
     public String getEmployeeName(String eid){
          try{
             Statement query = connection.createStatement();
-            String sql = "SELECT firstname, lastname FROM Users WHERE eid='" + eid + "'";
+            String sql = "SELECT firstname FROM Users WHERE eid='" + eid + "'";
             ResultSet results = query.executeQuery(sql);
-            return results.getString("firstname") + " " + results.getString("lastname");
+            return results.getString("firstname");
         }catch(SQLException e){
+            System.out.print("GetEmployeeName is broken");
             e.printStackTrace();
         }
         
