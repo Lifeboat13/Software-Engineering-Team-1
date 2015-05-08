@@ -13,7 +13,7 @@ public abstract class User {
         return userType;
     }
 
-    public void setLog(String type) {
+    public void setUserType(String type) {
         this.userType = type;
     }
 	

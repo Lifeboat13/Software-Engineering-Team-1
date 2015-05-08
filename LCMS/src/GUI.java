@@ -1861,15 +1861,35 @@ public class GUI extends javax.swing.JFrame {
             
             // Send user log in time to database
             // db.updateLog(id, "Signed In", time);
-            if(userInformation.get(6).equals("1"))
-                currentUser = new Employee(userInformation.get(0), userInformation.get(1), userInformation.get(2), 
-                        userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6));          
-            else if(userInformation.get(6).equals("2"))                
-                currentUser = new TrainingManager(userInformation.get(0), userInformation.get(1), userInformation.get(2), 
-                        userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6));
-            else if(userInformation.get(6).equals("3"))
-                currentUser = new Auditor(userInformation.get(0), userInformation.get(1), userInformation.get(2), 
-                        userInformation.get(3), userInformation.get(4), userInformation.get(5), userInformation.get(6));
+            switch (userInformation.get(6)) {
+                case "1": //Employee
+                    currentUser = new Employee(
+                            userInformation.get(0), //eid
+                            userInformation.get(1), //username
+                            userInformation.get(2), //password
+                            userInformation.get(3), //firstname
+                            userInformation.get(4), //lastname
+                            userInformation.get(5));//address          
+                    break;
+                case "2": //Manager
+                    currentUser = new TrainingManager(
+                            userInformation.get(0),
+                            userInformation.get(1),
+                            userInformation.get(2),
+                            userInformation.get(3),
+                            userInformation.get(4),
+                            userInformation.get(5));
+                    break;
+                case "3": //Auditor
+                    currentUser = new Auditor(
+                            userInformation.get(0),
+                            userInformation.get(1),
+                            userInformation.get(2),
+                            userInformation.get(3),
+                            userInformation.get(4),
+                            userInformation.get(5));
+                    break;
+            }
             
             db.updateLog(currentUser.getEID(), "Signed In");
             
