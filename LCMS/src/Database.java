@@ -61,7 +61,7 @@ public class Database {
     public boolean updateLog(String eid, String text){
         try{
             Statement query = connection.createStatement();
-            String sql = "INSERT INTO log VALUES (eid='" + eid + "', action='" + text + "', timestamp='" + new Timestamp(System.currentTimeMillis()) + "')";
+            String sql = "INSERT INTO log VALUES ('" + eid + "', '" + text + "', '" + new Timestamp(System.currentTimeMillis()) + "')";
             query.executeUpdate(sql);
             query.close();
             return true;
