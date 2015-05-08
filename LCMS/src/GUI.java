@@ -340,7 +340,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Lesson", "Time"
+                "Lesson ID", "Lesson Name"
             }
         ) {
             Class[] types = new Class [] {
@@ -2315,7 +2315,8 @@ public class GUI extends javax.swing.JFrame {
        String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString(); 
         
         // Set lesson panel text
-        
+        labelLessonName.setText(db.getLessonName(lessonID));
+        ta_lessonText.setText(db.getLessonText(lessonID));
         
         
         // Show card pLesson
@@ -2475,9 +2476,10 @@ public class GUI extends javax.swing.JFrame {
     /** Shows the employee home panel */
     private void showEmployeeHome() {
         // Populatate employee tables with database info
-//        tEmployeeLessons.
+        //        tEmployeeLessons.
+        fillLessonTable(currentUser.getEID(), tEmployeeLessons);
 //        tEmployeeLog.
-      
+        
         fillLogTable(currentUser.getEID(), tEmployeeLogTable);
         
         // Set card to employee home panel
@@ -2591,7 +2593,25 @@ public class GUI extends javax.swing.JFrame {
                 arr[1] = it.next();
                 model.addRow(arr);
             }
-            System.out.println(model.getRowCount());
+            
+            table.setModel(model);
+            
+        
+    }
+    
+     /** Fills an employee log table with appropriate information */
+    private void fillLessonTable(String employeeID, javax.swing.JTable table) {
+            String[] titles = {"Lesson ID", "Lesson Name"};
+            ArrayList<String> list = db.getLessons();
+            DefaultTableModel model = new DefaultTableModel(titles, 0);
+            Object[] arr = new Object[2];
+            Iterator<String> it = list.listIterator();
+            while(it.hasNext()){
+                arr[0] = it.next();
+                arr[1] = it.next();
+                model.addRow(arr);
+            }
+            
             table.setModel(model);
             
         
