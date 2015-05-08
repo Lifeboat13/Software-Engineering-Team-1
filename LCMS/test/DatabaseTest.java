@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,14 +28,17 @@ public class DatabaseTest {
     
     @AfterClass
     public static void tearDownClass() {
+        instance.closeConnection();
     }
     
     @Before
     public void setUp() {
+        instance.addNewUser("testeid", "testuser", "testpass", "testfirstname", "testlastname", "testaddress", 1);
     }
     
     @After
     public void tearDown() {
+        instance.deleteUser("testeid");
     }
 
     
@@ -68,13 +70,13 @@ public class DatabaseTest {
      */
     @Test
     public void testUpdateLog() {
-        System.out.println("updateLog");
-        String eid = "1";
-        String text = "testlog";
+       System.out.println("updateLog");
        
-        boolean expResult = true;
-        boolean result = instance.updateLog(eid, text);
-        assertEquals(expResult, result);
+       String eid = "test";
+       String text = "testlog";
+       boolean expResult = true;
+       boolean result = instance.updateLog(eid, text);
+       assertEquals(expResult, result);
  
     }
 
@@ -84,12 +86,13 @@ public class DatabaseTest {
     @Test
     public void testUpdateUserAddress() {
         System.out.println("updateUserAddress");
-        String eid = "1";
-        String address = "thisaddress";
+        String eid = "testeid";
+        String oldAddress = instance.getUserAddress(eid);
+        String newAddress = "thisaddress";
+
+        instance.updateUserAddress(eid, newAddress);
         
-        boolean expResult = true;
-        boolean result = instance.updateUserAddress(eid, address);
-        assertEquals(expResult, result);
+        assertEquals(newAddress, instance.getUserAddress(eid));
         
     }
 
@@ -98,11 +101,13 @@ public class DatabaseTest {
      */
     @Test
     public void testGetUserAdress() {
-        System.out.println("getUserAdress");
-        String eid = "3";
         
-        String expResult = "address";
-        String result = instance.getUserAdress(eid);
+        System.out.println("getUserAdress");
+        String eid = "testeid";
+        
+        String expResult = "testaddress";
+        String result = instance.getUserAddress(eid);
+        
         assertEquals(expResult, result);
   
     }
@@ -113,8 +118,8 @@ public class DatabaseTest {
     @Test
     public void testGetUserPassword() {
         System.out.println("getUserPassword");
-        String eid = "1";        
-        String expResult = "password";
+        String eid = "testeid";        
+        String expResult = "testpass";
         String result = instance.getUserPassword(eid);
         assertEquals(expResult, result);
         
@@ -126,12 +131,12 @@ public class DatabaseTest {
     @Test
     public void testUpdateUserPassword() {
         System.out.println("updateUserPassword");
-        String eid = "4";
-        String password = "pass";
+        String eid = "testeid";
+        String password = "newpass";
         instance.updateUserPassword(eid, password);
-        String expResult = "pass";
+        String expResult = "newpass";
         
-        assertEquals(expResult, instance.getUserPassword("4"));
+        assertEquals(expResult, instance.getUserPassword("testeid"));
         
     }
 
@@ -143,14 +148,16 @@ public class DatabaseTest {
     @Test
     public void testUpdateEmployeeInfo() {
         System.out.println("updateEmployeeInfo");
-        String eid = "";
-        String firstname = "";
-        String lastname = "";
-        String address = "";
+        String eid = "testeid";
+        String firstname = "new";
+        String lastname = "new";
+        String address = "new";
         
-        boolean expResult = true;
-        boolean result = instance.updateUserInfo(eid, firstname, lastname, address);
-        assertEquals(expResult, result);
+        
+        instance.updateUserInfo(eid, firstname, lastname, address);
+        assertEquals("new", instance.getUserAddress(eid));
+        assertEquals("new new", instance.getUserName(eid));
+      
         
     }
 
@@ -180,10 +187,10 @@ public class DatabaseTest {
     @Test
     public void testDeleteEmployee() {
         System.out.println("deleteEmployee");
-        String eid = "6";
+        String eid = "tester";
         
         boolean expResult = true;
-        instance.addNewUser("6","", "", "", "", "", 1);
+        instance.addNewUser("tester","", "", "", "", "", 1);
         boolean result = instance.deleteUser(eid);
         assertEquals(expResult, result);
        
@@ -196,7 +203,7 @@ public class DatabaseTest {
     public void testGetUsers() {
         System.out.println("getEmployees");
         
-        ArrayList<String> result = instance.getUsers();
+        ArrayList<String> result = instance.getEmployees();
         assertNotNull(result);
         
     }
@@ -206,11 +213,13 @@ public class DatabaseTest {
      */
     @Test
     public void testGetUserLog() {
-        System.out.println("getEmployeeLog");
-        String id = "";
+        System.out.println("getEmployeeLog");      
+        int before = instance.getUserLog("fakeuser").size();
         
-        ArrayList<String> result = instance.getUserLog(id);
-        assertNotNull(result);
+        instance.updateLog("fakeuser", "fakelog");
+        int after = instance.getUserLog("fakeuser").size();
+        
+        assertEquals(before, (after - 2), .05);
         
     }
     

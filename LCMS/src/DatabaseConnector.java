@@ -43,4 +43,8 @@ public class DatabaseConnector {
         return connection;
     }
     
+    public void closeConnection(){
+        connection = null;
+    }
+    
 }
