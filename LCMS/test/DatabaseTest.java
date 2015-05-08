@@ -103,7 +103,7 @@ public class DatabaseTest {
         
         String expResult = "address";
         String result = instance.getUserAdress(eid);
-        assertNotNull(result);
+        assertEquals(expResult, result);
   
     }
 
@@ -113,9 +113,8 @@ public class DatabaseTest {
     @Test
     public void testGetUserPassword() {
         System.out.println("getUserPassword");
-        String eid = "1";
-        
-        String expResult = "";
+        String eid = "1";        
+        String expResult = "password";
         String result = instance.getUserPassword(eid);
         assertEquals(expResult, result);
         
@@ -128,11 +127,11 @@ public class DatabaseTest {
     public void testUpdateUserPassword() {
         System.out.println("updateUserPassword");
         String eid = "4";
-        String password = "";
+        String password = "pass";
+        instance.updateUserPassword(eid, password);
+        String expResult = "pass";
         
-        boolean expResult = true;
-        boolean result = instance.updateUserPassword(eid, password);
-        assertEquals(expResult, result);
+        assertEquals(expResult, instance.getUserPassword("4"));
         
     }
 
@@ -194,7 +193,7 @@ public class DatabaseTest {
      * Test of getEmployees method, of class Database.
      */
     @Test
-    public void testGetEmployees() {
+    public void testGetUsers() {
         System.out.println("getEmployees");
         
         ArrayList<String> result = instance.getUsers();
@@ -206,7 +205,7 @@ public class DatabaseTest {
      * Test of getEmployeeLog method, of class Database.
      */
     @Test
-    public void testGetEmployeeLog() {
+    public void testGetUserLog() {
         System.out.println("getEmployeeLog");
         String id = "";
         

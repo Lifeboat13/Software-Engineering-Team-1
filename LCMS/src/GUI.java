@@ -1,12 +1,6 @@
-
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -323,7 +317,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -490,7 +484,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
+                .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
         );
 
         pAuditorContentPanel.add(pAuditorEmployeeTable, "pAuditorEmployeeTable");
@@ -555,7 +549,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bAuditorEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spAuditorReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
+                .addComponent(spAuditorReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
         );
 
         pAuditorContentPanel.add(pAuditorReportTable, "pAuditorReportTable");
@@ -621,7 +615,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bAuditorEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spAuditorLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
+                .addComponent(spAuditorLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
         );
 
         pAuditorContentPanel.add(pAuditorLogTable, "pAuditorLogTable");
@@ -650,7 +644,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -676,7 +670,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1914,7 +1908,7 @@ public class GUI extends javax.swing.JFrame {
        
         // Check selected column, get employee id (unless already on Log page, then use that employee)
         int employeeID = 0;
-//        int employeeID = tManagerReportTable.getSelectedColumn();
+//        int employeeID = tManagerReportTable.getSelectedRow();
         
         
         // Fill tManagerReportTable
@@ -2526,31 +2520,7 @@ public class GUI extends javax.swing.JFrame {
             
         
     }
-    public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
-
-        ResultSetMetaData metaData = rs.getMetaData();
-
-        // names of columns
-        Vector<String> columnNames = new Vector<String>();
-        int columnCount = metaData.getColumnCount();
-        for (int column = 1; column <= columnCount; column++) {
-            columnNames.add(metaData.getColumnName(column));
-            
-        }
-
-        // data of the table
-        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
-        while (rs.next()) {
-            Vector<Object> vector = new Vector<Object>();
-            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
-                vector.add(rs.getObject(columnIndex));
-            }
-            data.add(vector);
-        }
-
-        return new DefaultTableModel(data, columnNames);
-
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAuditorEmployeReport;
