@@ -338,8 +338,7 @@ public class Database {
     //db.getGoalSimVarValue2(goal_id);
     //db.getGoalSimVarValue3(goal_id);
     
-    //db.getGoalDescription(goal_id);
-    //db.getGoalText(goal_id);
+    
     
 //    db.updateGoalInfo(goalName, goalType, simVar1, simVarValue1, 
 //                        simVar2, simVarValue2, simVar3, simVarValue3,
