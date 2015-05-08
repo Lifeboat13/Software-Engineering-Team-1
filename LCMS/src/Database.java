@@ -130,8 +130,8 @@ public class Database {
         return true;
     }
     
-    //db.GetEmployeeName(eid);
-    public String getEmployeeName(String eid){
+    //db.GetUserName(eid);
+    public String getUserName(String eid){
          try{
             Statement query = connection.createStatement();
             String sql = "SELECT firstname FROM Users WHERE eid='" + eid + "'";
@@ -145,8 +145,8 @@ public class Database {
         return "";
     }
     
-    //db.updateEmployeeInfo(eid, fName, lName, address); 
-    public boolean updateEmployeeInfo(String eid, String firstname, String lastname, String address){
+    //db.updateUserInfo(eid, fName, lName, address); 
+    public boolean updateUserInfo(String eid, String firstname, String lastname, String address){
         
         try{
             Statement query = connection.createStatement();
@@ -161,12 +161,18 @@ public class Database {
     }
     
     //db.addNewEmployee(eid, fName, lName, address, etc...);  
-    public boolean addNewEmployee(String eid, String username, String password, String firstname, String lastname, String address){
+    public boolean addNewUser(String eid, String username, String password, String firstname, String lastname, String address, int userType){
         
         try{
             Statement query = connection.createStatement();
-            String sql = "INSERT INTO Users (eid, username, password, firstname, lastname, address, usertype) VALUES ('" 
-                    + eid + "','" + username + "','" + password + "','" + firstname + "','" + lastname + "','" + address + "'," + 1 + ")";
+            String sql = "INSERT INTO Users VALUES ('" + 
+                    eid + "','" + 
+                    username + "','" + 
+                    password + "','" + 
+                    firstname + "','" + 
+                    lastname + "','" + 
+                    address + "'," + 
+                    userType + ")";
             query.executeUpdate(sql);
             
         }catch(SQLException e){
@@ -177,7 +183,7 @@ public class Database {
     }
     
     //db.deleteEmployee(id); 
-    public boolean deleteEmployee(String id){
+    public boolean deleteUser(String id){
          try{
             Statement query = connection.createStatement();
             String sql = "DELETE FROM Users WHERE eid='" + id + "'";
