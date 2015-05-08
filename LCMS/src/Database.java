@@ -22,7 +22,10 @@ public class Database {
         }
     }
     
-        
+    public void closeConnection(){
+        db.closeConnection();
+    }
+    
     /*
     *   Checks the user login information, based on the passed parameters
     *   Returns all of the user information, used to create the current_user
@@ -86,7 +89,7 @@ public class Database {
     }
     
     //db.getUserAddress(id);
-    public String getUserAdress(String eid){
+    public String getUserAddress(String eid){
         try{
             String toReturn = "";
             Statement query = connection.createStatement();
@@ -144,7 +147,7 @@ public class Database {
             String sql = "SELECT firstname, lastname FROM Users WHERE eid='" + eid + "'";
             ResultSet results = query.executeQuery(sql);
             while(results.next())
-                toReturn = results.getString("firstname") + results.getString("lastname");
+                toReturn = results.getString("firstname") + " " + results.getString("lastname");
             query.close();
             return toReturn;
         }catch(SQLException e){
@@ -209,14 +212,15 @@ public class Database {
     }
     
     
-    public ArrayList<String> getUsers(){
+    public ArrayList<String> getEmployees(){
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT firstname, lastname, address FROM Users";
+            String sql = "SELECT eid, firstname, lastname, address FROM Users WHERE usertype=1";
             
             ResultSet set = query.executeQuery(sql);
             while(set.next()){
+                toReturn.add(set.getString("eid"));
                 toReturn.add(set.getString("firstname"));
                 toReturn.add(set.getString("lastname"));
                 toReturn.add(set.getString("address"));
@@ -250,55 +254,57 @@ public class Database {
         return null;
     }
     
-     //db.getLessonName(lesson_id); 
+    //db.getLessonName(lesson_id); 
     public String getLessonName(String lesson_id){
+        String toReturn = "";
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT LESSON_NAME FROM lesson WHERE LESSON_ID='" + lesson_id + "'";
-            return query.executeQuery(sql).getString("LESSON_NAME");
-            
+            String sql = "SELECT lesson_name FROM lesson WHERE lesson_id='" + lesson_id + "'";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+                toReturn = set.getString("action");                
+            }
+            set.close();
+            query.close();
+            return toReturn;
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
+        return toReturn;
     }
-    
-    //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 
     
     //db.deleteLesson(lesson_id); 
     public boolean deleteLesson(String lesson_id){
+        
         try{
             Statement query = connection.createStatement();
-            String sql = "DELETE FROM lesson WHERE LESSON_ID='" + lesson_id + "'";
-            query.executeQuery(sql);
+            String sql = "DELETE FROM lesson WHERE lesson_id='" + lesson_id + "'";
+            query.executeUpdate(sql);
+            query.close();
             return true;
         }catch(SQLException e){
             e.printStackTrace();
         }
+           
         return false;
+        
     }
     
-    //db.getGoalDescription(goal_id);
-    public String getGoalDescription(String goal_id){
+   public ArrayList<String> getUserReport(String id){
+        ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT DESCRIPTION FROM goals WHERE GOAL_ID='" + goal_id + "'";
-            return query.executeQuery(sql).getString("DESCRIPTION");
-        
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-    
-    //db.getGoalText(goal_id);
-    public String getGoalText(String goal_id){
-        try{
-            Statement query = connection.createStatement();
-            String sql = "SELECT FULL_TEXT FROM goals WHERE GOAL_ID='" + goal_id + "'";
-            return query.executeQuery(sql).getString("DESCRIPTION");
-        
+            String sql = "SELECT * FROM history WHERE eid='" + id + "'";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+                toReturn.add(set.getString("LESSON_ID"));
+                toReturn.add(set.getString("SCORE"));
+                toReturn.add(set.getString("TIME_STARTED"));
+                toReturn.add(set.getString("TIME_FINISHED"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -320,8 +326,8 @@ public class Database {
     
      
     
-      
-    
+       
+    //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 
     //db.addNewLesson(lessonName, goal1, goal2, goal3, etc...); 
     
     
@@ -343,6 +349,8 @@ public class Database {
 //                        goalDescription, goalText); 
     
     //db.deleteGoal(goal_id); 
+
+   
     
     
 }

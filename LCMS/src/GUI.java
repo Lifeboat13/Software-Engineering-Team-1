@@ -61,12 +61,12 @@ public class GUI extends javax.swing.JFrame {
         spAuditorEmployeeTable = new javax.swing.JScrollPane();
         tAuditorEmployeeTable = new javax.swing.JTable();
         pAuditorReportTable = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
+        labelEmployeeName = new javax.swing.JLabel();
         spAuditorReportTable = new javax.swing.JScrollPane();
         tAuditorReportTable = new javax.swing.JTable();
         bAuditorEmployeeList1 = new javax.swing.JButton();
         pAuditorLogTable = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
+        labelEmployeeNameLog = new javax.swing.JLabel();
         spAuditorLogTable = new javax.swing.JScrollPane();
         tAuditorLogTable = new javax.swing.JTable();
         bAuditorEmployeeList2 = new javax.swing.JButton();
@@ -118,7 +118,6 @@ public class GUI extends javax.swing.JFrame {
         tf_lName = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         tf_address = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         bEmployeeEditCancel = new javax.swing.JButton();
         bEmployeeEditSave = new javax.swing.JButton();
         bEmployeeEditDelete = new javax.swing.JButton();
@@ -188,6 +187,10 @@ public class GUI extends javax.swing.JFrame {
         tf_confirmPassword = new javax.swing.JTextField();
         tf_settingsAddress = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
+        tf_settingsUsername = new javax.swing.JTextField();
+        tf_settingsName = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Air Traffic Control LCMS");
@@ -281,7 +284,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(panelHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelUsername)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 501, Short.MAX_VALUE)
                 .addComponent(buttonSettings)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonSignOut)
@@ -362,7 +365,7 @@ public class GUI extends javax.swing.JFrame {
         pEmployeeLessonsLayout.setHorizontalGroup(
             pEmployeeLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeLessonsLayout.createSequentialGroup()
-                .addComponent(spEmployeeLessons, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addComponent(spEmployeeLessons, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pEmployeeSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -477,7 +480,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(spAuditorEmployeeTable)
                     .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
                         .addComponent(jLabel24)
-                        .addContainerGap(579, Short.MAX_VALUE))))
+                        .addContainerGap(561, Short.MAX_VALUE))))
         );
         pAuditorEmployeeTableLayout.setVerticalGroup(
             pAuditorEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,8 +492,8 @@ public class GUI extends javax.swing.JFrame {
 
         pAuditorContentPanel.add(pAuditorEmployeeTable, "pAuditorEmployeeTable");
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel25.setText("[employee name]'s Report");
+        labelEmployeeName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelEmployeeName.setText("[employee name]'s Report");
 
         tAuditorReportTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tAuditorReportTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -539,14 +542,14 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(pAuditorReportTableLayout.createSequentialGroup()
                         .addComponent(bAuditorEmployeeList1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25)
+                        .addComponent(labelEmployeeName)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pAuditorReportTableLayout.setVerticalGroup(
             pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAuditorReportTableLayout.createSequentialGroup()
                 .addGroup(pAuditorReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelEmployeeName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bAuditorEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spAuditorReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
@@ -554,9 +557,9 @@ public class GUI extends javax.swing.JFrame {
 
         pAuditorContentPanel.add(pAuditorReportTable, "pAuditorReportTable");
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel26.setText("[employee name]'s Log");
-        jLabel26.setToolTipText("");
+        labelEmployeeNameLog.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelEmployeeNameLog.setText("[employee name]'s Log");
+        labelEmployeeNameLog.setToolTipText("");
 
         tAuditorLogTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tAuditorLogTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -605,14 +608,14 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(pAuditorLogTableLayout.createSequentialGroup()
                         .addComponent(bAuditorEmployeeList2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel26)
+                        .addComponent(labelEmployeeNameLog)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pAuditorLogTableLayout.setVerticalGroup(
             pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAuditorLogTableLayout.createSequentialGroup()
                 .addGroup(pAuditorLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelEmployeeNameLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bAuditorEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spAuditorLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
@@ -670,7 +673,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1019,7 +1022,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerLessonsLayout.setHorizontalGroup(
             pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonsLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1104,7 +1107,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerGoalsLayout.setHorizontalGroup(
             pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerGoalsLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1145,8 +1148,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel11.setText("Address");
 
-        jLabel12.setText("etc...");
-
         bEmployeeEditCancel.setText("Cancel");
         bEmployeeEditCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1181,7 +1182,6 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(pManagerEmployeeEditLayout.createSequentialGroup()
                                     .addComponent(jLabel11)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1229,9 +1229,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
                 .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bEmployeeEditSave)
                     .addComponent(bEmployeeEditCancel)
@@ -1421,7 +1419,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonEditLayout.createSequentialGroup()
                                 .addComponent(bLessonPreview)
@@ -1564,7 +1562,7 @@ public class GUI extends javax.swing.JFrame {
                                                 .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(tf_goalName, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(cb_goalType, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(0, 313, Short.MAX_VALUE))))
+                                .addGap(0, 308, Short.MAX_VALUE))))
                     .addGroup(pManagerGoalEditLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1657,7 +1655,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pLessonLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
                     .addGroup(pLessonLayout.createSequentialGroup()
                         .addComponent(labelLessonName)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -1712,7 +1710,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(pATCsim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pSimulatorLayout.createSequentialGroup()
                         .addComponent(bSimulatorCancel)
-                        .addGap(0, 707, Short.MAX_VALUE)))
+                        .addGap(0, 697, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pSimulatorLayout.setVerticalGroup(
@@ -1751,6 +1749,22 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel28.setText("Address");
 
+        tf_settingsUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_settingsUsernameActionPerformed(evt);
+            }
+        });
+
+        tf_settingsName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_settingsNameActionPerformed(evt);
+            }
+        });
+
+        jLabel29.setText("Username");
+
+        jLabel30.setText("Name");
+
         javax.swing.GroupLayout pSettingsLayout = new javax.swing.GroupLayout(pSettings);
         pSettings.setLayout(pSettingsLayout);
         pSettingsLayout.setHorizontalGroup(
@@ -1761,35 +1775,52 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel21))
                     .addGroup(pSettingsLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(204, 204, 204)
                         .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pSettingsLayout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addGap(18, 18, 18)
+                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tf_settingsUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_settingsName, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pSettingsLayout.createSequentialGroup()
+                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel27)
+                                    .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel23)
+                                        .addComponent(jLabel22))
+                                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel28))
+                                .addGap(24, 24, 24)
+                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tf_newPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_currentPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pSettingsLayout.createSequentialGroup()
+                                .addGap(262, 262, 262)
                                 .addComponent(bSettingsSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bSettingsCancel)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(pSettingsLayout.createSequentialGroup()
-                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel28)
-                                    .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel27)
-                                        .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel23)
-                                            .addComponent(jLabel22))))
-                                .addGap(24, 24, 24)
-                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tf_currentPassword)
-                                        .addComponent(tf_newPassword)
-                                        .addComponent(tf_settingsAddress))
-                                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(323, 323, 323))
+                                .addComponent(bSettingsCancel)))))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         pSettingsLayout.setVerticalGroup(
             pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSettingsLayout.createSequentialGroup()
                 .addComponent(jLabel21)
+                .addGap(116, 116, 116)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_settingsUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
                 .addGap(18, 18, 18)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_settingsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(tf_currentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1801,15 +1832,11 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(tf_confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSettingsSave)
                     .addComponent(bSettingsCancel))
-                .addGap(52, 52, 52))
+                .addGap(134, 134, 134))
         );
 
         panelContent.add(pSettings, "pSettings");
@@ -1927,12 +1954,12 @@ public class GUI extends javax.swing.JFrame {
     private void bManagerEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeReportActionPerformed
        
         // Check selected column, get employee id (unless already on Log page, then use that employee)
-        int employeeID = 0;
-//        int employeeID = tManagerReportTable.getSelectedRow();
         
+//        int employeeID = tManagerReportTable.getSelectedRow();
+        String employeeID = tManagerReportTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
         
         // Fill tManagerReportTable
-        fillEmployeeReportTable(employeeID, tManagerReportTable); 
+        fillReportTable(employeeID, tManagerReportTable); 
         
         // Show card pManagerReportTable
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
@@ -1968,7 +1995,7 @@ public class GUI extends javax.swing.JFrame {
         
         // Check table for highlighted employee, get employee id
 //        tManagerEmployeeTable.getSelectedColumn();
-        
+        String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
 
         // Change labels for 'Edit Employee'
         labelEmployeeEdit.setText("Edit Employee");
@@ -1978,7 +2005,10 @@ public class GUI extends javax.swing.JFrame {
         bEmployeeEditDelete.setVisible(true);
         
         // Fill in text fields with appropriate information
-        
+        tf_id.setText(employeeID);
+        tf_fName.setText(db.getUserName(employeeID).split(" ")[0]);
+        tf_lName.setText(db.getUserName(employeeID).split(" ")[1]);
+        tf_address.setText(db.getUserAddress(employeeID));
 
         // Set card to employee add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
@@ -1988,12 +2018,12 @@ public class GUI extends javax.swing.JFrame {
     private void bManagerEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeLogActionPerformed
                
         // Check selected column, get employee id (unless already on Report page, then use that employee)
-        int employeeID = 0;
-//        int employeeID = tManagerLogTable.getSelectedColumn();
-        
+        //int employeeID = 0;
+        //int employeeID = tManagerLogTable.getSelectedColumn();
+        String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
         
         // Fill tManagerLogTable
-        fillLogTable("1", tManagerLogTable);        
+        fillLogTable(employeeID, tManagerLogTable);        
         
         // Show card pManagerLogTable
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
@@ -2244,7 +2274,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bAuditorEmployeeList1ActionPerformed
 
     private void bAuditorEmployeeList2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList2ActionPerformed
-        // Go back to auditor's employee table
+       // Go back to auditor's employee table
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
         card.show(pAuditorContentPanel, "pAuditorEmployeeTable"); 
     }//GEN-LAST:event_bAuditorEmployeeList2ActionPerformed
@@ -2252,12 +2282,12 @@ public class GUI extends javax.swing.JFrame {
     private void bAuditorEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeReportActionPerformed
                
         // Check selected column, get employee id (unless already on Log page, then use that employee)
-        int employeeID = 0;
+        
 //        int employeeID = tAuditorReportTable.getSelectedColumn();
-        
-        
+        String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
+        labelEmployeeName.setText(db.getUserName(employeeID));
         // Fill tAuditorReportTable
-        fillEmployeeReportTable(employeeID, tAuditorReportTable);
+        fillReportTable(employeeID, tAuditorReportTable);
         
         // Show card pAuditorReportTable
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
@@ -2267,9 +2297,9 @@ public class GUI extends javax.swing.JFrame {
     private void bAuditorEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeLogActionPerformed
                
         // Check selected column, get employee id (unless already on Report page, then use that employee)
-        System.out.print(tAuditorLogTable.getSelectedRow());
-        String employeeID = tAuditorLogTable.getModel().getValueAt(tAuditorLogTable.getSelectedRow(), 0).toString();
         
+        String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
+        labelEmployeeNameLog.setText(db.getUserName(employeeID));
         
         // Fill tAuditorLogTable
         fillLogTable(employeeID, tAuditorLogTable);        
@@ -2281,10 +2311,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void bEmployeeTakeLessonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeTakeLessonActionPerformed
 
-        // Check selected column, get lesson id
-        int lessonID = 0;
-//        int lessonID = tEmployeeLessons.getSelectedColumn();
-        
+        // Check selected column, get lesson id        
+       String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString(); 
         
         // Set lesson panel text
         
@@ -2349,9 +2377,9 @@ public class GUI extends javax.swing.JFrame {
     private void bSettingsSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsSaveActionPerformed
         
         
-//        if (!tf_newPassword.getText().equals(db.getUserPassword(id))) {
-//            JOptionPane.showMessageDialog(this, "Error, incorrect password entered.");
-//        }
+        if (!tf_currentPassword.getText().equals(db.getUserPassword(currentUser.getPassword()))) {
+            JOptionPane.showMessageDialog(this, "Error, incorrect password entered.");
+        }
         
         if (!tf_newPassword.getText().equals(tf_confirmPassword.getText())) {
             JOptionPane.showMessageDialog(this, "Error, passwords do not match.");
@@ -2359,13 +2387,13 @@ public class GUI extends javax.swing.JFrame {
         else {
 
             // Update databse with info
-    //        if (!tf_confirmPassword.getText().equals("")) {
-    //            db.setUserPassword(id, tf_confirmPassword.getText());
-    //        }
-
-    //        db.updateUserAddress(tf_settingsAddress.getText());
-
-
+            if (!tf_confirmPassword.getText().equals("")) {
+                db.updateUserPassword(currentUser.getEID(), tf_confirmPassword.getText());
+                currentUser.setPassword(tf_confirmPassword.getText());   
+            }
+            
+            db.updateUserAddress(currentUser.getEID(), tf_settingsAddress.getText());
+            currentUser.setAddress(tf_settingsAddress.getText());
             // Go back to home panel
             showHomePanel(); 
         }
@@ -2382,6 +2410,14 @@ public class GUI extends javax.swing.JFrame {
     private void textFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldPasswordActionPerformed
+
+    private void tf_settingsUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_settingsUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_settingsUsernameActionPerformed
+
+    private void tf_settingsNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_settingsNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_settingsNameActionPerformed
 
     
     
@@ -2489,8 +2525,13 @@ public class GUI extends javax.swing.JFrame {
     private void showSettings() {
         
         // Fill in appropriate info from database
-//        tf_settingsAddress.setText(db.getUserAddress(id));
-        
+        tf_settingsUsername.setText(currentUser.getUsername());
+        if(currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3"))
+            tf_settingsUsername.setEnabled(false);
+        tf_settingsName.setText(currentUser.getfName() + " " + currentUser.getlName());
+        if(currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3"))
+            tf_settingsName.setEnabled(false);
+        tf_settingsAddress.setText(currentUser.getAddress());
 
         // Set card to pSettings
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
@@ -2500,16 +2541,17 @@ public class GUI extends javax.swing.JFrame {
     
      /** Fills the employee table with appropriate information */
     private void fillEmployeeTable(javax.swing.JTable table) {
-    
-            String[] titles = {"First name", "Last name", "Address" };
-        ArrayList<String> list = db.getUsers();
+            
+            String[] titles = {"EID","First Name", "Last name", "Address" };
+            ArrayList<String> list = db.getEmployees();
             DefaultTableModel model = new DefaultTableModel(titles, 0);
-            Object[] arr = new Object[3];
+            Object[] arr = new Object[4];
             Iterator<String> it = list.listIterator();
             while(it.hasNext()){
                 arr[0] = it.next();
                 arr[1] = it.next();
                 arr[2] = it.next();
+                arr[3] = it.next();
                 model.addRow(arr);
             }
             table.setModel(model);
@@ -2517,8 +2559,22 @@ public class GUI extends javax.swing.JFrame {
     }
     
     /** Fills an employee report table with appropriate information */
-    private void fillEmployeeReportTable(int employeeID, javax.swing.JTable table) {
-        
+    private void fillReportTable(String employeeID, javax.swing.JTable table) {
+        String[] titles = {"Lesson ID", "Score", "Time Started", "Time Completed"};
+            ArrayList<String> list = db.getUserReport(employeeID);
+            DefaultTableModel model = new DefaultTableModel(titles, 0);
+            Object[] arr = new Object[4];
+            Iterator<String> it = list.listIterator();
+            while(it.hasNext()){
+                arr[0] = it.next();
+                arr[1] = it.next();
+                arr[2] = it.next();
+                arr[3] = it.next();
+                
+                model.addRow(arr);
+            }
+            System.out.println(model.getRowCount());
+            table.setModel(model);
         
         
     }
@@ -2583,7 +2639,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2597,11 +2652,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2623,6 +2678,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel labelEmployeeEdit;
+    private javax.swing.JLabel labelEmployeeName;
+    private javax.swing.JLabel labelEmployeeNameLog;
     private javax.swing.JLabel labelGoalEdit;
     private javax.swing.JLabel labelLessonEdit;
     private javax.swing.JLabel labelLessonName;
@@ -2700,5 +2757,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField tf_lessonName;
     private javax.swing.JTextField tf_newPassword;
     private javax.swing.JTextField tf_settingsAddress;
+    private javax.swing.JTextField tf_settingsName;
+    private javax.swing.JTextField tf_settingsUsername;
     // End of variables declaration//GEN-END:variables
 }
