@@ -1884,7 +1884,7 @@ public class GUI extends javax.swing.JFrame {
             card.show(panelMain, "panelAppMain");
 
             // Set labelUsername to user's name
-            // labelUsername.setText(db.GetEmployeeName(id));
+            
             labelUsername.setText(currentUser.getfName() + " " + currentUser.getlName());
 
             // Set panelContent card to appropriate content panel
@@ -1995,14 +1995,14 @@ public class GUI extends javax.swing.JFrame {
             
             // Save existing employee
             if (labelEmployeeEdit.getText().equals("Edit Employee")) {
-//                db.updateEmployeeInfo(id, fName, lName, address);   
+//                db.updateUsernfo(id, fName, lName, address);   
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee info saved.");
             }
             // Add new employee
             else {
-//                db.addNewEmployee(id, fName, lName, address);  
+//                db.addNewUserid, fName, lName, address, 1);  
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee added.");
@@ -2026,11 +2026,11 @@ public class GUI extends javax.swing.JFrame {
         int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
         //Delete the user if they confirm the deletion
         if(selection == 1){
-            db.deleteEmployee(tf_id.getText());
+            db.deleteUser(tf_id.getText());
         }
 
         // Delete employee from database
-//        db.deleteEmployee(id);       
+//        db.deleteUser(id);       
     }//GEN-LAST:event_bEmployeeEditDeleteActionPerformed
 
     private void bLessonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonAddActionPerformed
