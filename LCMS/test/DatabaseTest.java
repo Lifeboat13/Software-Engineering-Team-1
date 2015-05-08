@@ -18,13 +18,13 @@ import static org.junit.Assert.*;
  * @author Greg
  */
 public class DatabaseTest {
-   
+   private static Database instance;
     public DatabaseTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
-        
+        instance = new Database();
     }
     
     @AfterClass
@@ -49,7 +49,7 @@ public class DatabaseTest {
         System.out.println("checkLogin");
         String username = "employee";
         char[] password = "".toCharArray();
-        Database instance = new Database();
+        
         ArrayList<String> expResult = new ArrayList<String>();
         expResult.add("2");
         expResult.add("employee");
@@ -71,7 +71,7 @@ public class DatabaseTest {
         System.out.println("updateLog");
         String eid = "1";
         String text = "testlog";
-        Database instance = new Database();
+       
         boolean expResult = true;
         boolean result = instance.updateLog(eid, text);
         assertEquals(expResult, result);
@@ -86,7 +86,7 @@ public class DatabaseTest {
         System.out.println("updateUserAddress");
         String eid = "1";
         String address = "thisaddress";
-        Database instance = new Database();
+        
         boolean expResult = true;
         boolean result = instance.updateUserAddress(eid, address);
         assertEquals(expResult, result);
@@ -100,7 +100,7 @@ public class DatabaseTest {
     public void testGetUserAdress() {
         System.out.println("getUserAdress");
         String eid = "3";
-        Database instance = new Database();
+        
         String expResult = "address";
         String result = instance.getUserAdress(eid);
         assertNotNull(result);
@@ -114,7 +114,7 @@ public class DatabaseTest {
     public void testGetUserPassword() {
         System.out.println("getUserPassword");
         String eid = "1";
-        Database instance = new Database();
+        
         String expResult = "";
         String result = instance.getUserPassword(eid);
         assertEquals(expResult, result);
@@ -129,7 +129,7 @@ public class DatabaseTest {
         System.out.println("updateUserPassword");
         String eid = "4";
         String password = "";
-        Database instance = new Database();
+        
         boolean expResult = true;
         boolean result = instance.updateUserPassword(eid, password);
         assertEquals(expResult, result);
@@ -148,9 +148,9 @@ public class DatabaseTest {
         String firstname = "";
         String lastname = "";
         String address = "";
-        Database instance = new Database();
+        
         boolean expResult = true;
-        boolean result = instance.updateEmployeeInfo(eid, firstname, lastname, address);
+        boolean result = instance.updateUserInfo(eid, firstname, lastname, address);
         assertEquals(expResult, result);
         
     }
@@ -159,7 +159,7 @@ public class DatabaseTest {
      * Test of addNewEmployee method, of class Database.
      */
     @Test
-    public void testAddNewEmployee() {
+    public void testAddNewUser() {
         System.out.println("addNewEmployee");
         String eid = "7";
         String username = "";
@@ -167,10 +167,10 @@ public class DatabaseTest {
         String firstname = "";
         String lastname = "";
         String address = "";
-        Database instance = new Database();
+        int userType = 1;
         boolean expResult = true;
-        boolean result = instance.addNewEmployee(eid, username, password, firstname, lastname, address);
-        instance.deleteEmployee(eid);
+        boolean result = instance.addNewUser(eid, username, password, firstname, lastname, address, userType);
+        instance.deleteUser(eid);
         assertEquals(expResult, result);
        
     }
@@ -182,10 +182,10 @@ public class DatabaseTest {
     public void testDeleteEmployee() {
         System.out.println("deleteEmployee");
         String eid = "6";
-        Database instance = new Database();
+        
         boolean expResult = true;
-        instance.addNewEmployee("6","", "", "", "", "");
-        boolean result = instance.deleteEmployee(eid);
+        instance.addNewUser("6","", "", "", "", "", 1);
+        boolean result = instance.deleteUser(eid);
         assertEquals(expResult, result);
        
     }
@@ -196,8 +196,8 @@ public class DatabaseTest {
     @Test
     public void testGetEmployees() {
         System.out.println("getEmployees");
-        Database instance = new Database();
-        ResultSet result = instance.getEmployees();
+        
+        ArrayList<String> result = instance.getUsers();
         assertNotNull(result);
         
     }
@@ -209,8 +209,8 @@ public class DatabaseTest {
     public void testGetEmployeeLog() {
         System.out.println("getEmployeeLog");
         String id = "";
-        Database instance = new Database();
-        ResultSet result = instance.getEmployeeLog(id);
+        
+        ArrayList<String> result = instance.getUserLog(id);
         assertNotNull(result);
         
     }

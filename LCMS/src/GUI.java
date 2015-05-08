@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -2485,14 +2486,20 @@ public class GUI extends javax.swing.JFrame {
     
      /** Fills the employee table with appropriate information */
     private void fillEmployeeTable(javax.swing.JTable table) {
+    
+            String[] titles = {"First name", "Last name", "Address" };
+        ArrayList<String> list = db.getUsers();
+            DefaultTableModel model = new DefaultTableModel(titles, 0);
+            Object[] arr = new Object[3];
+            Iterator<String> it = list.listIterator();
+            while(it.hasNext()){
+                arr[0] = it.next();
+                arr[1] = it.next();
+                arr[2] = it.next();
+                model.addRow(arr);
+            }
+            table.setModel(model);
         
-       try{
-            ResultSet rs = db.getEmployees();
-            table.setModel(buildTableModel(rs));
-            
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
     }
     
     /** Fills an employee report table with appropriate information */
@@ -2504,13 +2511,19 @@ public class GUI extends javax.swing.JFrame {
     
     /** Fills an employee log table with appropriate information */
     private void fillLogTable(String employeeID, javax.swing.JTable table) {
-        try{
-            ResultSet rs = db.getEmployeeLog(employeeID);
-            table.setModel(buildTableModel(rs));
+            String[] titles = {"Action", "Timestamp"};
+            ArrayList<String> list = db.getUserLog(employeeID);
+            DefaultTableModel model = new DefaultTableModel(titles, 0);
+            Object[] arr = new Object[2];
+            Iterator<String> it = list.listIterator();
+            while(it.hasNext()){
+                arr[0] = it.next();
+                arr[1] = it.next();
+                model.addRow(arr);
+            }
+            System.out.println(model.getRowCount());
+            table.setModel(model);
             
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
         
     }
     public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {

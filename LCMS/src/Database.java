@@ -197,12 +197,19 @@ public class Database {
     }
     
     
-    public ResultSet getEmployees(){
-        
+    public ArrayList<String> getUsers(){
+        ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT firstname, lastname, address FROM Users";
-            return query.executeQuery(sql);
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+                toReturn.add(set.getString("firstname"));
+                toReturn.add(set.getString("lastname"));
+                toReturn.add(set.getString("address"));
+            }
+            return toReturn;
             
         }catch(SQLException e){
             e.printStackTrace();
@@ -210,12 +217,17 @@ public class Database {
         return null;
     }
     
-    public ResultSet getEmployeeLog(String id){
+    public ArrayList<String> getUserLog(String id){
+        ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT action, timestamp FROM log WHERE eid='" + id + "'";
-            return query.executeQuery(sql);
-            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+                toReturn.add(set.getString("action"));
+                toReturn.add(set.getString("timestamp"));
+            }
+            return toReturn;
         }catch(SQLException e){
             e.printStackTrace();
         }
