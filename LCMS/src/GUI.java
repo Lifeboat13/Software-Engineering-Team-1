@@ -2070,7 +2070,7 @@ public class GUI extends javax.swing.JFrame {
             
             // Save existing employee
             if (labelEmployeeEdit.getText().equals("Edit Employee")) {
-//                db.updateUsernfo(id, fName, lName, address);   
+//               db.updateUsernfo(id, fName, lName, address);   
                 db.updateUserInfo(eid, username, password, fName, lName, address);
                 db.updateLog(currentUser.getEID(), "Updated User: " + username);
                 // Verification message
