@@ -2072,6 +2072,7 @@ public class GUI extends javax.swing.JFrame {
             if (labelEmployeeEdit.getText().equals("Edit Employee")) {
 //                db.updateUsernfo(id, fName, lName, address);   
                 db.updateUserInfo(eid, username, password, fName, lName, address);
+                db.updateLog(currentUser.getEID(), "Updated User: " + username);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee info saved.");
             }
@@ -2079,6 +2080,7 @@ public class GUI extends javax.swing.JFrame {
             else {
 //              db.addNewUserid, fName, lName, address, 1);  
                 db.addNewUser(eid, username, password, fName, lName, address, 1);
+                db.updateLog(currentUser.getEID(), "Added User: " + username);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee added.");
             }   
@@ -2102,6 +2104,7 @@ public class GUI extends javax.swing.JFrame {
         //Delete the user if they confirm the deletion
         if(selection == 1){
             db.deleteUser(tf_eid.getText());
+            db.updateLog(currentUser.getEID(), "Deleted User:" + tf_username.getText());
         }
 
         // Delete employee from database
@@ -2420,11 +2423,13 @@ public class GUI extends javax.swing.JFrame {
             // Update databse with info
             if (!tf_confirmPassword.getText().equals("")) {
                 db.updateUserPassword(currentUser.getEID(), tf_confirmPassword.getText());
-                currentUser.setPassword(tf_confirmPassword.getText());   
+                currentUser.setPassword(tf_confirmPassword.getText());
+                db.updateLog(currentUser.getEID(), "Updated Password");
             }
             
             db.updateUserAddress(currentUser.getEID(), tf_settingsAddress.getText());
             currentUser.setAddress(tf_settingsAddress.getText());
+            db.updateLog(currentUser.getEID(), "Updated Address");
             // Go back to home panel
             showHomePanel(); 
         }
