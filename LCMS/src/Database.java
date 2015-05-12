@@ -126,6 +126,26 @@ public class Database {
         
     }
     
+     //db.getUserPassword(eid);
+    public String getUserUsername(String eid){
+        try{
+            String toReturn = "";
+            Statement query = connection.createStatement();
+            String sql = "SELECT username FROM Users WHERE eid='" + eid + "'";
+            ResultSet results = query.executeQuery(sql);
+            while(results.next())
+                toReturn = results.getString("username");
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return "";
+        
+    }
+    
+    
     //db.setUserPassword(eid, password);
     public boolean updateUserPassword(String eid, String password){
         try{
@@ -157,12 +177,18 @@ public class Database {
         return "";
     }
     
-    //db.updateUserInfo(eid, fName, lName, address); 
-    public boolean updateUserInfo(String eid, String firstname, String lastname, String address){
+    //db.updateUserInfo(eid, username, password, fName, lName, address); 
+    public boolean updateUserInfo(String eid, String username, String password, String firstname, String lastname, String address){
         
         try{
             Statement query = connection.createStatement();
-            String sql = "UPDATE Users SET firstname='" + firstname + "', lastname='" + lastname + "', address='" + address + "' WHERE eid='" + eid + "'";
+            String sql = "UPDATE Users SET "
+                    + "username='" + username + 
+                    "', password='" + password + 
+                    "', firstname='" + firstname + 
+                    "', lastname='" + lastname + 
+                    "', address='" + address + 
+                    "' WHERE eid='" + eid + "'";
             query.executeUpdate(sql);
             query.close();
             return true;

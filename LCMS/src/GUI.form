@@ -398,7 +398,7 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="spEmployeeLogTable" alignment="0" pref="512" max="32767" attributes="0"/>
+                                  <Component id="spEmployeeLogTable" alignment="0" pref="507" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -834,7 +834,7 @@
                                                   <Component id="spManagerEmployeeTable" max="32767" attributes="0"/>
                                                   <Group type="102" attributes="0">
                                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace pref="554" max="32767" attributes="0"/>
+                                                      <EmptySpace pref="492" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -1366,8 +1366,8 @@
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="tf_address" min="-2" pref="222" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                                                  <Component id="tf_fName" min="-2" pref="222" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1375,19 +1375,22 @@
                                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                                          <Component id="tf_lName" min="-2" pref="222" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="tf_fName" alignment="1" min="-2" pref="222" max="-2" attributes="0"/>
-                                                              <Component id="tf_id" alignment="1" min="-2" pref="222" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
+                                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="tf_username" alignment="0" pref="222" max="32767" attributes="0"/>
+                                                      <Component id="tf_eid" alignment="0" pref="222" max="32767" attributes="0"/>
+                                                      <Component id="tf_password" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="tf_lName" min="-2" pref="222" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="tf_address" min="-2" pref="222" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" attributes="0">
@@ -1400,7 +1403,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="427" max="32767" attributes="0"/>
+                              <EmptySpace pref="432" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1412,24 +1415,34 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tf_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tf_eid" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tf_fName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tf_username" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tf_lName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tf_password" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tf_fName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tf_lName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tf_address" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="296" max="32767" attributes="0"/>
+                              <EmptySpace pref="226" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="bEmployeeEditSave" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="bEmployeeEditCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1451,31 +1464,29 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ID"/>
+                        <Property name="text" type="java.lang.String" value="EID"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="tf_id">
+                    <Component class="javax.swing.JTextField" name="tf_eid">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel9">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Username"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tf_username">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel10">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Password"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel11">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="First Name"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tf_fName">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel10">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Last Name"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="tf_lName">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel11">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Address"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="tf_address">
                     </Component>
                     <Component class="javax.swing.JButton" name="bEmployeeEditCancel">
                       <Properties>
@@ -1499,6 +1510,25 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEmployeeEditDeleteActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel12">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Last Name"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tf_lName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel25">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Address"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tf_address">
+                    </Component>
+                    <Component class="javax.swing.JPasswordField" name="tf_password">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_passwordActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
