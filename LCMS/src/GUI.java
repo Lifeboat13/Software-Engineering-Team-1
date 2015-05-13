@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -181,7 +182,9 @@ public class GUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         pSimulator = new javax.swing.JPanel();
         pATCsim = new javax.swing.JPanel();
+        sim_pic = new javax.swing.JLabel();
         bSimulatorCancel = new javax.swing.JButton();
+        bSimulatorComplete = new javax.swing.JButton();
         pSettings = new javax.swing.JPanel();
         bSettingsSave = new javax.swing.JButton();
         bSettingsCancel = new javax.swing.JButton();
@@ -327,7 +330,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -654,7 +657,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -1457,7 +1460,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 29, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonEditLayout.createSequentialGroup()
                                 .addComponent(bLessonPreview)
@@ -1723,11 +1726,17 @@ public class GUI extends javax.swing.JFrame {
         pATCsim.setLayout(pATCsimLayout);
         pATCsimLayout.setHorizontalGroup(
             pATCsimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pATCsimLayout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(sim_pic, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         pATCsimLayout.setVerticalGroup(
             pATCsimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 512, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pATCsimLayout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(sim_pic, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
 
         bSimulatorCancel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1738,6 +1747,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        bSimulatorComplete.setText("Complete");
+        bSimulatorComplete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSimulatorCompleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pSimulatorLayout = new javax.swing.GroupLayout(pSimulator);
         pSimulator.setLayout(pSimulatorLayout);
         pSimulatorLayout.setHorizontalGroup(
@@ -1745,18 +1761,23 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pSimulatorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pSimulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pATCsim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pSimulatorLayout.createSequentialGroup()
+                        .addComponent(pATCsim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(pSimulatorLayout.createSequentialGroup()
                         .addComponent(bSimulatorCancel)
-                        .addGap(0, 697, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bSimulatorComplete)
+                        .addGap(44, 44, 44))))
         );
         pSimulatorLayout.setVerticalGroup(
             pSimulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pSimulatorLayout.createSequentialGroup()
                 .addComponent(pATCsim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bSimulatorCancel)
+                .addGroup(pSimulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bSimulatorCancel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bSimulatorComplete, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -2409,8 +2430,12 @@ public class GUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         // Prepare simulator
-           
-        
+        ATC atc = new ATC(5, 15);
+        atc.playSimulator();
+        ImageIcon image = new ImageIcon(getClass().getResource("PPanim.gif"));
+        sim_pic = new JLabel(image);
+        pATCsim.add(sim_pic);
+        sim_pic.setBounds(20,20,1280,998);
         
         // Show card pSimulator
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
@@ -2497,6 +2522,13 @@ public class GUI extends javax.swing.JFrame {
     private void tf_lessonNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_lessonNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_lessonNameActionPerformed
+
+    private void bSimulatorCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCompleteActionPerformed
+        ATC atc = new ATC(5,10);
+        double result = atc.playSimulator();
+        
+        
+    }//GEN-LAST:event_bSimulatorCompleteActionPerformed
 
     
     /** Set panelContent card to appropriate content panel */
@@ -2737,6 +2769,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton bSettingsCancel;
     private javax.swing.JButton bSettingsSave;
     private javax.swing.JButton bSimulatorCancel;
+    private javax.swing.JButton bSimulatorComplete;
     private javax.swing.JButton buttonSettings;
     private javax.swing.JButton buttonSignIn;
     private javax.swing.JButton buttonSignOut;
@@ -2826,6 +2859,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelMain;
+    private javax.swing.JLabel sim_pic;
     private javax.swing.JScrollPane spAuditorEmployeeTable;
     private javax.swing.JScrollPane spAuditorLogTable;
     private javax.swing.JScrollPane spAuditorReportTable;
