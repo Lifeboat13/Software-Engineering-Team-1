@@ -286,7 +286,7 @@ public class Database {
         
         try{
             Statement query = connection.createStatement();
-            String sql = "DELETE FROM lesson WHERE lesson_id='" + lesson_id + "'";
+            String sql = "DELETE FROM lessons WHERE lesson_id='" + lesson_id + "'";
             query.executeUpdate(sql);
             query.close();
             return true;
@@ -318,16 +318,131 @@ public class Database {
         }
         return null;
     }
-    
-    public ArrayList<String> getLessons(){
+   
+    public ArrayList<String> getGoals() {
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT LESSON_ID, LESSON_NAME FROM lesson";
+            String sql = "SELECT * FROM goals";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+                toReturn.add(set.getString("GOAL_ID"));
+                toReturn.add(set.getString("GOAL_NAME"));
+                toReturn.add(set.getString("TYPE"));
+                toReturn.add(set.getString("DESCRIPTION"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ArrayList<String> getGoalsByType(String type) {
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT GOAL_ID, GOAL_NAME FROM goals WHERE type = '" + type + "'";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+                toReturn.add(set.getString("GOAL_ID"));
+                toReturn.add(set.getString("GOAL_NAME"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+     public ArrayList<String> getGoalsByLesson(String lesson_id) {
+     
+          ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT * FROM lessons WHERE LESSON_ID = '" + lesson_id + "'";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+               
+                toReturn.add(set.getString("GOAL1_ID"));
+                toReturn.add(set.getString("GOAL2_ID"));
+                toReturn.add(set.getString("GOAL3_ID"));
+                        
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+         
+       
+     }
+    
+     public String getDescriptionByGoalID(String goal_id) {
+     
+          String toReturn = "";
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT DESCRIPTION FROM goals WHERE GOAL_ID = '" + goal_id + "'";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+               
+                toReturn = set.getString("DESCRIPTION");
+                
+                        
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+         
+       
+     }
+     
+     
+    public ArrayList<String> getLessons() {
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT * FROM lessons";
+            //String sql = "SELECT LESSON_ID, LESSON_NAME, GOAL_NAME as GOAL1_NAME, GOAL_NAME as GOAL2_NAME FROM lessons, goals WHERE GOAL1_ID = goals.GOAL_ID ";
             ResultSet set = query.executeQuery(sql);
             while(set.next()){
                 toReturn.add(set.getString("LESSON_ID"));
                 toReturn.add(set.getString("LESSON_NAME"));
+                toReturn.add(set.getString("GOAL1_ID"));
+                toReturn.add(set.getString("GOAL2_ID"));
+                toReturn.add(set.getString("GOAL3_ID"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ArrayList<String> getEmployeeLessons(String eid) {
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT h.LESSON_ID, l.LESSON_NAME, h.SCORE FROM history h, lessons l WHERE h.eid = '" + eid
+                    + "' AND h.LESSON_ID = l.LESSON_ID";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+                toReturn.add(set.getString("LESSON_ID"));
+                toReturn.add(set.getString("LESSON_NAME"));
+                toReturn.add(set.getString("SCORE"));
             }
             set.close();
             query.close();
@@ -338,11 +453,11 @@ public class Database {
         return null;
     }
    
-    public String getLessonName(String lesson_id){
+    public String getLessonName(String lesson_id) {
        String toReturn = "";
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT LESSON_NAME FROM lesson where LESSON_ID='" + lesson_id + "'";
+            String sql = "SELECT LESSON_NAME FROM lessons where LESSON_ID='" + lesson_id + "'";
             ResultSet set = query.executeQuery(sql);
             while(set.next()){
                 toReturn = set.getString("LESSON_NAME");               
@@ -360,7 +475,7 @@ public class Database {
         String toReturn = "";
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT LESSON_TEXT FROM lesson where LESSON_ID='" + lesson_id + "'";
+            String sql = "SELECT LESSON_TEXT FROM lessons where LESSON_ID='" + lesson_id + "'";
             ResultSet set = query.executeQuery(sql);
             while(set.next()){
                 toReturn = set.getString("LESSON_TEXT");               

@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -82,7 +85,7 @@ public class GUI extends javax.swing.JFrame {
         spManagerEmployeeTable = new javax.swing.JScrollPane();
         tManagerEmployeeTable = new javax.swing.JTable();
         pManagerReportTable = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        labelManagerEmployeeReportName = new javax.swing.JLabel();
         spManagerReportTable = new javax.swing.JScrollPane();
         tManagerReportTable = new javax.swing.JTable();
         bManagerEmployeeList1 = new javax.swing.JButton();
@@ -141,13 +144,13 @@ public class GUI extends javax.swing.JFrame {
         bLessonEditSave = new javax.swing.JButton();
         bLessonEditCancel = new javax.swing.JButton();
         bLessonEditDelete = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        ta_type1description = new javax.swing.JTextArea();
         jScrollPane7 = new javax.swing.JScrollPane();
         ta_type2description = new javax.swing.JTextArea();
         jScrollPane8 = new javax.swing.JScrollPane();
         ta_type3description = new javax.swing.JTextArea();
         bLessonPreview = new javax.swing.JButton();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        ta_type1description = new javax.swing.JTextArea();
         pManagerGoalEdit = new javax.swing.JPanel();
         labelGoalEdit = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -324,7 +327,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -338,20 +341,20 @@ public class GUI extends javax.swing.JFrame {
         tEmployeeLessons.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tEmployeeLessons.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Lesson ID", "Lesson Name"
+                "Lesson ID", "Lesson Name", "Lesson Score"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -651,7 +654,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -677,7 +680,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -746,8 +749,8 @@ public class GUI extends javax.swing.JFrame {
 
         pManagerContentPanel.add(pManagerEmployeeTable, "pManagerEmployeeTable");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("[employee name]'s Report");
+        labelManagerEmployeeReportName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelManagerEmployeeReportName.setText("[employee name]'s Report");
 
         tManagerReportTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tManagerReportTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -796,7 +799,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(pManagerReportTableLayout.createSequentialGroup()
                         .addComponent(bManagerEmployeeList1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(labelManagerEmployeeReportName)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pManagerReportTableLayout.setVerticalGroup(
@@ -804,7 +807,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pManagerReportTableLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pManagerReportTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelManagerEmployeeReportName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bManagerEmployeeList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spManagerReportTable, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
@@ -1198,7 +1201,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(pManagerEmployeeEditLayout.createSequentialGroup()
                                     .addComponent(jLabel11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                                     .addComponent(tf_fName, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pManagerEmployeeEditLayout.createSequentialGroup()
                                     .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1270,25 +1273,31 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setText("Name");
 
+        tf_lessonName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_lessonNameActionPerformed(evt);
+            }
+        });
+
         jLabel13.setText("Type 1:");
 
         tGoalType1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tGoalType1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Goal"
+                "ID", "Goal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1306,20 +1315,20 @@ public class GUI extends javax.swing.JFrame {
         tGoalType2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tGoalType2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Goal"
+                "ID", "Goal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1337,20 +1346,20 @@ public class GUI extends javax.swing.JFrame {
         tGoalType3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tGoalType3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Goal"
+                "ID", "Goal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1384,14 +1393,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        ta_type1description.setEditable(false);
-        ta_type1description.setBackground(new java.awt.Color(245, 245, 245));
-        ta_type1description.setColumns(20);
-        ta_type1description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ta_type1description.setRows(5);
-        ta_type1description.setText("[goal description]");
-        jScrollPane6.setViewportView(ta_type1description);
-
         ta_type2description.setEditable(false);
         ta_type2description.setBackground(new java.awt.Color(245, 245, 245));
         ta_type2description.setColumns(20);
@@ -1414,6 +1415,14 @@ public class GUI extends javax.swing.JFrame {
                 bLessonPreviewActionPerformed(evt);
             }
         });
+
+        ta_type1description.setEditable(false);
+        ta_type1description.setBackground(new java.awt.Color(245, 245, 245));
+        ta_type1description.setColumns(20);
+        ta_type1description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ta_type1description.setRows(5);
+        ta_type1description.setText("[goal description]");
+        jScrollPane12.setViewportView(ta_type1description);
 
         javax.swing.GroupLayout pManagerLessonEditLayout = new javax.swing.GroupLayout(pManagerLessonEdit);
         pManagerLessonEdit.setLayout(pManagerLessonEditLayout);
@@ -1445,15 +1454,14 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 29, Short.MAX_VALUE)
+                        .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonEditLayout.createSequentialGroup()
                                 .addComponent(bLessonPreview)
                                 .addGap(39, 39, 39))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane12))))
                 .addContainerGap())
         );
         pManagerLessonEditLayout.setVerticalGroup(
@@ -1468,9 +1476,9 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1483,7 +1491,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane8)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(pManagerLessonEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bLessonEditCancel)
                     .addComponent(bLessonEditSave)
@@ -1969,7 +1977,6 @@ public class GUI extends javax.swing.JFrame {
     private void buttonSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignOutActionPerformed
         
         // Sign user out, record time, etc...
-//        db.updateLog(id, "Signed Out", time);
         db.updateLog(currentUser.getEID(), "Signed Out");
         
         // Switch panelMain card back to login panel
@@ -1978,18 +1985,23 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSignOutActionPerformed
 
     private void bManagerEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeReportActionPerformed
-       
+        
         // Check selected column, get employee id (unless already on Log page, then use that employee)
+        try {
+            String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
         
-//        int employeeID = tManagerReportTable.getSelectedRow();
-        String employeeID = tManagerReportTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
-        
-        // Fill tManagerReportTable
-        fillReportTable(employeeID, tManagerReportTable); 
-        
-        // Show card pManagerReportTable
-        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
-        card.show(pManagerContentPanel, "pManagerReportTable");        
+            labelManagerEmployeeReportName.setText(db.getUserName(employeeID));
+
+            // Fill tManagerEmployeeTable
+            fillReportTable(employeeID, tManagerReportTable);
+
+            // Show card pManagerReportTable
+            java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
+            card.show(pManagerContentPanel, "pManagerReportTable"); 
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            
+        }
     }//GEN-LAST:event_bManagerEmployeReportActionPerformed
 
     private void bManagerEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeList1ActionPerformed
@@ -2046,8 +2058,6 @@ public class GUI extends javax.swing.JFrame {
     private void bManagerEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeLogActionPerformed
                
         // Check selected column, get employee id (unless already on Report page, then use that employee)
-        //int employeeID = 0;
-        //int employeeID = tManagerLogTable.getSelectedColumn();
         String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
         
         // Fill tManagerLogTable
@@ -2127,8 +2137,10 @@ public class GUI extends javax.swing.JFrame {
         
         // Check table for highlighted lesson, get lesson id
 //        int lesson_id = tManagerLessonTable.getSelectedColumn();
-
-
+        String lessonID = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
+        tf_lessonName.setText(db.getLessonName(lessonID));
+        
+        
         // Change labels for 'Edit Lesson'
         labelLessonEdit.setText("Edit Lesson");
         bLessonEditSave.setText("Save");
@@ -2139,33 +2151,49 @@ public class GUI extends javax.swing.JFrame {
         // Populate goal type 1, 2, 3 tables
         
 
-        // Select appropriate goal types
-//        tGoalType1.setColumnSelectionInterval(WIDTH, WIDTH);
-//        tGoalType2.setColumnSelectionInterval(WIDTH, WIDTH);
-//        tGoalType3.setColumnSelectionInterval(WIDTH, WIDTH);
-        
-        // Fill in text fields with appropriate information
-//        tf_lessonName.setText(db.getLessonName(lesson_id));
-//        ta_type1description.setText(db.getGoalDescription(tGoalType1.getSelectedColumn()));
-//        ta_type2description.setText(db.getGoalDescription(tGoalType2.getSelectedColumn()));
-//        ta_type3description.setText(db.getGoalDescription(tGoalType3.getSelectedColumn()));
+
+
 
         
         // Set lesson edit panel
         showLessonEdit();
+        
+        ArrayList<String> goals = db.getGoalsByLesson(lessonID);
+        
+        for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
+            if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i,0))) {
+                tGoalType1.setRowSelectionInterval(i,i);
+            }
+        }
+        
+        for (int i = 0; i < tGoalType2.getModel().getRowCount(); i++) {
+            if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i,0))) {
+                tGoalType2.setRowSelectionInterval(i,i);
+            }
+        }
+        
+        for (int i = 0; i < tGoalType3.getModel().getRowCount(); i++) {
+            if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i,0))) {
+                tGoalType3.setRowSelectionInterval(i,i);
+            }
+        }
+        
+      
+        
+        
     }//GEN-LAST:event_bLessonEditActionPerformed
 
     private void bLessonEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditSaveActionPerformed
         try {
             // Get form info
             String lessonName  = tf_lessonName.getText();
-            //int goal1        = 
-            //int goal2        = 
-            //int goal3        = 
+            String goal1_id    = tGoalType1.getModel().getValueAt(tGoalType1.getSelectedRow(), 0).toString();
+            String goal2_id        = tGoalType2.getModel().getValueAt(tGoalType2.getSelectedRow(), 0).toString();
+            String goal3_id        = tGoalType3.getModel().getValueAt(tGoalType3.getSelectedRow(), 0).toString();
             
             // Save existing lesson
             if (labelLessonEdit.getText().equals("Edit Lesson")) {
-//                db.updateLessonInfo(lessonName, goal1, goal2, goal3);   
+//              db.updateLessonInfo(lessonName, goal1, goal2, goal3);   
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson saved.");
@@ -2315,10 +2343,9 @@ public class GUI extends javax.swing.JFrame {
     private void bAuditorEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeReportActionPerformed
                
         // Check selected column, get employee id (unless already on Log page, then use that employee)
-        
-//        int employeeID = tAuditorReportTable.getSelectedColumn();
         String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
         labelEmployeeName.setText(db.getUserName(employeeID));
+        
         // Fill tAuditorReportTable
         fillReportTable(employeeID, tAuditorReportTable);
         
@@ -2459,44 +2486,10 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_passwordActionPerformed
 
-    
-    
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new GUI().setVisible(true);
-//            }
-//        });
-//    }
-    
-    
+    private void tf_lessonNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_lessonNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_lessonNameActionPerformed
+
     
     /** Set panelContent card to appropriate content panel */
     private void showHomePanel() {
@@ -2515,10 +2508,7 @@ public class GUI extends javax.swing.JFrame {
     /** Shows the employee home panel */
     private void showEmployeeHome() {
         // Populatate employee tables with database info
-        //        tEmployeeLessons.
-        fillLessonTable(currentUser.getEID(), tEmployeeLessons);
-//        tEmployeeLog.
-        
+        fillEmployeeLessonTable(currentUser.getEID(), tEmployeeLessons);
         fillLogTable(currentUser.getEID(), tEmployeeLogTable);
         
         // Set card to employee home panel
@@ -2529,8 +2519,9 @@ public class GUI extends javax.swing.JFrame {
     /** Shows the manager home panel */
     private void showManagerHome() {
         // Populatate employee table with database info
-        fillEmployeeTable(tManagerEmployeeTable);        
-        
+        fillEmployeeTable(tManagerEmployeeTable);    
+        fillLessonTable(tManagerLessonTable);  
+        fillGoalTable(tManagerGoalTable);  
         
         // Set card to manager home panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
@@ -2539,9 +2530,8 @@ public class GUI extends javax.swing.JFrame {
     
     /** Shows the auditor home panel */
     private void showAuditorHome() {
-        // Populatate employee tableswith database info
-        fillEmployeeTable(tAuditorEmployeeTable);        
-        
+        // Populatate employee table with database info
+        fillEmployeeTable(tAuditorEmployeeTable);   
         
         // Set card to auditor home panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
@@ -2550,13 +2540,62 @@ public class GUI extends javax.swing.JFrame {
     
     /** Shows the lesson edit panel */
     private void showLessonEdit() {
+        // Fill lesson panel with appropriate information
+        
+      
+        
+        fillLessonGoalTable("1", tGoalType1);  
+        fillLessonGoalTable("2", tGoalType2); 
+        fillLessonGoalTable("3", tGoalType3); 
+        
+      
+        tGoalType1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            
+            public void valueChanged(ListSelectionEvent event) {
+                
+                ta_type1description.setText(db.getDescriptionByGoalID(tGoalType1.getValueAt(tGoalType1.getSelectedRow(), 0).toString()));
+                
+            }
+        
+        });
+        
+        tGoalType2.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            
+            public void valueChanged(ListSelectionEvent event) {
+                
+                ta_type2description.setText(db.getDescriptionByGoalID(tGoalType2.getValueAt(tGoalType2.getSelectedRow(), 0).toString()));
+                
+            }
+        
+        });
+        
+        
+        tGoalType3.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            
+            public void valueChanged(ListSelectionEvent event) {
+                
+                ta_type3description.setText(db.getDescriptionByGoalID(tGoalType3.getValueAt(tGoalType3.getSelectedRow(), 0).toString()));
+                
+            }
+        
+        });
+        
+       
         // Set card to add lesson add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerLessonEdit");
     }
     
+    
     /** Shows the goal edit panel */
     private void showGoalEdit() {
+        // Fill goal panel with appropriate information
+        
+
+        
+        
+        
+        
         // Set card to add goal add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerGoalEdit");
@@ -2564,7 +2603,6 @@ public class GUI extends javax.swing.JFrame {
     
     
     private void showSettings() {
-        
         // Fill in appropriate info from database
         tf_settingsUsername.setText(currentUser.getUsername());
         if(currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3"))
@@ -2581,79 +2619,75 @@ public class GUI extends javax.swing.JFrame {
     
     
      /** Fills the employee table with appropriate information */
-    private void fillEmployeeTable(javax.swing.JTable table) {
-            
-            String[] titles = {"EID","First Name", "Last name", "Address" };
-            ArrayList<String> list = db.getEmployees();
-            DefaultTableModel model = new DefaultTableModel(titles, 0);
-            Object[] arr = new Object[4];
-            Iterator<String> it = list.listIterator();
-            while(it.hasNext()){
-                arr[0] = it.next();
-                arr[1] = it.next();
-                arr[2] = it.next();
-                arr[3] = it.next();
-                model.addRow(arr);
-            }
-            table.setModel(model);
+    private void fillEmployeeTable(javax.swing.JTable table) {    
+        String[] titles = {"EID","First Name", "Last name", "Address" };
+        ArrayList<String> list = db.getEmployees();
         
+        table.setModel(createTableModel(titles,list));    
     }
     
     /** Fills an employee report table with appropriate information */
     private void fillReportTable(String employeeID, javax.swing.JTable table) {
         String[] titles = {"Lesson ID", "Score", "Time Started", "Time Completed"};
-            ArrayList<String> list = db.getUserReport(employeeID);
-            DefaultTableModel model = new DefaultTableModel(titles, 0);
-            Object[] arr = new Object[4];
-            Iterator<String> it = list.listIterator();
-            while(it.hasNext()){
-                arr[0] = it.next();
-                arr[1] = it.next();
-                arr[2] = it.next();
-                arr[3] = it.next();
-                
-                model.addRow(arr);
-            }
-            System.out.println(model.getRowCount());
-            table.setModel(model);
+        ArrayList<String> list = db.getUserReport(employeeID);
         
-        
+        table.setModel(createTableModel(titles,list));   
     }
     
     /** Fills an employee log table with appropriate information */
     private void fillLogTable(String employeeID, javax.swing.JTable table) {
             String[] titles = {"Action", "Timestamp"};
             ArrayList<String> list = db.getUserLog(employeeID);
-            DefaultTableModel model = new DefaultTableModel(titles, 0);
-            Object[] arr = new Object[2];
-            Iterator<String> it = list.listIterator();
-            while(it.hasNext()){
-                arr[0] = it.next();
-                arr[1] = it.next();
-                model.addRow(arr);
-            }
             
-            table.setModel(model);
+            table.setModel(createTableModel(titles,list));
+    }
+   
+    /** Fills an employee lesson history table with appropriate information */
+    private void fillEmployeeLessonTable(String employeeID, javax.swing.JTable table) {
+            String[] titles = {"Lesson ID", "Lesson Name", "Lesson Score"};
+            ArrayList<String> list = db.getEmployeeLessons(employeeID);
             
-        
+            table.setModel(createTableModel(titles,list));  
     }
     
-     /** Fills an employee log table with appropriate information */
-    private void fillLessonTable(String employeeID, javax.swing.JTable table) {
-            String[] titles = {"Lesson ID", "Lesson Name"};
+     /** Fills a manager/auditor lesson table with appropriate information */
+    private void fillLessonTable(javax.swing.JTable table) {
+            String[] titles = {"ID", "Name", "Goal 1", "Goal 2", "Goal 3"};
             ArrayList<String> list = db.getLessons();
-            DefaultTableModel model = new DefaultTableModel(titles, 0);
-            Object[] arr = new Object[2];
-            Iterator<String> it = list.listIterator();
-            while(it.hasNext()){
-                arr[0] = it.next();
-                arr[1] = it.next();
-                model.addRow(arr);
-            }
             
-            table.setModel(model);
+            table.setModel(createTableModel(titles,list));      
+    }
+    
+    /** Fills a manager goal table with appropriate information */
+    private void fillGoalTable(javax.swing.JTable table) {
+            String[] titles = {"ID", "Name", "Type", "Description"};
+            ArrayList<String> list = db.getGoals();
             
+            table.setModel(createTableModel(titles,list)); 
+    }
+    
+    /** Fills a manager goal table with appropriate information */
+    private void fillLessonGoalTable(String type, javax.swing.JTable table) {
+            String[] titles = {"ID"," Goal"};
+            ArrayList<String> list = db.getGoalsByType(type);
+            
+            table.setModel(createTableModel(titles,list)); 
+    }
+    
+    /** Returns a table model with the appropriate information */
+    private DefaultTableModel createTableModel(String [] titles, ArrayList<String> list) {
+        DefaultTableModel model = new DefaultTableModel(titles, 0);
+        Object[] arr = new Object[list.size()];
+        Iterator<String> it = list.listIterator();
         
+        while(it.hasNext()){
+            for (int i = 0; i < titles.length; i++) {
+                arr[i] = it.next();
+            }
+            model.addRow(arr);
+        }
+        
+        return model;
     }
     
 
@@ -2719,7 +2753,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2728,11 +2761,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
@@ -2744,6 +2777,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelGoalEdit;
     private javax.swing.JLabel labelLessonEdit;
     private javax.swing.JLabel labelLessonName;
+    private javax.swing.JLabel labelManagerEmployeeReportName;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JPanel pATCsim;
     private javax.swing.JPanel pAuditorContentPanel;
