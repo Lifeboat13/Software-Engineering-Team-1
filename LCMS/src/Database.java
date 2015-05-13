@@ -539,6 +539,93 @@ public class Database {
         return "";
     }
    
+    //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 
+    public boolean updateLessonInfo(String lessonID, String lessonName, String goal1_id, String goal2_id, String goal3_id, String lessonText){
+        
+        try{
+            Statement query = connection.createStatement();
+            String sql = "UPDATE Lessons SET "
+                    + "LESSON_NAME='" + lessonName + 
+                    "', GOAL1_ID='" + goal1_id + 
+                    "', GOAL2_ID='" + goal2_id + 
+                    "', GOAL3_ID='" + goal3_id + 
+                    "', LESSON_TEXT='" + lessonText + 
+                    "' WHERE LESSON_ID='" + lessonID + "'";
+            query.executeUpdate(sql);
+            query.close();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return false;    
+        
+    }
+    
+    public boolean addNewLesson(String lessonID, String lessonName, String goal1_id, String goal2_id, String goal3_id, String lessonText){
+        System.out.println(getNextAvailableID("Lesson"));
+        try{
+            Statement query = connection.createStatement();
+            String sql = "INSERT INTO Lessons VALUES ('" + 
+                    lessonID + "', '" + 
+                    lessonName + "', '" + 
+                    goal1_id + "', '" + 
+                    goal2_id + "', '" + 
+                    goal3_id + "', '" + 
+                    lessonText + "')"; 
+                    
+            query.executeUpdate(sql);
+            query.close();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return false;
+    }
+    
+    public String getNextAvailableID(String table){
+        
+        String toReturn = "";
+        
+        if(table.equals("Employee")){
+            
+        }else if(table.equals("Lesson")){
+            
+            try{
+            Statement query = connection.createStatement();
+            //String sql = "Select MAX(LESSON_ID) as total from lessons";
+            String sql = "Select LESSON_ID from lessons ORDER BY LESSON_ID * 1 ASC";
+            ResultSet result = query.executeQuery(sql);
+            while(result.next()){
+                String r = result.getString("LESSON_ID");
+                int t = Integer.parseInt(r);
+                t++;
+                toReturn = "" + t;
+            }
+            query.close();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return toReturn;
+            
+            
+        }
+        
+        
+        
+        
+        return toReturn;
+        
+        
+        
+    }
+    
+    
+    
+    
     /* Placeholders currently used in GUI */
     
     
