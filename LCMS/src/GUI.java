@@ -2194,18 +2194,19 @@ public class GUI extends javax.swing.JFrame {
             String goal1_id    = tGoalType1.getModel().getValueAt(tGoalType1.getSelectedRow(), 0).toString();
             String goal2_id        = tGoalType2.getModel().getValueAt(tGoalType2.getSelectedRow(), 0).toString();
             String goal3_id        = tGoalType3.getModel().getValueAt(tGoalType3.getSelectedRow(), 0).toString();
+            String lessonText =     db.getFullTextByGoalID(goal1_id) + "\n\n" + db.getFullTextByGoalID(goal2_id) + "\n\n" + db.getFullTextByGoalID(goal3_id);
             
-            // Save existing lesson
+// Save existing lesson
             if (labelLessonEdit.getText().equals("Edit Lesson")) {
-//              db.updateLessonInfo(lessonName, goal1, goal2, goal3);   
-                
+
+                db.updateLessonInfo(lessonName, lessonName, goal1_id, goal2_id, goal3_id, lessonText);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson saved.");
             }
             // Add new lesson
             else {
-//                db.addNewLesson(lessonName, goal1, goal2, goal3);  
-                
+
+                db.addNewLesson(db.getNextAvailableID("Lesson"), lessonName, goal1_id, goal2_id, goal3_id, lessonText);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson added.");
             }   
