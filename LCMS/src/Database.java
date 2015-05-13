@@ -918,7 +918,7 @@ public class Database {
         try{
             Statement query = connection.createStatement();
             String sql = "INSERT INTO goals VALUES ('" + 
-                    getNextAvailableID("Goal") + "', '" + 
+                    getNextAvailableID("Goal") + "','" + 
                     goalName + "','" + 
                     goalDescription + "','" + 
                     goalText + "','" + 
@@ -928,7 +928,7 @@ public class Database {
                     simVar2 + "','" + 
                     simVarValue2 + "','" + 
                     simVar3 + "','" + 
-                    simVarValue3 + "')'";                    
+                    simVarValue3 + "')";                    
                    
             query.executeUpdate(sql);
             query.close();
@@ -941,6 +941,23 @@ public class Database {
         
     }
      
+    
+    public boolean deleteGoal(String goal_id){
+         try{
+            Statement query = connection.createStatement();
+            String sql = "DELETE FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            query.executeUpdate(sql);
+            query.close();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return false;
+    }
+    
+ 
+  
     /* Placeholders currently used in GUI */
     
     

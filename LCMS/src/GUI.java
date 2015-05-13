@@ -1041,7 +1041,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerLessonsLayout.setVerticalGroup(
             pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Lessons", pManagerLessons);
@@ -1126,7 +1126,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerGoalsLayout.setVerticalGroup(
             pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Goals", pManagerGoals);
@@ -1534,7 +1534,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        bGoalEditDelete.setText("Delect");
+        bGoalEditDelete.setText("Delete");
         bGoalEditDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bGoalEditDeleteActionPerformed(evt);
@@ -2248,7 +2248,8 @@ public class GUI extends javax.swing.JFrame {
         
 
         // Delete lesson from database
-//        db.deleteLesson(lesson_id);    
+        db.deleteLesson(tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString());    
+        showManagerHome();
     }//GEN-LAST:event_bLessonEditDeleteActionPerformed
 
     private void bGoalAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalAddActionPerformed
@@ -2303,13 +2304,13 @@ public class GUI extends javax.swing.JFrame {
 
     private void bGoalEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditSaveActionPerformed
         try {
-            String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
+            
             // Get form info
             String goalName     = tf_goalName.getText();
-            int goalType        = cb_goalType.getSelectedIndex();
-            int simVar1         = cb_SimVar1.getSelectedIndex();
-            int simVar2         = cb_SimVar2.getSelectedIndex();
-            int simVar3         = cb_SimVar3.getSelectedIndex();
+            String goalType        = "" + (cb_goalType.getSelectedIndex() + 1);
+            String simVar1         = "" + (cb_SimVar1.getSelectedIndex() + 1);
+            String simVar2         = "" + (cb_SimVar2.getSelectedIndex() + 1);
+            String simVar3         = "" + (cb_SimVar3.getSelectedIndex() + 1);
             String simVarValue1 = tf_SimVarValue1.getText();
             String simVarValue2 = tf_SimVarValue2.getText();
             String simVarValue3 = tf_SimVarValue3.getText();
@@ -2318,18 +2319,19 @@ public class GUI extends javax.swing.JFrame {
             
             // Save existing goal
             if (labelGoalEdit.getText().equals("Edit Goal")) {
-//                db.updateGoalInfo(goal_id, goalName, goalType, simVar1, simVarValue1, 
-//                        simVar2, simVarValue2, simVar3, simVarValue3,
-//                        goalDescription, goalText);   
+                String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
+                db.updateGoalInfo(goal_id, goalName, goalType, simVar1, simVarValue1, 
+                        simVar2, simVarValue2, simVar3, simVarValue3,
+                        goalDescription, goalText);   
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Goal saved.");
             }
             // Add new goal
             else {
-//                db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
-//                        simVar2, simVarValue2, simVar3, simVarValue3,
-//                        goalDescription, goalText);    
+                db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
+                        simVar2, simVarValue2, simVar3, simVarValue3,
+                        goalDescription, goalText);    
                 
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Goal added.");
@@ -2339,6 +2341,7 @@ public class GUI extends javax.swing.JFrame {
             showManagerHome();
         }
         catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error, action was not completed.");
         }   
     }//GEN-LAST:event_bGoalEditSaveActionPerformed
@@ -2353,7 +2356,8 @@ public class GUI extends javax.swing.JFrame {
         
 
         // Delete goal from database
-//        db.deleteGoal(goal_id);   
+        db.deleteGoal(tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString());   
+        showManagerHome();
     }//GEN-LAST:event_bGoalEditDeleteActionPerformed
 
     private void bAuditorEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList1ActionPerformed
