@@ -2138,51 +2138,44 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bLessonAddActionPerformed
 
     private void bLessonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditActionPerformed
-        
-        // Check table for highlighted lesson, get lesson id
-//        int lesson_id = tManagerLessonTable.getSelectedColumn();
-        String lessonID = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
-        tf_lessonName.setText(db.getLessonName(lessonID));
-        
-        
-        // Change labels for 'Edit Lesson'
-        labelLessonEdit.setText("Edit Lesson");
-        bLessonEditSave.setText("Save");
-        
-        // Show 'Delete Lesson' button
-        bLessonEditDelete.setVisible(true);
-        
-        // Populate goal type 1, 2, 3 tables
-        
+        try{
+            // Check table for highlighted lesson, get lesson id
+            String lessonID = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
+            tf_lessonName.setText(db.getLessonName(lessonID));
 
+            // Change labels for 'Edit Lesson'
+            labelLessonEdit.setText("Edit Lesson");
+            bLessonEditSave.setText("Save");
 
+            // Show 'Delete Lesson' button
+            bLessonEditDelete.setVisible(true);
 
+            // Set lesson edit panel
+            showLessonEdit();
 
-        
-        // Set lesson edit panel
-        showLessonEdit();
-        
-        ArrayList<String> goals = db.getGoalsByLesson(lessonID);
-        
-        for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
-            if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i,0))) {
-                tGoalType1.setRowSelectionInterval(i,i);
+            ArrayList<String> goals = db.getGoalsByLesson(lessonID);
+
+            for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
+                if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i,0))) {
+                    tGoalType1.setRowSelectionInterval(i,i);
+                }
             }
-        }
-        
-        for (int i = 0; i < tGoalType2.getModel().getRowCount(); i++) {
-            if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i,0))) {
-                tGoalType2.setRowSelectionInterval(i,i);
+
+            for (int i = 0; i < tGoalType2.getModel().getRowCount(); i++) {
+                if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i,0))) {
+                    tGoalType2.setRowSelectionInterval(i,i);
+                }
             }
-        }
-        
-        for (int i = 0; i < tGoalType3.getModel().getRowCount(); i++) {
-            if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i,0))) {
-                tGoalType3.setRowSelectionInterval(i,i);
+
+            for (int i = 0; i < tGoalType3.getModel().getRowCount(); i++) {
+                if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i,0))) {
+                    tGoalType3.setRowSelectionInterval(i,i);
+                }
             }
+
+        }catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
         }
-        
-      
         
         
     }//GEN-LAST:event_bLessonEditActionPerformed
@@ -2346,7 +2339,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bAuditorEmployeeList2ActionPerformed
 
     private void bAuditorEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeReportActionPerformed
-               
+        try{       
         // Check selected column, get employee id (unless already on Log page, then use that employee)
         String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
         labelEmployeeName.setText(db.getUserName(employeeID));
@@ -2357,12 +2350,15 @@ public class GUI extends javax.swing.JFrame {
         // Show card pAuditorReportTable
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
         card.show(pAuditorContentPanel, "pAuditorReportTable");   
+        }catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_bAuditorEmployeReportActionPerformed
 
     private void bAuditorEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeLogActionPerformed
                
         // Check selected column, get employee id (unless already on Report page, then use that employee)
-        
+        try{
         String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
         labelEmployeeNameLog.setText(db.getUserName(employeeID));
         
@@ -2372,6 +2368,9 @@ public class GUI extends javax.swing.JFrame {
         // Show card pAuditorLogTable
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
         card.show(pAuditorContentPanel, "pAuditorLogTable");   
+        }catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_bAuditorEmployeeLogActionPerformed
 
     private void bEmployeeTakeLessonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeTakeLessonActionPerformed

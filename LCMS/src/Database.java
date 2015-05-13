@@ -482,19 +482,35 @@ public class Database {
         return null;
     }
     
+    /* 
+    This is literally the most inefficient way to do this, but I don't know SQL
+    well enough to make it better (clearly shouldn't be making a query for every 
+    single lesson
+    */
     public ArrayList<String> getEmployeeLessons(String eid) {
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT h.LESSON_ID, l.LESSON_NAME, h.SCORE FROM history h, lessons l WHERE h.eid = '" + eid
-                    + "' AND h.LESSON_ID = l.LESSON_ID";
+            Statement innerQuery = connection.createStatement();
+            String sql = "SELECT LESSON_ID, LESSON_NAME FROM Lessons";
+            String subquery = "";
             ResultSet set = query.executeQuery(sql);
+            ResultSet subset;
             while(set.next()){
-                toReturn.add(set.getString("LESSON_ID"));
+                String lesson_id = set.getString("LESSON_ID");
+                toReturn.add(lesson_id);
                 toReturn.add(set.getString("LESSON_NAME"));
-                toReturn.add(set.getString("SCORE"));
+                subquery = "SELECT SCORE FROM history WHERE LESSON_ID='" + lesson_id + "'" ;
+                subset = innerQuery.executeQuery(subquery);
+                if(subset.next()){
+                    toReturn.add(subset.getString("SCORE"));
+                }else{
+                    toReturn.add("Not Taken");
+                }
+                
             }
             set.close();
+            
             query.close();
             return toReturn;
         }catch(SQLException e){
