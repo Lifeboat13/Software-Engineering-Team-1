@@ -2553,7 +2553,7 @@ public class GUI extends javax.swing.JFrame {
             
             public void valueChanged(ListSelectionEvent event) {
                 
-                ta_type1description.setText(db.getDescriptionByGoalID(tGoalType1.getValueAt(tGoalType1.getSelectedRow(), 0).toString()));
+                ta_type1description.setText(db.getFullTextByGoalID(tGoalType1.getValueAt(tGoalType1.getSelectedRow(), 0).toString()));
                 
             }
         
@@ -2563,7 +2563,7 @@ public class GUI extends javax.swing.JFrame {
             
             public void valueChanged(ListSelectionEvent event) {
                 
-                ta_type2description.setText(db.getDescriptionByGoalID(tGoalType2.getValueAt(tGoalType2.getSelectedRow(), 0).toString()));
+                ta_type2description.setText(db.getFullTextByGoalID(tGoalType2.getValueAt(tGoalType2.getSelectedRow(), 0).toString()));
                 
             }
         
@@ -2574,7 +2574,7 @@ public class GUI extends javax.swing.JFrame {
             
             public void valueChanged(ListSelectionEvent event) {
                 
-                ta_type3description.setText(db.getDescriptionByGoalID(tGoalType3.getValueAt(tGoalType3.getSelectedRow(), 0).toString()));
+                ta_type3description.setText(db.getFullTextByGoalID(tGoalType3.getValueAt(tGoalType3.getSelectedRow(), 0).toString()));
                 
             }
         
