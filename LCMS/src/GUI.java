@@ -680,7 +680,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1397,6 +1397,7 @@ public class GUI extends javax.swing.JFrame {
         ta_type2description.setBackground(new java.awt.Color(245, 245, 245));
         ta_type2description.setColumns(20);
         ta_type2description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ta_type2description.setLineWrap(true);
         ta_type2description.setRows(5);
         ta_type2description.setText("[goal description]");
         jScrollPane7.setViewportView(ta_type2description);
@@ -1405,6 +1406,7 @@ public class GUI extends javax.swing.JFrame {
         ta_type3description.setBackground(new java.awt.Color(245, 245, 245));
         ta_type3description.setColumns(20);
         ta_type3description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ta_type3description.setLineWrap(true);
         ta_type3description.setRows(5);
         ta_type3description.setText("[goal description]");
         jScrollPane8.setViewportView(ta_type3description);
@@ -1420,6 +1422,7 @@ public class GUI extends javax.swing.JFrame {
         ta_type1description.setBackground(new java.awt.Color(245, 245, 245));
         ta_type1description.setColumns(20);
         ta_type1description.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ta_type1description.setLineWrap(true);
         ta_type1description.setRows(5);
         ta_type1description.setText("[goal description]");
         jScrollPane12.setViewportView(ta_type1description);
@@ -1664,6 +1667,7 @@ public class GUI extends javax.swing.JFrame {
         ta_lessonText.setBackground(new java.awt.Color(245, 245, 245));
         ta_lessonText.setColumns(20);
         ta_lessonText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ta_lessonText.setLineWrap(true);
         ta_lessonText.setRows(5);
         ta_lessonText.setText("[lesson text]");
         jScrollPane10.setViewportView(ta_lessonText);
@@ -2379,9 +2383,15 @@ public class GUI extends javax.swing.JFrame {
         ta_lessonText.setText(db.getLessonText(lessonID));
         
         
+        String text1 = db.getGoalText(lessonID, "1");
+        String text2 = db.getGoalText(lessonID, "2");
+        String text3 = db.getGoalText(lessonID, "3");
+        
+        ta_lessonText.setText(text1 + "\n\n" + text2 + "\n\n" + text3);
+        
+        
         // Show card pLesson
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-        card.show(panelContent, "pLesson");   
+        showLesson(); 
     }//GEN-LAST:event_bEmployeeTakeLessonActionPerformed
 
     private void bLessonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonBackActionPerformed
@@ -2411,17 +2421,15 @@ public class GUI extends javax.swing.JFrame {
         // Set and append lesson name with [Preview]
         labelLessonName.setText(tf_lessonName.getText() + " [Preview]");
         
+        String text1 = ta_type1description.getText();
+        String text2 = ta_type2description.getText();
+        String text3 = ta_type3description.getText();
         
-        // Set lesson panel text
-//        String lessonText1 = db.getGoalText(tGoalType1.getSelectedColumn());
-//        String lessonText2 = db.getGoalText(tGoalType2.getSelectedColumn());
-//        String lessonText3 = db.getGoalText(tGoalType3.getSelectedColumn());
-//        ta_lessonText.setText(lessonText1 + lessonText2 + lessonText3);
-        
-        
+        ta_lessonText.setText(text1 + "\n\n" + text2 + "\n\n" + text3);
+
         // Show card pLesson
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-        card.show(panelContent, "pLesson");
+        showLesson();
+        
     }//GEN-LAST:event_bLessonPreviewActionPerformed
 
     private void bSimulatorCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCancelActionPerformed
@@ -2601,6 +2609,14 @@ public class GUI extends javax.swing.JFrame {
         card.show(panelContent, "pManagerGoalEdit");
     }
     
+    
+    private void showLesson() {
+        
+        
+        
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pLesson");
+    }
     
     private void showSettings() {
         // Fill in appropriate info from database

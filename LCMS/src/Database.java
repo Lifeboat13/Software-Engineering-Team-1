@@ -382,6 +382,32 @@ public class Database {
         return null;
          
        
+    }
+     
+             
+    public String getGoalText(String lesson_id, String goalNumber) {
+     
+          String toReturn = "";
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT FULL_TEXT FROM lessons, goals WHERE lessons.LESSON_ID = '" + lesson_id
+                    + "' and lessons.GOAL" + goalNumber + "_ID = goals.GOAL_ID";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+               
+                toReturn = set.getString("FULL_TEXT");
+                
+                        
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+         
+       
      }
     
      public String getDescriptionByGoalID(String goal_id) {
@@ -394,6 +420,30 @@ public class Database {
             while(set.next()){
                
                 toReturn = set.getString("DESCRIPTION");
+                
+                        
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+         
+       
+     }
+     
+     public String getFullTextByGoalID(String goal_id) {
+     
+          String toReturn = "";
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT FULL_TEXT FROM goals WHERE GOAL_ID = '" + goal_id + "'";
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+               
+                toReturn = set.getString("FULL_TEXT");
                 
                         
             }
