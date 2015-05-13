@@ -673,7 +673,7 @@ public class Database {
         return false;
     }
     
-    public ArrayList<String> getSimVarNames() {
+    public ArrayList<String> getAllSimVarNames() {
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
@@ -693,7 +693,7 @@ public class Database {
         return null;
     }
     
-    public ArrayList<String> getSimVarIDs() {
+    public ArrayList<String> getAllSimVarIDs() {
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
@@ -714,6 +714,146 @@ public class Database {
     }
     
     
+    public ArrayList<String> getSimVarsByGoalID(String goal_id){
+        
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT SIM_VAR_1, SIM_VAR_2, SIM_VAR_3 FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn.add(set.getString("SIM_VAR_1"));
+                toReturn.add(set.getString("SIM_VAR_2"));
+                toReturn.add(set.getString("SIM_VAR_3"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+        
+    }
+    
+     public ArrayList<String> getSimVarValsByGoalID(String goal_id){
+        
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT SIM_VAR_1_VALUE, SIM_VAR_2_VALUE, SIM_VAR_3_VALUE FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn.add(set.getString("SIM_VAR_1_VALUE"));
+                toReturn.add(set.getString("SIM_VAR_2_VALUE"));
+                toReturn.add(set.getString("SIM_VAR_3_VALUE"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+        
+    }
+    
+    public String getGoalDescription(String goal_id){
+        
+        String toReturn =  "";
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT DESCRIPTION FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn = set.getString("DESCRIPTION");
+               
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+        
+    }
+     
+     public String getGoalText(String goal_id){
+        
+        String toReturn =  "";
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT FULL_TEXT FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn = set.getString("FULL_TEXT");
+               
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+        
+    }
+     
+     public String getGoalName(String goal_id){
+        
+        String toReturn =  "";
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT GOAL_NAME FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn = set.getString("GOAL_NAME");
+               
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+        
+    }
+     
+     public String getGoalType(String goal_id){
+        
+        String toReturn =  "";
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT TYPE FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn = set.getString("TYPE");
+               
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+        
+    }
+     
     /* Placeholders currently used in GUI */
     
     

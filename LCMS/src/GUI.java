@@ -2267,32 +2267,35 @@ public class GUI extends javax.swing.JFrame {
                 
         // Check table for highlighted goal, get goal id
 //        int goal_id = tManagerGoalTable.getSelectedColumn();
-        
-
+        String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
+        ArrayList<String> simVarsForGoal = db.getSimVarsByGoalID(goal_id);
+        ArrayList<String> simVarValsForGoal = db.getSimVarValsByGoalID(goal_id);
         // Change labels for 'Edit Goal'
         labelGoalEdit.setText("Edit Goal");
         bGoalEditSave.setText("Save");
         
         // Show 'Delete Goal' button
         bGoalEditDelete.setVisible(true);
-        
-        // Populate goal simVars 1, 2, 3 comboboxes
-        
-        
+                
         
         // Select proper goal simVars 1, 2, 3 comboboxes
-//        cb_SimVar1.setSelectedItem(db.getGoalSimVar1(goal_id));
-//        cb_SimVar2.setSelectedItem(db.getGoalSimVar2(goal_id));
-//        cb_SimVar3.setSelectedItem(db.getGoalSimVar3(goal_id));
+        cb_SimVar1.setSelectedItem(simVarsForGoal.get(0));
+        cb_SimVar2.setSelectedItem(simVarsForGoal.get(1));
+        cb_SimVar3.setSelectedItem(simVarsForGoal.get(2));
+        
         
         // Fill in goal simVarValue 1, 2, 3 text fields
-//        tf_SimVarValue1.setText(db.getGoalSimVarValue1(goal_id));
-//        tf_SimVarValue2.setText(db.getGoalSimVarValue2(goal_id));
-//        tf_SimVarValue3.setText(db.getGoalSimVarValue3(goal_id));
+        tf_SimVarValue1.setText(simVarValsForGoal.get(0));
+        tf_SimVarValue2.setText(simVarValsForGoal.get(1));
+        tf_SimVarValue3.setText(simVarValsForGoal.get(2));
         
         // Fill in goal description and text text fields        
-//        tf_goalDescription.setText(db.getGoalDescription(goal_id));
-//        ta_goalText.setText(db.getGoalText(goal_id));               
+        tf_goalDescription.setText(db.getGoalDescription(goal_id));
+        ta_goalText.setText(db.getGoalText(goal_id));               
+        tf_goalName.setText(db.getGoalName(goal_id));
+        
+        //Select proper goal type in combo box
+        cb_goalType.setSelectedIndex(Integer.parseInt(db.getGoalType(goal_id)) - 1);
         
         // Set goal edit panel
         showGoalEdit();
@@ -2539,7 +2542,7 @@ public class GUI extends javax.swing.JFrame {
         
         db.takeLesson(lessonID, result, eid, startTime, endTime);
         
-        db.updateLog(eid, "Scored: " + result / 1 + " on lesson: " + lessonID);
+        db.updateLog(eid, "Scored: " + result / (int) 1 + " on lesson: " + lessonID);
         
         showEmployeeHome();
         
@@ -2646,12 +2649,10 @@ public class GUI extends javax.swing.JFrame {
     private void showGoalEdit() {
         // Fill goal panel with appropriate information
         
-        fillSimVarComboBox(cb_SimVar1);
-        cb_SimVar1.setSelectedIndex(0);
-        fillSimVarComboBox(cb_SimVar2);
-        cb_SimVar2.setSelectedIndex(1);
+        
+        fillSimVarComboBox(cb_SimVar1);       
+        fillSimVarComboBox(cb_SimVar2);      
         fillSimVarComboBox(cb_SimVar3);
-        cb_SimVar3.setSelectedIndex(2);
         
         
         // Set card to add goal add/edit panel
@@ -2696,10 +2697,8 @@ public class GUI extends javax.swing.JFrame {
     
      /** Fills the employee table with appropriate information */
     private void fillSimVarComboBox(javax.swing.JComboBox comboBox) {    
-       
-         
-        
-        ArrayList<String> ls = db.getSimVarNames();
+             
+        ArrayList<String> ls = db.getAllSimVarNames();
         comboBox.setModel(new DefaultComboBoxModel(ls.toArray()));
      
     }
