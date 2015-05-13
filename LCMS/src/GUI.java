@@ -2303,6 +2303,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void bGoalEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditSaveActionPerformed
         try {
+            String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
             // Get form info
             String goalName     = tf_goalName.getText();
             int goalType        = cb_goalType.getSelectedIndex();
@@ -2317,7 +2318,7 @@ public class GUI extends javax.swing.JFrame {
             
             // Save existing goal
             if (labelGoalEdit.getText().equals("Edit Goal")) {
-//                db.updateGoalInfo(goalName, goalType, simVar1, simVarValue1, 
+//                db.updateGoalInfo(goal_id, goalName, goalType, simVar1, simVarValue1, 
 //                        simVar2, simVarValue2, simVar3, simVarValue3,
 //                        goalDescription, goalText);   
                 

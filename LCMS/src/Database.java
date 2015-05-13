@@ -644,7 +644,27 @@ public class Database {
             
             
         }
-        
+        else if(table.equals("Goal")){
+            
+            
+            try{
+            Statement query = connection.createStatement();
+            //String sql = "Select MAX(LESSON_ID) as total from lessons";
+            String sql = "Select GOAL_ID from goals ORDER BY GOAL_ID * 1 ASC";
+            ResultSet result = query.executeQuery(sql);
+            while(result.next()){
+                String r = result.getString("GOAL_ID");
+                int t = Integer.parseInt(r);
+                t++;
+                toReturn = "" + t;
+            }
+            query.close();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+            
+        }
         
         
         
@@ -854,29 +874,84 @@ public class Database {
         
     }
      
+//    db.updateGoalInfo(goalName, goalType, simVar1, simVarValue1, 
+//                        simVar2, simVarValue2, simVar3, simVarValue3,
+//                        goalDescription, goalText);
+     public boolean updateGoalInfo(String goalID, String goalName, String goalType, String simVar1, String simVarValue1,
+        String simVar2, String simVarValue2, String simVar3, String simVarValue3, String goalDescription, String goalText){
+         
+         try{
+            Statement query = connection.createStatement();
+            String sql = "UPDATE goals SET "
+                    + "GOAL_NAME='" + goalName + 
+                    "', DESCRIPTION='" + goalDescription + 
+                    "', FULL_TEXT='" + goalText + 
+                    "', TYPE='" + goalType + 
+                    "', SIM_VAR_1='" + simVar1 + 
+                    "', SIM_VAR_1_VALUE='" + simVarValue1 + 
+                    "', SIM_VAR_2='" + simVar2 + 
+                    "', SIM_VAR_2_VALUE='" + simVarValue2 +
+                    "', SIM_VAR_3='" + simVar3 + 
+                    "', SIM_VAR_3_VALUE='" + simVarValue3 +
+                    "' WHERE GOAL_ID='" + goalID + "'";
+            query.executeUpdate(sql);
+            query.close();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+           
+        return false;      
+         
+     }
+     
+     
+     
+//    db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
+//                        simVar2, simVarValue2, simVar3, simVarValue3,
+//                        goalDescription, goalText); 
+    public boolean addNewGoal(String goalName,String goalType, String simVar1, String simVarValue1, 
+                        String simVar2, String simVarValue2, String simVar3, String simVarValue3,
+                        String goalDescription, String goalText){
+        
+        
+        try{
+            Statement query = connection.createStatement();
+            String sql = "INSERT INTO goals VALUES ('" + 
+                    getNextAvailableID("Goal") + "', '" + 
+                    goalName + "','" + 
+                    goalDescription + "','" + 
+                    goalText + "','" + 
+                    goalType + "','" + 
+                    simVar1 + "','" + 
+                    simVarValue1 + "','" + 
+                    simVar2 + "','" + 
+                    simVarValue2 + "','" + 
+                    simVar3 + "','" + 
+                    simVarValue3 + "')'";                    
+                   
+            query.executeUpdate(sql);
+            query.close();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+        
+        
+    }
+     
     /* Placeholders currently used in GUI */
     
     
   
-      
-    
-    //db.getGoalSimVar1(goal_id);
-    //db.getGoalSimVar2(goal_id);
-    //db.getGoalSimVar3(goal_id);
-    //db.getGoalSimVarValue1(goal_id);
-    //db.getGoalSimVarValue2(goal_id);
-    //db.getGoalSimVarValue3(goal_id);
+  
     
     
     
-//    db.updateGoalInfo(goalName, goalType, simVar1, simVarValue1, 
-//                        simVar2, simVarValue2, simVar3, simVarValue3,
-//                        goalDescription, goalText);
+
     
-//    db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
-//                        simVar2, simVarValue2, simVar3, simVarValue3,
-//                        goalDescription, goalText); 
-    
+
     //db.deleteGoal(goal_id); 
 
    
