@@ -190,17 +190,17 @@ public class GUI extends javax.swing.JFrame {
         bSettingsCancel = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        tf_currentPassword = new javax.swing.JTextField();
-        tf_newPassword = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        tf_confirmPassword = new javax.swing.JTextField();
         tf_settingsAddress = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         tf_settingsUsername = new javax.swing.JTextField();
         tf_settingsName = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        tf_currentPassword = new javax.swing.JPasswordField();
+        tf_newPassword = new javax.swing.JPasswordField();
+        tf_confirmPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Air Traffic Control LCMS");
@@ -683,7 +683,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1845,6 +1845,11 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(tf_settingsName, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(pSettingsLayout.createSequentialGroup()
+                                .addGap(262, 262, 262)
+                                .addComponent(bSettingsSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bSettingsCancel))
+                            .addGroup(pSettingsLayout.createSequentialGroup()
                                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel27)
                                     .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1854,15 +1859,10 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(jLabel28))
                                 .addGap(24, 24, 24)
                                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tf_newPassword, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tf_currentPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pSettingsLayout.createSequentialGroup()
-                                .addGap(262, 262, 262)
-                                .addComponent(bSettingsSave)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bSettingsCancel)))))
-                .addContainerGap(181, Short.MAX_VALUE))
+                                    .addComponent(tf_newPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))))))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         pSettingsLayout.setVerticalGroup(
             pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1876,7 +1876,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tf_settingsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1892,7 +1892,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(tf_confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addGap(50, 50, 50)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSettingsSave)
                     .addComponent(bSettingsCancel))
@@ -2673,7 +2673,9 @@ public class GUI extends javax.swing.JFrame {
         if(currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3"))
             tf_settingsName.setEnabled(false);
         tf_settingsAddress.setText(currentUser.getAddress());
-
+        tf_currentPassword.setText("");
+        tf_confirmPassword.setText("");
+        tf_newPassword.setText("");
         // Set card to pSettings
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pSettings");
@@ -2906,14 +2908,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField tf_SimVarValue2;
     private javax.swing.JTextField tf_SimVarValue3;
     private javax.swing.JTextField tf_address;
-    private javax.swing.JTextField tf_confirmPassword;
-    private javax.swing.JTextField tf_currentPassword;
+    private javax.swing.JPasswordField tf_confirmPassword;
+    private javax.swing.JPasswordField tf_currentPassword;
     private javax.swing.JTextField tf_fName;
     private javax.swing.JTextField tf_goalDescription;
     private javax.swing.JTextField tf_goalName;
     private javax.swing.JTextField tf_lName;
     private javax.swing.JTextField tf_lessonName;
-    private javax.swing.JTextField tf_newPassword;
+    private javax.swing.JPasswordField tf_newPassword;
     private javax.swing.JPasswordField tf_password;
     private javax.swing.JTextField tf_settingsAddress;
     private javax.swing.JTextField tf_settingsName;

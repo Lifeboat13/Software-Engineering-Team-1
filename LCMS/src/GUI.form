@@ -2340,6 +2340,12 @@
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
+                                              <Component id="bSettingsSave" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="bSettingsCancel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -2351,21 +2357,15 @@
                                               </Group>
                                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="tf_newPassword" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="tf_currentPassword" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="tf_confirmPassword" min="-2" pref="258" max="-2" attributes="0"/>
+                                                  <Component id="tf_newPassword" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="tf_confirmPassword" alignment="0" pref="258" max="32767" attributes="0"/>
                                               </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
-                                              <Component id="bSettingsSave" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="bSettingsCancel" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="181" max="32767" attributes="0"/>
+                              <EmptySpace pref="189" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2383,7 +2383,7 @@
                                   <Component id="tf_settingsName" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel30" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tf_settingsAddress" alignment="3" min="-2" pref="88" max="-2" attributes="0"/>
@@ -2403,7 +2403,7 @@
                                   <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tf_confirmPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="bSettingsSave" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="bSettingsCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2443,10 +2443,6 @@
                         <Property name="text" type="java.lang.String" value="Current Password"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="tf_currentPassword">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="tf_newPassword">
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel23">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="New Password"/>
@@ -2456,8 +2452,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Confirm Password"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="tf_confirmPassword">
                     </Component>
                     <Component class="javax.swing.JTextField" name="tf_settingsAddress">
                     </Component>
@@ -2485,6 +2479,12 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Name"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JPasswordField" name="tf_currentPassword">
+                    </Component>
+                    <Component class="javax.swing.JPasswordField" name="tf_newPassword">
+                    </Component>
+                    <Component class="javax.swing.JPasswordField" name="tf_confirmPassword">
                     </Component>
                   </SubComponents>
                 </Container>
