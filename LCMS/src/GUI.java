@@ -115,8 +115,6 @@ public class GUI extends javax.swing.JFrame {
         tManagerGoalTable = new javax.swing.JTable();
         pManagerEmployeeEdit = new javax.swing.JPanel();
         labelEmployeeEdit = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        tf_eid = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tf_username = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -1152,8 +1150,6 @@ public class GUI extends javax.swing.JFrame {
         labelEmployeeEdit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelEmployeeEdit.setText("Add/Edit Employee");
 
-        jLabel8.setText("EID");
-
         jLabel9.setText("Username");
 
         jLabel10.setText("Password");
@@ -1211,12 +1207,10 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pManagerEmployeeEditLayout.createSequentialGroup()
                                     .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel9)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel8))
+                                        .addComponent(jLabel10))
                                     .addGap(28, 28, 28)
                                     .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(tf_username, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                                        .addComponent(tf_eid, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                                         .addComponent(tf_password)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pManagerEmployeeEditLayout.createSequentialGroup()
                                     .addComponent(jLabel12)
@@ -1232,18 +1226,14 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(bEmployeeEditCancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bEmployeeEditDelete)))))
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
         );
         pManagerEmployeeEditLayout.setVerticalGroup(
             pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pManagerEmployeeEditLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelEmployeeEdit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(tf_eid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(45, 45, 45)
                 .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(tf_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1263,7 +1253,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addGroup(pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bEmployeeEditSave)
                     .addComponent(bEmployeeEditCancel)
@@ -2079,7 +2069,7 @@ public class GUI extends javax.swing.JFrame {
         bEmployeeEditDelete.setVisible(true);
         
         // Fill in text fields with appropriate information
-        tf_eid.setText(employeeID);
+        
         tf_username.setText(db.getUserUsername(employeeID));
         tf_password.setText(db.getUserPassword(employeeID));
         tf_fName.setText(db.getUserName(employeeID).split(" ")[0]);
@@ -2107,7 +2097,7 @@ public class GUI extends javax.swing.JFrame {
     private void bEmployeeEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditSaveActionPerformed
         try {
             // Get form info
-            String eid      =   tf_eid.getText();
+            
             String username =   tf_username.getText();
             String password =   String.valueOf(tf_password.getPassword());
             String fName    =   tf_fName.getText();
@@ -2116,7 +2106,8 @@ public class GUI extends javax.swing.JFrame {
             
             // Save existing employee
             if (labelEmployeeEdit.getText().equals("Edit Employee")) {
-//               db.updateUsernfo(id, fName, lName, address);   
+                String eid = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
+//               db.updateUs ernfo(id, fName, lName, address);   
                 db.updateUserInfo(eid, username, password, fName, lName, address);
                 db.updateLog(currentUser.getEID(), "Updated User: " + username);
                 // Verification message
@@ -2125,7 +2116,7 @@ public class GUI extends javax.swing.JFrame {
             // Add new employee
             else {
 //              db.addNewUserid, fName, lName, address, 1);  
-                db.addNewUser(eid, username, password, fName, lName, address, 1);
+                db.addNewUser(username, password, fName, lName, address, 1);
                 db.updateLog(currentUser.getEID(), "Added User: " + username);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee added.");
@@ -2149,7 +2140,7 @@ public class GUI extends javax.swing.JFrame {
         int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
         //Delete the user if they confirm the deletion
         if(selection == 1){
-            db.deleteUser(tf_eid.getText());
+            db.deleteUser(tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString());
             db.updateLog(currentUser.getEID(), "Deleted User:" + tf_username.getText());
         }
 
@@ -2827,7 +2818,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -2918,7 +2908,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField tf_address;
     private javax.swing.JTextField tf_confirmPassword;
     private javax.swing.JTextField tf_currentPassword;
-    private javax.swing.JTextField tf_eid;
     private javax.swing.JTextField tf_fName;
     private javax.swing.JTextField tf_goalDescription;
     private javax.swing.JTextField tf_goalName;

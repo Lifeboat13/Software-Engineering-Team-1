@@ -200,12 +200,12 @@ public class Database {
     }
     
     //db.addNewEmployee(eid, fName, lName, address, etc...);  
-    public boolean addNewUser(String eid, String username, String password, String firstname, String lastname, String address, int userType){
+    public boolean addNewUser(String username, String password, String firstname, String lastname, String address, int userType){
         
         try{
             Statement query = connection.createStatement();
             String sql = "INSERT INTO Users VALUES ('" + 
-                    eid + "','" + 
+                    getNextAvailableID("Employee") + "','" + 
                     username + "','" + 
                     password + "','" + 
                     firstname + "','" + 
@@ -500,7 +500,7 @@ public class Database {
                 String lesson_id = set.getString("LESSON_ID");
                 toReturn.add(lesson_id);
                 toReturn.add(set.getString("LESSON_NAME"));
-                subquery = "SELECT SCORE FROM history WHERE LESSON_ID='" + lesson_id + "'" ;
+                subquery = "SELECT SCORE FROM history WHERE LESSON_ID='" + lesson_id + "' AND eid='" + eid + "'";
                 subset = innerQuery.executeQuery(subquery);
                 if(subset.next()){
                     toReturn.add(subset.getString("SCORE"));
@@ -605,7 +605,22 @@ public class Database {
         String toReturn = "";
         
         if(table.equals("Employee")){
+            try{
+            Statement query = connection.createStatement();
             
+            String sql = "Select eid from Users ORDER BY eid * 1 ASC";
+            ResultSet result = query.executeQuery(sql);
+            while(result.next()){
+                String r = result.getString("eid");
+                int t = Integer.parseInt(r);
+                t++;
+                toReturn = "" + t;
+            }
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         }else if(table.equals("Lesson")){
             
             try{
