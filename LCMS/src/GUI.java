@@ -1,6 +1,8 @@
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -2139,9 +2141,10 @@ public class GUI extends javax.swing.JFrame {
         // 'Are you sure?' prompt
         int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
         //Delete the user if they confirm the deletion
-        if(selection == 1){
+        if(selection == 0){
             db.deleteUser(tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString());
             db.updateLog(currentUser.getEID(), "Deleted User:" + tf_username.getText());
+            showManagerHome();
         }
 
         // Delete employee from database
@@ -2538,10 +2541,8 @@ public class GUI extends javax.swing.JFrame {
         
         db.updateLog(eid, "Scored: " + result / 1 + " on lesson: " + lessonID);
         
-        fillEmployeeLessonTable(currentUser.getEID(), tEmployeeLessons);
-        fillLogTable(currentUser.getEID(), tEmployeeLogTable);
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-        card.show(panelContent, "pEmployeeHome");
+        showEmployeeHome();
+        
     }//GEN-LAST:event_bSimulatorCompleteActionPerformed
 
     
@@ -2645,9 +2646,12 @@ public class GUI extends javax.swing.JFrame {
     private void showGoalEdit() {
         // Fill goal panel with appropriate information
         
-
-        
-        
+        fillSimVarComboBox(cb_SimVar1);
+        cb_SimVar1.setSelectedIndex(0);
+        fillSimVarComboBox(cb_SimVar2);
+        cb_SimVar2.setSelectedIndex(1);
+        fillSimVarComboBox(cb_SimVar3);
+        cb_SimVar3.setSelectedIndex(2);
         
         
         // Set card to add goal add/edit panel
@@ -2688,6 +2692,16 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getEmployees();
         
         table.setModel(createTableModel(titles,list));    
+    }
+    
+     /** Fills the employee table with appropriate information */
+    private void fillSimVarComboBox(javax.swing.JComboBox comboBox) {    
+       
+         
+        
+        ArrayList<String> ls = db.getSimVarNames();
+        comboBox.setModel(new DefaultComboBoxModel(ls.toArray()));
+     
     }
     
     /** Fills an employee report table with appropriate information */

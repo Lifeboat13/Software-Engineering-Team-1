@@ -673,25 +673,52 @@ public class Database {
         return false;
     }
     
+    public ArrayList<String> getSimVarNames() {
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT VAR_NAME FROM sim_vars";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn.add(set.getString("VAR_NAME"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ArrayList<String> getSimVarIDs() {
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT VAR_ID FROM sim_vars";
+            
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){
+             
+                toReturn.add(set.getString("VAR_ID"));
+            }
+            set.close();
+            query.close();
+            return toReturn;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     
     /* Placeholders currently used in GUI */
     
     
-    
-    
-    
-    
-    
-    
-   
-    
-    
-     
-    
-       
-    //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 
-    //db.addNewLesson(lessonName, goal1, goal2, goal3, etc...); 
-    
+  
+      
     
     //db.getGoalSimVar1(goal_id);
     //db.getGoalSimVar2(goal_id);
