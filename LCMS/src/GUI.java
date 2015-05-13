@@ -1,3 +1,4 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
@@ -180,6 +181,7 @@ public class GUI extends javax.swing.JFrame {
         ta_lessonText = new javax.swing.JTextArea();
         bLessonBack = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        labelStartTime = new javax.swing.JLabel();
         pSimulator = new javax.swing.JPanel();
         pATCsim = new javax.swing.JPanel();
         sim_pic = new javax.swing.JLabel();
@@ -250,7 +252,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1689,6 +1691,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        labelStartTime.setToolTipText("");
+
         javax.swing.GroupLayout pLessonLayout = new javax.swing.GroupLayout(pLesson);
         pLesson.setLayout(pLessonLayout);
         pLessonLayout.setHorizontalGroup(
@@ -1702,7 +1706,9 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pLessonLayout.createSequentialGroup()
                         .addComponent(bLessonBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                        .addComponent(labelStartTime)
+                        .addGap(235, 235, 235)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -1710,13 +1716,18 @@ public class GUI extends javax.swing.JFrame {
             pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLessonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelLessonName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bLessonBack)
-                    .addComponent(jButton1))
+                .addGroup(pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pLessonLayout.createSequentialGroup()
+                        .addComponent(labelLessonName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bLessonBack)
+                            .addComponent(jButton1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLessonLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(labelStartTime)))
                 .addContainerGap())
         );
 
@@ -2436,7 +2447,8 @@ public class GUI extends javax.swing.JFrame {
         sim_pic = new JLabel(image);
         pATCsim.add(sim_pic);
         sim_pic.setBounds(20,20,1280,998);
-        
+        labelStartTime.setText("" + new Timestamp(System.currentTimeMillis()));
+        labelStartTime.setVisible(false);
         // Show card pSimulator
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pSimulator");  
@@ -2526,8 +2538,19 @@ public class GUI extends javax.swing.JFrame {
     private void bSimulatorCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCompleteActionPerformed
         ATC atc = new ATC(5,10);
         double result = atc.playSimulator();
+        String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString();
+        String eid = currentUser.getEID();
+        String startTime = labelStartTime.getText();
+        String endTime = "" + new Timestamp(System.currentTimeMillis());
         
+        db.takeLesson(lessonID, result, eid, startTime, endTime);
         
+        db.updateLog(eid, "Scored: " + result / 1 + " on lesson: " + lessonID);
+        
+        fillEmployeeLessonTable(currentUser.getEID(), tEmployeeLessons);
+        fillLogTable(currentUser.getEID(), tEmployeeLogTable);
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+        card.show(panelContent, "pEmployeeHome");
     }//GEN-LAST:event_bSimulatorCompleteActionPerformed
 
     
@@ -2827,6 +2850,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelLessonEdit;
     private javax.swing.JLabel labelLessonName;
     private javax.swing.JLabel labelManagerEmployeeReportName;
+    private javax.swing.JLabel labelStartTime;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JPanel pATCsim;
     private javax.swing.JPanel pAuditorContentPanel;

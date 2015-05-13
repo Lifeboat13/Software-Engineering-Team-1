@@ -639,7 +639,24 @@ public class Database {
         
     }
     
-   
+    public boolean takeLesson(String lesson_ID, double score, String eid, String started, String finished){
+        
+        try{
+            Statement query = connection.createStatement();
+            String sql = "INSERT INTO history VALUES ('" + 
+                    lesson_ID + "','" + 
+                    score + "','" + 
+                    eid + "','" + 
+                    started + "','" + 
+                    finished + "')";
+            query.executeUpdate(sql);
+            query.close();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     
     
     /* Placeholders currently used in GUI */
