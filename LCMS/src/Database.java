@@ -520,14 +520,23 @@ public class Database {
         try{
             Statement query = connection.createStatement();
             Statement innerQuery = connection.createStatement();
-            String sql = "SELECT LESSON_ID, LESSON_NAME FROM Lessons";
+            String sql = 
+                    "SELECT LESSON_ID, GOAL1.GOAL_NAME as Goal_1, GOAL2.GOAL_NAME as Goal_2, GOAL3.GOAL_NAME as Goal_3 "
+                  + "FROM Lessons, "
+                    +       "(SELECT GOAL_ID, GOAL_NAME FROM Goals) as GOAL1, "
+                    +       "(SELECT GOAL_ID, GOAL_NAME FROM Goals) as GOAL2, "
+                    +       "(SELECT GOAL_ID, GOAL_NAME FROM Goals) as GOAL3 "
+                  + "WHERE GOAL1_ID=GOAL1.GOAL_ID AND GOAL2_ID=GOAL2.GOAL_ID AND GOAL3_ID=GOAL3.GOAL_ID "
+                  + "ORDER BY LESSON_ID * 1";
             String subquery = "";
             ResultSet set = query.executeQuery(sql);
             ResultSet subset;
             while(set.next()){
                 String lesson_id = set.getString("LESSON_ID");
                 toReturn.add(lesson_id);
-                toReturn.add(set.getString("LESSON_NAME"));
+                toReturn.add(set.getString("Goal_1"));
+                toReturn.add(set.getString("Goal_2"));
+                toReturn.add(set.getString("Goal_3"));
                 subquery = "SELECT MAX(SCORE) AS SCORE FROM history WHERE LESSON_ID='" + lesson_id + "' AND eid='" + eid + "'";
                 subset = innerQuery.executeQuery(subquery);
                 if(subset.next()){

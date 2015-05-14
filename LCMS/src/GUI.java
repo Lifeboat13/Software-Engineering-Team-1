@@ -2393,6 +2393,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void bAuditorEmployeeList2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList2ActionPerformed
         // Go back to auditor's employee table
+         label_totalTime.setText("");
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
         card.show(pAuditorContentPanel, "pAuditorEmployeeTable");
     }//GEN-LAST:event_bAuditorEmployeeList2ActionPerformed
@@ -2435,25 +2436,28 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bAuditorEmployeeLogActionPerformed
 
     private void bEmployeeTakeLessonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeTakeLessonActionPerformed
-        
-        // Check selected column, get lesson id        
-        String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString();
+        try{
+            // Check selected column, get lesson id        
+            String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString();
 
-        // Set lesson panel text
-        labelLessonName.setText(db.getLessonName(lessonID));
-        ta_lessonText.setText(db.getLessonText(lessonID));
+            // Set lesson panel text
+            labelLessonName.setText(db.getLessonName(lessonID));
+            ta_lessonText.setText(db.getLessonText(lessonID));
 
-        String text1 = db.getGoalText(lessonID, "1");
-        String text2 = db.getGoalText(lessonID, "2");
-        String text3 = db.getGoalText(lessonID, "3");
+            String text1 = db.getGoalText(lessonID, "1");
+            String text2 = db.getGoalText(lessonID, "2");
+            String text3 = db.getGoalText(lessonID, "3");
 
-        ta_lessonText.setText(text1 + "\n\n" + text2 + "\n\n" + text3);
+            ta_lessonText.setText(text1 + "\n\n" + text2 + "\n\n" + text3);
 
-        // Update history log
-        db.updateLog(currentUser.getEID(), "Viewed Lesson " + lessonID);
-        
-        // Show card pLesson
-        showLesson();
+            // Update history log
+            db.updateLog(currentUser.getEID(), "Viewed Lesson " + lessonID);
+
+            // Show card pLesson
+            showLesson();
+        }catch(ArrayIndexOutOfBoundsException e){
+            
+        }
     }//GEN-LAST:event_bEmployeeTakeLessonActionPerformed
 
     private void bLessonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonBackActionPerformed
@@ -2792,7 +2796,7 @@ public class GUI extends javax.swing.JFrame {
      * Fills an employee lesson history table with appropriate information
      */
     private void fillEmployeeLessonTable(String employeeID, javax.swing.JTable table) {
-        String[] titles = {"Lesson ID", "Lesson Name", "Lesson Score"};
+        String[] titles = {"Lesson ID", "Goal 1 Name", "Goal 2 Name", "Goal 3 Name", "Lesson Score"};
         ArrayList<String> list = db.getEmployeeLessons(employeeID);
 
         table.setModel(createTableModel(titles, list));
