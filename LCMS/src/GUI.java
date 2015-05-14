@@ -2239,9 +2239,14 @@ public class GUI extends javax.swing.JFrame {
     private void bLessonEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditDeleteActionPerformed
 
         // 'Are you sure?' prompt
-        // Delete lesson from database
-        db.deleteLesson(tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString());
-        showManagerHome();
+        int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
+        
+        if(selection == 0){
+            // Delete lesson from database
+            db.deleteLesson(tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString());
+            showManagerHome();
+        }
+        
     }//GEN-LAST:event_bLessonEditDeleteActionPerformed
 
     private void bGoalAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalAddActionPerformed
@@ -2348,10 +2353,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void bGoalEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditDeleteActionPerformed
         // 'Are you sure?' prompt
-        
+         int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
         // Delete goal from database
-        db.deleteGoal(tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString());
-        showManagerHome();
+         if(selection == 0){
+            db.deleteGoal(tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString());
+            showManagerHome();
+         }
     }//GEN-LAST:event_bGoalEditDeleteActionPerformed
 
     private void bAuditorEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList1ActionPerformed
@@ -2476,31 +2483,36 @@ public class GUI extends javax.swing.JFrame {
     private void bSimulatorCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCancelActionPerformed
 
         // 'Are you sure?' prompt
-        
-        
-        // Update history log
-        db.updateLog(currentUser.getEID(), "Canceled Simulation"); 
-        
-        // Go back to pLesson card
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-        card.show(panelContent, "pLesson");
+        int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
+        if(selection == 0){
+            // Update history log
+            db.updateLog(currentUser.getEID(), "Canceled Simulation"); 
+
+            // Go back to pLesson card
+            java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+            card.show(panelContent, "pLesson");
+        }
     }//GEN-LAST:event_bSimulatorCancelActionPerformed
 
     private void bSettingsSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsSaveActionPerformed
 
-        if (!tf_currentPassword.getText().equals(db.getUserPassword(currentUser.getPassword()))) {
+        //Current password is incorrect
+        if (!(new String(tf_currentPassword.getPassword())).equals(db.getUserPassword(currentUser.getEID()))) {
             JOptionPane.showMessageDialog(this, "Error, incorrect password entered.");
         }
-
-        if (!tf_newPassword.getText().equals(tf_confirmPassword.getText())) {
+        //If the new password fields don't match        
+        else if (!(new String(tf_newPassword.getPassword())).equals(new String(tf_confirmPassword.getPassword()))) {
             JOptionPane.showMessageDialog(this, "Error, passwords do not match.");
+        }
+        else if (new String(tf_newPassword.getPassword()).length() > 0 && new String(tf_newPassword.getPassword()).length() < 6){
+            JOptionPane.showMessageDialog(this, "Error, password must be 6 characters or more");
         }
         else {
 
-            // Update databse with info
-            if (!tf_confirmPassword.getText().equals("")) {
-                db.updateUserPassword(currentUser.getEID(), tf_confirmPassword.getText());
-                currentUser.setPassword(tf_confirmPassword.getText());
+            // Update database with info
+            if(!(new String(tf_confirmPassword.getPassword())).equals("")) {
+                db.updateUserPassword(currentUser.getEID(), new String(tf_confirmPassword.getPassword()));
+                currentUser.setPassword(new String(tf_confirmPassword.getPassword()));
                 db.updateLog(currentUser.getEID(), "Updated Password");
             }
 

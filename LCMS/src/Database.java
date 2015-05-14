@@ -501,7 +501,7 @@ public class Database {
                 String lesson_id = set.getString("LESSON_ID");
                 toReturn.add(lesson_id);
                 toReturn.add(set.getString("LESSON_NAME"));
-                subquery = "SELECT SCORE FROM history WHERE LESSON_ID='" + lesson_id + "' AND eid='" + eid + "'";
+                subquery = "SELECT MAX(SCORE) AS SCORE FROM history WHERE LESSON_ID='" + lesson_id + "' AND eid='" + eid + "'";
                 subset = innerQuery.executeQuery(subquery);
                 if(subset.next()){
                     toReturn.add(subset.getString("SCORE"));

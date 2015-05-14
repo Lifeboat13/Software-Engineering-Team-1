@@ -41,7 +41,7 @@ public class ATC {
     
     
     public double playSimulator(){
-        return Math.random() * 100;
+        return 50 + (Math.random() * 50);
     }
     
     
