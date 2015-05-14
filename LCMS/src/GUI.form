@@ -1226,7 +1226,6 @@
                                         <Column editable="false" title="Goal 3" type="java.lang.String"/>
                                       </Table>
                                     </Property>
-                                    <Property name="autoResizeMode" type="int" value="4"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>

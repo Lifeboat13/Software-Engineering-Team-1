@@ -9,8 +9,7 @@ import java.util.ArrayList;
 
 public class Database {
     private DatabaseConnector db;
-    private Connection connection;
-    //Connection connection;    
+    private Connection connection;  
     
     public Database(){
         db = new DatabaseConnector();        
@@ -27,9 +26,9 @@ public class Database {
     }
     
     /*
-    *   Checks the user login information, based on the passed parameters
-    *   Returns all of the user information, used to create the current_user
-    */
+     *   Checks the user login information, based on the passed parameters
+     *   Returns all of the user information, used to create the current_user
+     */
     public ArrayList<String> checkLogin(String username, char[] password){
         Statement query;
         ArrayList<String> toReturn = new ArrayList<>();
@@ -52,15 +51,14 @@ public class Database {
             results.close();
             query.close();
                         
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        
         
        return toReturn;
     }
     
-    //db.updateLog(id, "Signed In", time);
     public boolean updateLog(String eid, String text){
         try{
             Statement query = connection.createStatement();
@@ -68,13 +66,13 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         return false;
     }
     
-    //db.updateUserAddress(eid, address);
     public boolean updateUserAddress(String eid, String address){
         try{
             Statement query = connection.createStatement();
@@ -82,13 +80,13 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         return false;
     }
     
-    //db.getUserAddress(id);
     public String getUserAddress(String eid){
         try{
             String toReturn = "";
@@ -99,15 +97,14 @@ public class Database {
                 toReturn = results.getString("address");
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         
-        return "";
-        
+        return "";   
     }
     
-    //db.getUserPassword(eid);
     public String getUserPassword(String eid){
         try{
             String toReturn = "";
@@ -118,15 +115,14 @@ public class Database {
                 toReturn = results.getString("password");
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         
-        return "";
-        
+        return ""; 
     }
     
-     //db.getUserPassword(eid);
     public String getUserUsername(String eid){
         try{
             String toReturn = "";
@@ -137,31 +133,28 @@ public class Database {
                 toReturn = results.getString("username");
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        
-        return "";
-        
+        return "";    
     }
     
-    
-    //db.setUserPassword(eid, password);
     public boolean updateUserPassword(String eid, String password){
         try{
             Statement query = connection.createStatement();
             String sql = "UPDATE Users SET password='" + password + "' WHERE eid='" + eid + "'";
             query.executeUpdate(sql);
             query.close();
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         return true;
     }
     
-    //db.GetUserName(eid);
     public String getUserName(String eid){
-         try{
+        try{
             String toReturn = "";
             Statement query = connection.createStatement();
             String sql = "SELECT firstname, lastname FROM Users WHERE eid='" + eid + "'";
@@ -170,16 +163,15 @@ public class Database {
                 toReturn = results.getString("firstname") + " " + results.getString("lastname");
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         
         return "";
     }
     
-    //db.updateUserInfo(eid, username, password, fName, lName, address); 
-    public boolean updateUserInfo(String eid, String username, String password, String firstname, String lastname, String address){
-        
+    public boolean updateUserInfo(String eid, String username, String password, String firstname, String lastname, String address){ 
         try{
             Statement query = connection.createStatement();
             String sql = "UPDATE Users SET "
@@ -192,16 +184,15 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
         return false;
     }
     
-    //db.addNewEmployee(eid, fName, lName, address, etc...);  
     public boolean addNewUser(String username, String password, String firstname, String lastname, String address, int userType){
-        
         try{
             Statement query = connection.createStatement();
             String sql = "INSERT INTO Users VALUES ('" + 
@@ -215,22 +206,23 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
         return false;
     }
     
-    //db.deleteEmployee(id); 
     public boolean deleteUser(String id){
-         try{
+        try{
             Statement query = connection.createStatement();
             String sql = "DELETE FROM Users WHERE eid='" + id + "'";
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
@@ -253,11 +245,12 @@ public class Database {
             }
             set.close();
             query.close();
-            return toReturn;
-            
-        }catch(SQLException e){
+            return toReturn;   
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
     
@@ -274,14 +267,15 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
     
     
-    //db.deleteLesson(lesson_id); 
     public boolean deleteLesson(String lesson_id){
         
         try{
@@ -290,15 +284,15 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
-        return false;
-        
+        return false; 
     }
     
-   public ArrayList<String> getUserReport(String id){
+    public ArrayList<String> getUserReport(String id){
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
@@ -313,9 +307,11 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
    
@@ -334,9 +330,11 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
     
@@ -353,15 +351,16 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
     
-     public ArrayList<String> getGoalsByLesson(String lesson_id) {
-     
-          ArrayList<String> toReturn = new ArrayList();
+    public ArrayList<String> getGoalsByLesson(String lesson_id) {
+        ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT * FROM lessons WHERE LESSON_ID = '" + lesson_id + "'";
@@ -376,18 +375,17 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
-         
-       
+        
+        return null;  
     }
      
              
     public String getGoalText(String lesson_id, String goalNumber) {
-     
-          String toReturn = "";
+        String toReturn = "";
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT FULL_TEXT FROM lessons, goals WHERE lessons.LESSON_ID = '" + lesson_id
@@ -402,17 +400,16 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
-         
-       
-     }
+    }
     
-     public String getDescriptionByGoalID(String goal_id) {
-     
-          String toReturn = "";
+    public String getDescriptionByGoalID(String goal_id) {
+        String toReturn = "";
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT DESCRIPTION FROM goals WHERE GOAL_ID = '" + goal_id + "'";
@@ -426,17 +423,16 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
-         
-       
-     }
+    }
      
-     public String getFullTextByGoalID(String goal_id) {
-     
-          String toReturn = "";
+    public String getFullTextByGoalID(String goal_id) {
+        String toReturn = "";
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT FULL_TEXT FROM goals WHERE GOAL_ID = '" + goal_id + "'";
@@ -450,12 +446,12 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
-         
-       
      }
      
      
@@ -476,7 +472,8 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         return null;
@@ -513,14 +510,15 @@ public class Database {
             
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         return null;
     }
    
     public String getLessonName(String lesson_id) {
-       String toReturn = "";
+        String toReturn = "";
         try{
             Statement query = connection.createStatement();
             String sql = "SELECT LESSON_NAME FROM lessons where LESSON_ID='" + lesson_id + "'";
@@ -531,7 +529,8 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         return "";
@@ -549,15 +548,14 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
         return "";
     }
    
-    //db.updateLessonInfo(lessonName, goal1, goal2, goal3, etc...); 
     public boolean updateLessonInfo(String lessonID, String lessonName, String goal1_id, String goal2_id, String goal3_id, String lessonText){
-        
         try{
             Statement query = connection.createStatement();
             String sql = "UPDATE Lessons SET "
@@ -570,12 +568,12 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
-        return false;    
-        
+        return false;      
     }
     
     public boolean addNewLesson(String lessonName, String goal1_id, String goal2_id, String goal3_id, String lessonText){
@@ -593,89 +591,79 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
         return false;
     }
     
-    public String getNextAvailableID(String table){
-        
+    public String getNextAvailableID(String table){      
         String toReturn = "";
-        
+
         if(table.equals("Employee")){
-            try{
-            Statement query = connection.createStatement();
-            
-            String sql = "Select eid from Users ORDER BY eid * 1 ASC";
-            ResultSet result = query.executeQuery(sql);
-            while(result.next()){
-                String r = result.getString("eid");
-                int t = Integer.parseInt(r);
-                t++;
-                toReturn = "" + t;
+            try {
+                Statement query = connection.createStatement();
+
+                String sql = "Select eid from Users ORDER BY eid * 1 ASC";
+                ResultSet result = query.executeQuery(sql);
+                while(result.next()){
+                    String r = result.getString("eid");
+                    int t = Integer.parseInt(r);
+                    t++;
+                    toReturn = "" + t;
+                }
+                query.close();
+                return toReturn;
             }
-            query.close();
-            return toReturn;
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        }else if(table.equals("Lesson")){
-            
-            try{
-            Statement query = connection.createStatement();
-            //String sql = "Select MAX(LESSON_ID) as total from lessons";
-            String sql = "Select LESSON_ID from lessons ORDER BY LESSON_ID * 1 ASC";
-            ResultSet result = query.executeQuery(sql);
-            while(result.next()){
-                String r = result.getString("LESSON_ID");
-                int t = Integer.parseInt(r);
-                t++;
-                toReturn = "" + t;
+            catch(SQLException e){
+                e.printStackTrace();
             }
-            query.close();
-            
-        }catch(SQLException e){
-            e.printStackTrace();
         }
+        else if(table.equals("Lesson")) {     
+            try {
+                Statement query = connection.createStatement();
+                //String sql = "Select MAX(LESSON_ID) as total from lessons";
+                String sql = "Select LESSON_ID from lessons ORDER BY LESSON_ID * 1 ASC";
+                ResultSet result = query.executeQuery(sql);
+                while(result.next()){
+                    String r = result.getString("LESSON_ID");
+                    int t = Integer.parseInt(r);
+                    t++;
+                    toReturn = "" + t;
+                }
+                query.close();
+            }
+            catch(SQLException e) {
+                e.printStackTrace();
+            }
            
-        return toReturn;
-            
-            
+            return toReturn;     
         }
-        else if(table.equals("Goal")){
-            
-            
-            try{
-            Statement query = connection.createStatement();
-            //String sql = "Select MAX(LESSON_ID) as total from lessons";
-            String sql = "Select GOAL_ID from goals ORDER BY GOAL_ID * 1 ASC";
-            ResultSet result = query.executeQuery(sql);
-            while(result.next()){
-                String r = result.getString("GOAL_ID");
-                int t = Integer.parseInt(r);
-                t++;
-                toReturn = "" + t;
+        else if(table.equals("Goal")){       
+            try {
+                Statement query = connection.createStatement();
+                //String sql = "Select MAX(LESSON_ID) as total from lessons";
+                String sql = "Select GOAL_ID from goals ORDER BY GOAL_ID * 1 ASC";
+                ResultSet result = query.executeQuery(sql);
+                while(result.next()){
+                    String r = result.getString("GOAL_ID");
+                    int t = Integer.parseInt(r);
+                    t++;
+                    toReturn = "" + t;
+                }
+                query.close();
             }
-            query.close();
-            
-        }catch(SQLException e){
-            e.printStackTrace();
+            catch(SQLException e){
+                e.printStackTrace();
+            }    
         }
-            
-        }
-        
-        
-        
-        return toReturn;
-        
-        
-        
+ 
+        return toReturn;     
     }
     
     public boolean takeLesson(String lesson_ID, double score, String eid, String started, String finished){
-        
         try{
             Statement query = connection.createStatement();
             String sql = "INSERT INTO history VALUES ('" + 
@@ -687,9 +675,11 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return false;
     }
     
@@ -707,9 +697,11 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
     
@@ -727,9 +719,11 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
     
@@ -751,11 +745,12 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
         
+        return null;
     }
     
      public ArrayList<String> getSimVarValsByGoalID(String goal_id){
@@ -775,11 +770,12 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
         
+        return null;
     }
     
     public String getGoalDescription(String goal_id){
@@ -798,11 +794,12 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
         
+        return null; 
     }
      
      public String getGoalText(String goal_id){
@@ -821,11 +818,11 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
-        
+        return null; 
     }
      
      public String getGoalName(String goal_id){
@@ -844,11 +841,12 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
         
+        return null; 
     }
      
      public String getGoalType(String goal_id){
@@ -867,20 +865,18 @@ public class Database {
             set.close();
             query.close();
             return toReturn;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
-        return null;
         
+        return null;
     }
      
-//    db.updateGoalInfo(goalName, goalType, simVar1, simVarValue1, 
-//                        simVar2, simVarValue2, simVar3, simVarValue3,
-//                        goalDescription, goalText);
      public boolean updateGoalInfo(String goalID, String goalName, String goalType, String simVar1, String simVarValue1,
         String simVar2, String simVarValue2, String simVar3, String simVarValue3, String goalDescription, String goalText){
          
-         try{
+        try{
             Statement query = connection.createStatement();
             String sql = "UPDATE goals SET "
                     + "GOAL_NAME='" + goalName + 
@@ -897,24 +893,18 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
-        return false;      
-         
+        return false;        
      }
      
-     
-     
-//    db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
-//                        simVar2, simVarValue2, simVar3, simVarValue3,
-//                        goalDescription, goalText); 
     public boolean addNewGoal(String goalName,String goalType, String simVar1, String simVarValue1, 
                         String simVar2, String simVarValue2, String simVar3, String simVarValue3,
                         String goalDescription, String goalText){
-        
-        
+         
         try{
             Statement query = connection.createStatement();
             String sql = "INSERT INTO goals VALUES ('" + 
@@ -933,45 +923,26 @@ public class Database {
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
+        
         return false;
-        
-        
     }
-     
-    
+       
     public boolean deleteGoal(String goal_id){
-         try{
+        try{
             Statement query = connection.createStatement();
             String sql = "DELETE FROM goals WHERE GOAL_ID='" + goal_id + "'";
             query.executeUpdate(sql);
             query.close();
             return true;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
            
         return false;
-    }
-    
- 
-  
-    /* Placeholders currently used in GUI */
-    
-    
-  
-  
-    
-    
-    
-
-    
-
-    //db.deleteGoal(goal_id); 
-
-   
-    
-    
+    }    
 }
