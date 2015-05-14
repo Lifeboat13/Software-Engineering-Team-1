@@ -90,7 +90,7 @@ public class GUI extends javax.swing.JFrame {
         tManagerReportTable = new javax.swing.JTable();
         bManagerEmployeeList1 = new javax.swing.JButton();
         pManagerLogTable = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        labelManagerEmployeeLogName = new javax.swing.JLabel();
         spManagerLogTable = new javax.swing.JScrollPane();
         tManagerLogTable = new javax.swing.JTable();
         bManagerEmployeeList2 = new javax.swing.JButton();
@@ -328,7 +328,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -655,7 +655,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -681,7 +681,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -816,9 +816,9 @@ public class GUI extends javax.swing.JFrame {
 
         pManagerContentPanel.add(pManagerReportTable, "pManagerReportTable");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("[employee name]'s Log");
-        jLabel6.setToolTipText("");
+        labelManagerEmployeeLogName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelManagerEmployeeLogName.setText("[employee name]'s Log");
+        labelManagerEmployeeLogName.setToolTipText("");
 
         tManagerLogTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tManagerLogTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -867,7 +867,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(pManagerLogTableLayout.createSequentialGroup()
                         .addComponent(bManagerEmployeeList2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
+                        .addComponent(labelManagerEmployeeLogName)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pManagerLogTableLayout.setVerticalGroup(
@@ -875,7 +875,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pManagerLogTableLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pManagerLogTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelManagerEmployeeLogName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bManagerEmployeeList2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spManagerLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
@@ -982,7 +982,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bLessonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(bLessonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                     .addComponent(bLessonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1023,6 +1023,7 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tManagerLessonTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(tManagerLessonTable);
 
         javax.swing.GroupLayout pManagerLessonsLayout = new javax.swing.GroupLayout(pManagerLessons);
@@ -1030,14 +1031,14 @@ public class GUI extends javax.swing.JFrame {
         pManagerLessonsLayout.setHorizontalGroup(
             pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonsLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pManagerLessonsLayout.setVerticalGroup(
             pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Lessons", pManagerLessons);
@@ -1513,6 +1514,7 @@ public class GUI extends javax.swing.JFrame {
 
         ta_goalText.setColumns(20);
         ta_goalText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ta_goalText.setLineWrap(true);
         ta_goalText.setRows(5);
         jScrollPane9.setViewportView(ta_goalText);
 
@@ -1874,7 +1876,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tf_settingsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2076,7 +2078,8 @@ public class GUI extends javax.swing.JFrame {
 
         // Check selected column, get employee id (unless already on Report page, then use that employee)
         String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
-
+        labelManagerEmployeeLogName.setText(db.getUserName(employeeID));
+        
         // Fill tManagerLogTable
         fillLogTable(employeeID, tManagerLogTable);
 
@@ -2144,6 +2147,9 @@ public class GUI extends javax.swing.JFrame {
 
         // Hide 'Delete Lesson' button
         bLessonEditDelete.setVisible(false);
+        
+        // Clear out values
+        tf_lessonName.setText("");
 
         // Set lesson edit panel
         showLessonEdit();
@@ -2162,10 +2168,10 @@ public class GUI extends javax.swing.JFrame {
             // Show 'Delete Lesson' button
             bLessonEditDelete.setVisible(true);
 
-            fillLessonGoalTable("1", tGoalType1);
-            fillLessonGoalTable("2", tGoalType2);
-            fillLessonGoalTable("3", tGoalType3);
+            // Set lesson edit panel    
+            showLessonEdit();
             
+            // Select appropriate columns
             ArrayList<String> goals = db.getGoalsByLesson(lessonID);
             
             for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
@@ -2185,13 +2191,6 @@ public class GUI extends javax.swing.JFrame {
                     tGoalType3.setRowSelectionInterval(i, i);
                 }
             }
-            // Set lesson edit panel
-            
-         
-            showLessonEdit();
-       
-
-
     }//GEN-LAST:event_bLessonEditActionPerformed
 
     private void bLessonEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditSaveActionPerformed
@@ -2246,6 +2245,16 @@ public class GUI extends javax.swing.JFrame {
         // Hide 'Delete Goal' button
         bGoalEditDelete.setVisible(false);
 
+        // Clear out values
+        tf_SimVarValue1.setText("");
+        tf_SimVarValue2.setText("");
+        tf_SimVarValue3.setText("");
+        tf_goalDescription.setText("");
+        ta_goalText.setText("");
+        tf_goalName.setText("");
+        
+        
+        
         // Set goal edit panel
         showGoalEdit();
     }//GEN-LAST:event_bGoalAddActionPerformed
@@ -2253,10 +2262,10 @@ public class GUI extends javax.swing.JFrame {
     private void bGoalEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditActionPerformed
 
         // Check table for highlighted goal, get goal id
-//        int goal_id = tManagerGoalTable.getSelectedColumn();
         String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
         ArrayList<String> simVarsForGoal = db.getSimVarsByGoalID(goal_id);
         ArrayList<String> simVarValsForGoal = db.getSimVarValsByGoalID(goal_id);
+        
         // Change labels for 'Edit Goal'
         labelGoalEdit.setText("Edit Goal");
         bGoalEditSave.setText("Save");
@@ -2585,6 +2594,12 @@ public class GUI extends javax.swing.JFrame {
      * Shows the lesson edit panel
      */
     private void showLessonEdit() {
+        
+        // Fill goal tables with goals from database
+        fillLessonGoalTable("1", tGoalType1);
+        fillLessonGoalTable("2", tGoalType2);
+        fillLessonGoalTable("3", tGoalType3);
+        
         // Fill lesson panel with appropriate information
 
         tGoalType1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -2833,7 +2848,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -2856,6 +2870,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelGoalEdit;
     private javax.swing.JLabel labelLessonEdit;
     private javax.swing.JLabel labelLessonName;
+    private javax.swing.JLabel labelManagerEmployeeLogName;
     private javax.swing.JLabel labelManagerEmployeeReportName;
     private javax.swing.JLabel labelStartTime;
     private javax.swing.JLabel labelUsername;
