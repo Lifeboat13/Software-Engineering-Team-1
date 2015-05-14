@@ -2150,7 +2150,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bLessonAddActionPerformed
 
     private void bLessonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditActionPerformed
-        try {
+        
             // Check table for highlighted lesson, get lesson id
             String lessonID = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
             tf_lessonName.setText(db.getLessonName(lessonID));
@@ -2162,30 +2162,32 @@ public class GUI extends javax.swing.JFrame {
             // Show 'Delete Lesson' button
             bLessonEditDelete.setVisible(true);
 
+            fillLessonGoalTable("1", tGoalType1);
+            fillLessonGoalTable("2", tGoalType2);
+            fillLessonGoalTable("3", tGoalType3);
+            
             ArrayList<String> goals = db.getGoalsByLesson(lessonID);
-
+            
             for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
-                if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i, 0))) {
+                if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i, 0))) {                    
                     tGoalType1.setRowSelectionInterval(i, i);
                 }
             }
 
             for (int i = 0; i < tGoalType2.getModel().getRowCount(); i++) {
-                if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i, 0))) {
+                if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i, 0))) {                 
                     tGoalType2.setRowSelectionInterval(i, i);
                 }
             }
 
             for (int i = 0; i < tGoalType3.getModel().getRowCount(); i++) {
-                if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i, 0))) {
+                if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i, 0))) {                    
                     tGoalType3.setRowSelectionInterval(i, i);
                 }
             }
             // Set lesson edit panel
             showLessonEdit();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
-        }
+       
 
 
     }//GEN-LAST:event_bLessonEditActionPerformed
@@ -2201,20 +2203,23 @@ public class GUI extends javax.swing.JFrame {
 
             // Save existing lesson
             if (labelLessonEdit.getText().equals("Edit Lesson")) {
-
-                db.updateLessonInfo(lessonName, lessonName, goal1_id, goal2_id, goal3_id, lessonText);
+                String lesson_id = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
+                db.updateLessonInfo(lesson_id, lessonName, goal1_id, goal2_id, goal3_id, lessonText);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson saved.");
+                // Go back to manager home panel
+                showManagerHome();
             } // Add new lesson
             else {
 
-                db.addNewLesson(db.getNextAvailableID("Lesson"), lessonName, goal1_id, goal2_id, goal3_id, lessonText);
+                db.addNewLesson(lessonName, goal1_id, goal2_id, goal3_id, lessonText);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson added.");
+                // Go back to manager home panel
+                showManagerHome();
             }
 
-            // Go back to manager home panel
-            showManagerHome();
+            
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error, action was not completed.");
@@ -2581,10 +2586,6 @@ public class GUI extends javax.swing.JFrame {
      */
     private void showLessonEdit() {
         // Fill lesson panel with appropriate information
-
-        fillLessonGoalTable("1", tGoalType1);
-        fillLessonGoalTable("2", tGoalType2);
-        fillLessonGoalTable("3", tGoalType3);
 
         tGoalType1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 

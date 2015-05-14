@@ -578,12 +578,12 @@ public class Database {
         
     }
     
-    public boolean addNewLesson(String lessonID, String lessonName, String goal1_id, String goal2_id, String goal3_id, String lessonText){
+    public boolean addNewLesson(String lessonName, String goal1_id, String goal2_id, String goal3_id, String lessonText){
         System.out.println(getNextAvailableID("Lesson"));
         try{
             Statement query = connection.createStatement();
             String sql = "INSERT INTO Lessons VALUES ('" + 
-                    lessonID + "', '" + 
+                    getNextAvailableID("Lesson") + "', '" + 
                     lessonName + "', '" + 
                     goal1_id + "', '" + 
                     goal2_id + "', '" + 
