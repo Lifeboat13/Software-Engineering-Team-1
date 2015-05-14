@@ -1,5 +1,6 @@
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -736,10 +737,11 @@ public class Database {
         
         ArrayList<String> toReturn = new ArrayList();
         try{
-            Statement query = connection.createStatement();
-            String sql = "SELECT SIM_VAR_1, SIM_VAR_2, SIM_VAR_3 FROM goals WHERE GOAL_ID='" + goal_id + "'";
             
-            ResultSet set = query.executeQuery(sql);
+            String sql = "SELECT SIM_VAR_1, SIM_VAR_2, SIM_VAR_3 FROM goals WHERE GOAL_ID=?";
+            PreparedStatement query = connection.prepareStatement(sql);
+            query.setString(1, goal_id);
+            ResultSet set = query.executeQuery();
             while(set.next()){
              
                 toReturn.add(set.getString("SIM_VAR_1"));
@@ -810,10 +812,11 @@ public class Database {
         
         String toReturn =  "";
         try{
-            Statement query = connection.createStatement();
-            String sql = "SELECT FULL_TEXT FROM goals WHERE GOAL_ID='" + goal_id + "'";
+            String sql = "SELECT FULL_TEXT FROM goals WHERE GOAL_ID=?";
+            PreparedStatement query = connection.prepareStatement(sql);
+            query.setString(1, goal_id);
             
-            ResultSet set = query.executeQuery(sql);
+            ResultSet set = query.executeQuery();
             while(set.next()){
              
                 toReturn = set.getString("FULL_TEXT");
@@ -833,10 +836,11 @@ public class Database {
         
         String toReturn =  "";
         try{
-            Statement query = connection.createStatement();
-            String sql = "SELECT GOAL_NAME FROM goals WHERE GOAL_ID='" + goal_id + "'";
             
-            ResultSet set = query.executeQuery(sql);
+            String sql = "SELECT GOAL_NAME FROM goals WHERE GOAL_ID=?";
+            PreparedStatement query = connection.prepareStatement(sql);
+            query.setString(1, goal_id);
+            ResultSet set = query.executeQuery();
             while(set.next()){
              
                 toReturn = set.getString("GOAL_NAME");
@@ -857,10 +861,13 @@ public class Database {
         
         String toReturn =  "";
         try{
-            Statement query = connection.createStatement();
-            String sql = "SELECT TYPE FROM goals WHERE GOAL_ID='" + goal_id + "'";
             
-            ResultSet set = query.executeQuery(sql);
+            String sql = "SELECT TYPE FROM goals WHERE GOAL_ID=?";
+            PreparedStatement query = connection.prepareStatement(sql);
+            
+            query.setString(1, goal_id);
+            
+            ResultSet set = query.executeQuery();
             while(set.next()){
              
                 toReturn = set.getString("TYPE");
@@ -881,20 +888,25 @@ public class Database {
         String simVar2, String simVarValue2, String simVar3, String simVarValue3, String goalDescription, String goalText){
          
         try{
-            Statement query = connection.createStatement();
-            String sql = "UPDATE goals SET "
-                    + "GOAL_NAME='" + goalName + 
-                    "', DESCRIPTION='" + goalDescription + 
-                    "', FULL_TEXT='" + goalText + 
-                    "', TYPE='" + goalType + 
-                    "', SIM_VAR_1='" + simVar1 + 
-                    "', SIM_VAR_1_VALUE='" + simVarValue1 + 
-                    "', SIM_VAR_2='" + simVar2 + 
-                    "', SIM_VAR_2_VALUE='" + simVarValue2 +
-                    "', SIM_VAR_3='" + simVar3 + 
-                    "', SIM_VAR_3_VALUE='" + simVarValue3 +
-                    "' WHERE GOAL_ID='" + goalID + "'";
-            query.executeUpdate(sql);
+            
+            String q = "UPDATE goals SET GOAL_NAME=?, DESCRIPTION=?, FULL_TEXT=?, TYPE=?,"
+                    + "SIM_VAR_1=?, SIM_VAR_1_VALUE=?,SIM_VAR_2=?, SIM_VAR_2_VALUE=?,"
+                    + "SIM_VAR_3=?, SIM_VAR_3_VALUE=? WHERE GOAL_ID=?";
+            PreparedStatement query = connection.prepareStatement(q);
+            
+            query.setString(1, goalName);
+            query.setString(2, goalDescription);
+            query.setString(3, goalText);
+            query.setString(4, goalType);
+            query.setString(5, simVar1);
+            query.setString(6, simVarValue1);
+            query.setString(7, simVar2);
+            query.setString(8, simVarValue2);
+            query.setString(9, simVar3);
+            query.setString(10, simVarValue3);
+            query.setString(11, goalID);
+ 
+            query.execute();
             query.close();
             return true;
         }
@@ -910,21 +922,24 @@ public class Database {
                         String goalDescription, String goalText){
          
         try{
-            Statement query = connection.createStatement();
-            String sql = "INSERT INTO goals VALUES ('" + 
-                    getNextAvailableID("Goal") + "','" + 
-                    goalName + "','" + 
-                    goalDescription + "','" + 
-                    goalText + "','" + 
-                    goalType + "','" + 
-                    simVar1 + "','" + 
-                    simVarValue1 + "','" + 
-                    simVar2 + "','" + 
-                    simVarValue2 + "','" + 
-                    simVar3 + "','" + 
-                    simVarValue3 + "')";                    
-                   
-            query.executeUpdate(sql);
+            
+            String q = "INSERT INTO goals VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement query = connection.prepareStatement(q);
+            
+            query.setString(1, getNextAvailableID("Goal"));
+            query.setString(2, goalName);
+            query.setString(3, goalDescription);
+            query.setString(4, goalText);
+            query.setString(5, goalType);
+            query.setString(6, simVar1);
+            query.setString(7, simVarValue1);
+            query.setString(8, simVar2);
+            query.setString(9, simVarValue2);
+            query.setString(10, simVar3);
+            query.setString(11, simVarValue3);
+               
+               
+            query.execute();
             query.close();
             return true;
         }
@@ -937,9 +952,12 @@ public class Database {
        
     public boolean deleteGoal(String goal_id){
         try{
-            Statement query = connection.createStatement();
-            String sql = "DELETE FROM goals WHERE GOAL_ID='" + goal_id + "'";
-            query.executeUpdate(sql);
+            String sql = "DELETE FROM goals WHERE GOAL_ID = ?";
+            PreparedStatement query = connection.prepareStatement(sql);
+            
+            query.setString(1, goal_id);
+            
+            query.execute();
             query.close();
             return true;
         }

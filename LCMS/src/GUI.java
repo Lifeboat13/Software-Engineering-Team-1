@@ -2292,10 +2292,15 @@ public class GUI extends javax.swing.JFrame {
             // Show 'Delete Goal' button
             bGoalEditDelete.setVisible(true);
 
+            // Fill goal panel with appropriate information
+            fillSimVarComboBox(cb_SimVar1);
+            fillSimVarComboBox(cb_SimVar2);
+            fillSimVarComboBox(cb_SimVar3);
+            
             // Select proper goal simVars 1, 2, 3 comboboxes
-            cb_SimVar1.setSelectedItem(simVarsForGoal.get(0));
-            cb_SimVar2.setSelectedItem(simVarsForGoal.get(1));
-            cb_SimVar3.setSelectedItem(simVarsForGoal.get(2));
+            cb_SimVar1.setSelectedIndex(Integer.parseInt(simVarsForGoal.get(0))-1);
+            cb_SimVar2.setSelectedIndex(Integer.parseInt(simVarsForGoal.get(1))-1);
+            cb_SimVar3.setSelectedIndex(Integer.parseInt(simVarsForGoal.get(2))-1);
 
             // Fill in goal simVarValue 1, 2, 3 text fields
             tf_SimVarValue1.setText(simVarValsForGoal.get(0));
@@ -2693,10 +2698,7 @@ public class GUI extends javax.swing.JFrame {
      * Shows the goal edit panel
      */
     private void showGoalEdit() {
-        // Fill goal panel with appropriate information
-        fillSimVarComboBox(cb_SimVar1);
-        fillSimVarComboBox(cb_SimVar2);
-        fillSimVarComboBox(cb_SimVar3);
+        
 
         // Set card to add goal add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
@@ -2747,8 +2749,8 @@ public class GUI extends javax.swing.JFrame {
     private void fillSimVarComboBox(javax.swing.JComboBox comboBox) {
 
         ArrayList<String> ls = db.getAllSimVarNames();
-        comboBox.setModel(new DefaultComboBoxModel(ls.toArray()));
         
+        comboBox.setModel(new DefaultComboBoxModel(ls.toArray()));
     }
 
     /**
