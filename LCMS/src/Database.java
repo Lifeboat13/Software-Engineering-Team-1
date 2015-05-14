@@ -332,8 +332,6 @@ public class Database {
             while(set.next()){                
                 started = Timestamp.valueOf(set.getString("TIME_STARTED"));   
                 finished = Timestamp.valueOf(set.getString("TIME_FINISHED"));
-                System.out.println(finished.getTime());
-                System.out.println(started.getTime());
                 totalTime += (finished.getTime() - started.getTime());
             }
             set.close();

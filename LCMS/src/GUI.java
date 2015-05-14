@@ -2411,7 +2411,7 @@ public class GUI extends javax.swing.JFrame {
             card.show(pAuditorContentPanel, "pAuditorReportTable");
         }
         catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
+            
         }
     }//GEN-LAST:event_bAuditorEmployeReportActionPerformed
 
@@ -2430,7 +2430,7 @@ public class GUI extends javax.swing.JFrame {
             card.show(pAuditorContentPanel, "pAuditorLogTable");
         }
         catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
+            
         }
     }//GEN-LAST:event_bAuditorEmployeeLogActionPerformed
 
@@ -2768,10 +2768,10 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getUserReport(employeeID);
         long total = db.getUserReportTotalTimeMilliSeconds(employeeID);
         
-        label_totalTime.setText("<html>Total time spent: <br/>Hours: "
-                + (int) ((total / (1000*60*60)) % 24) + "<br/>Minutes: " 
-                + (int) ((total / (1000*60)) % 60)+ "<br/>Seconds: " 
-                + (int) (total / 1000) % 60 + "</html>");
+        label_totalTime.setText("<html>Total time spent: "
+                + "<br/>"+ (int) ((total / (1000*60*60)) % 24) + " Hours"
+                + "<br/>" + (int) ((total / (1000*60)) % 60)+ " Minutes"
+                + "<br/>" + (int) (total / 1000) % 60 + " Seconds</html>");
         
         table.setModel(createTableModel(titles, list));
         
