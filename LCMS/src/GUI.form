@@ -187,7 +187,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="labelUsername" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="501" max="32767" attributes="0"/>
+                          <EmptySpace pref="556" max="32767" attributes="0"/>
                           <Component id="buttonSettings" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="buttonSignOut" min="-2" max="-2" attributes="0"/>
@@ -355,13 +355,18 @@
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="3" rowCount="4">
-                                        <Column editable="false" title="Lesson ID" type="java.lang.String"/>
+                                        <Column editable="false" title="Lesson ID" type="java.lang.Integer"/>
                                         <Column editable="false" title="Lesson Name" type="java.lang.String"/>
                                         <Column editable="false" title="Lesson Score" type="java.lang.String"/>
                                       </Table>
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                       <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
                                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
@@ -400,7 +405,7 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="spEmployeeLogTable" alignment="0" pref="507" max="32767" attributes="0"/>
+                                  <Component id="spEmployeeLogTable" alignment="0" pref="512" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -486,7 +491,7 @@
                                           <Component id="spAuditorEmployeeTable" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="564" max="32767" attributes="0"/>
+                                              <EmptySpace pref="574" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -841,7 +846,7 @@
                                                   <Component id="spManagerEmployeeTable" max="32767" attributes="0"/>
                                                   <Group type="102" attributes="0">
                                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace pref="492" max="32767" attributes="0"/>
+                                                      <EmptySpace pref="554" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -1146,7 +1151,7 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jScrollPane1" pref="647" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" pref="662" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1256,7 +1261,7 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jScrollPane2" pref="625" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane2" pref="648" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1408,7 +1413,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="438" max="32767" attributes="0"/>
+                              <EmptySpace pref="455" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1895,7 +1900,7 @@
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="0" pref="308" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="313" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -2130,14 +2135,14 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane10" pref="770" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane10" pref="780" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="labelLessonName" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="bLessonBack" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="309" max="32767" attributes="0"/>
+                                      <EmptySpace pref="367" max="32767" attributes="0"/>
                                       <Component id="labelStartTime" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
                                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -2278,7 +2283,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                   <Component id="sim_pic" min="-2" pref="539" max="-2" attributes="0"/>
-                                  <EmptySpace pref="127" max="32767" attributes="0"/>
+                                  <EmptySpace pref="129" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2339,11 +2344,11 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="tf_settingsUsername" min="-2" pref="322" max="-2" attributes="0"/>
-                                                  <Component id="tf_settingsName" alignment="1" min="-2" pref="322" max="-2" attributes="0"/>
-                                                  <Component id="tf_settingsAddress" alignment="1" min="-2" pref="322" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="tf_settingsName" alignment="1" pref="278" max="32767" attributes="0"/>
+                                                  <Component id="tf_settingsAddress" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="tf_settingsUsername" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -2355,24 +2360,22 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel30" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
                                                   <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="tf_currentPassword" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="tf_newPassword" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="tf_confirmPassword" alignment="0" pref="258" max="32767" attributes="0"/>
+                                                  <Component id="tf_confirmPassword" alignment="0" pref="278" max="32767" attributes="0"/>
+                                                  <Component id="tf_currentPassword" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <EmptySpace pref="206" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2390,10 +2393,10 @@
                                   <Component id="tf_settingsName" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel30" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tf_settingsAddress" alignment="3" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="tf_settingsAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">

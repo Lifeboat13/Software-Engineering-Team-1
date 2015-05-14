@@ -239,7 +239,7 @@ public class Database {
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT eid, firstname, lastname, address FROM Users WHERE usertype=1";
+            String sql = "SELECT eid, firstname, lastname, address FROM Users WHERE usertype=1 ORDER BY eid * 1";
             
             ResultSet set = query.executeQuery(sql);
             while(set.next()){
@@ -350,7 +350,7 @@ public class Database {
         ArrayList<String> toReturn = new ArrayList();
         try{
             Statement query = connection.createStatement();
-            String sql = "SELECT * FROM goals";
+            String sql = "SELECT * FROM goals ORDER BY GOAL_ID * 1";
             ResultSet set = query.executeQuery(sql);
             while(set.next()){
                 toReturn.add(set.getString("GOAL_ID"));

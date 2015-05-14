@@ -295,7 +295,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(panelHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelUsername)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 501, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
                 .addComponent(buttonSettings)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonSignOut)
@@ -331,7 +331,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -355,7 +355,7 @@ public class GUI extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -425,7 +425,7 @@ public class GUI extends javax.swing.JFrame {
         );
         pEmployeeLogLayout.setVerticalGroup(
             pEmployeeLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(spEmployeeLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+            .addComponent(spEmployeeLogTable, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Log", pEmployeeLog);
@@ -491,7 +491,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(spAuditorEmployeeTable)
                     .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
                         .addComponent(jLabel24)
-                        .addContainerGap(564, Short.MAX_VALUE))))
+                        .addContainerGap(574, Short.MAX_VALUE))))
         );
         pAuditorEmployeeTableLayout.setVerticalGroup(
             pAuditorEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -659,7 +659,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label_totalTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, Short.MAX_VALUE))
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -687,7 +687,7 @@ public class GUI extends javax.swing.JFrame {
             pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorHomeLayout.createSequentialGroup()
                 .addGroup(pAuditorHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pAuditorContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pAuditorHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(pAuditorSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -743,7 +743,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(spManagerEmployeeTable)
                     .addGroup(pManagerEmployeeTableLayout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addContainerGap(492, Short.MAX_VALUE))))
+                        .addContainerGap(554, Short.MAX_VALUE))))
         );
         pManagerEmployeeTableLayout.setVerticalGroup(
             pManagerEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1036,7 +1036,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerLessonsLayout.setHorizontalGroup(
             pManagerLessonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerLessonsLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1121,7 +1121,7 @@ public class GUI extends javax.swing.JFrame {
         pManagerGoalsLayout.setHorizontalGroup(
             pManagerGoalsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pManagerGoalsLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1230,7 +1230,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(bEmployeeEditCancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bEmployeeEditDelete)))))
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addContainerGap(455, Short.MAX_VALUE))
         );
         pManagerEmployeeEditLayout.setVerticalGroup(
             pManagerEmployeeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1599,7 +1599,7 @@ public class GUI extends javax.swing.JFrame {
                                                 .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(tf_goalName, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(cb_goalType, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(0, 308, Short.MAX_VALUE))))
+                                .addGap(0, 313, Short.MAX_VALUE))))
                     .addGroup(pManagerGoalEditLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(pManagerGoalEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1695,13 +1695,13 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pLessonLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                     .addGroup(pLessonLayout.createSequentialGroup()
                         .addComponent(labelLessonName)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pLessonLayout.createSequentialGroup()
                         .addComponent(bLessonBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 367, Short.MAX_VALUE)
                         .addComponent(labelStartTime)
                         .addGap(235, 235, 235)
                         .addComponent(jButton1)))
@@ -1735,7 +1735,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pATCsimLayout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addComponent(sim_pic, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         pATCsimLayout.setVerticalGroup(
             pATCsimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1844,11 +1844,11 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pSettingsLayout.createSequentialGroup()
                                 .addComponent(jLabel29)
-                                .addGap(18, 18, 18)
-                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tf_settingsUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_settingsName, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(62, 62, 62)
+                                .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tf_settingsName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tf_settingsUsername)))
                             .addGroup(pSettingsLayout.createSequentialGroup()
                                 .addGap(262, 262, 262)
                                 .addComponent(bSettingsSave)
@@ -1857,17 +1857,16 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(pSettingsLayout.createSequentialGroup()
                                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel27)
-                                    .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel23)
-                                        .addComponent(jLabel22))
+                                    .addComponent(jLabel22)
                                     .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel28))
+                                    .addComponent(jLabel28)
+                                    .addComponent(jLabel23))
                                 .addGap(24, 24, 24)
                                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tf_currentPassword, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tf_newPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))))))
-                .addContainerGap(189, Short.MAX_VALUE))
+                                    .addComponent(tf_confirmPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                                    .addComponent(tf_currentPassword, javax.swing.GroupLayout.Alignment.LEADING))))))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         pSettingsLayout.setVerticalGroup(
             pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1881,10 +1880,10 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tf_settingsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_settingsAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -2522,13 +2521,64 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bSimulatorCancelActionPerformed
 
+    private void buttonSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSettingsActionPerformed
+        showSettings();
+    }//GEN-LAST:event_buttonSettingsActionPerformed
+
+    private void textFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldPasswordActionPerformed
+
+    private void tf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_passwordActionPerformed
+
+    private void tf_lessonNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_lessonNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_lessonNameActionPerformed
+
+    private void bSimulatorCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCompleteActionPerformed
+        if(currentUser.getUserType().equals("1")){
+        
+            ATC atc = new ATC(5, 10);
+            double result = atc.playSimulator();
+            String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString();
+            String eid = currentUser.getEID();
+            String startTime = labelStartTime.getText();
+            String endTime = "" + new Timestamp(System.currentTimeMillis());
+
+            db.takeLesson(lessonID, result, eid, startTime, endTime);
+
+            // Update history log
+            NumberFormat formatter = new DecimalFormat("#0.00"); 
+
+            db.updateLog(eid, "Scored: " + formatter.format(result) + "% on Lesson " + lessonID);
+
+            JOptionPane.showMessageDialog(this, "Your score: " + formatter.format(result) + "%");
+
+            showEmployeeHome();
+        }
+    }//GEN-LAST:event_bSimulatorCompleteActionPerformed
+
+    private void tf_settingsNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_settingsNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_settingsNameActionPerformed
+
+    private void tf_settingsUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_settingsUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_settingsUsernameActionPerformed
+
+    private void bSettingsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsCancelActionPerformed
+        showHomePanel();
+    }//GEN-LAST:event_bSettingsCancelActionPerformed
+
     private void bSettingsSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsSaveActionPerformed
 
         //Current password is incorrect
         if (!(new String(tf_currentPassword.getPassword())).equals(db.getUserPassword(currentUser.getEID()))) {
             JOptionPane.showMessageDialog(this, "Error, incorrect password entered.");
         }
-        //If the new password fields don't match        
+        //If the new password fields don't match
         else if (!(new String(tf_newPassword.getPassword())).equals(new String(tf_confirmPassword.getPassword()))) {
             JOptionPane.showMessageDialog(this, "Error, passwords do not match.");
         }
@@ -2551,54 +2601,6 @@ public class GUI extends javax.swing.JFrame {
             showHomePanel();
         }
     }//GEN-LAST:event_bSettingsSaveActionPerformed
-
-    private void buttonSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSettingsActionPerformed
-        showSettings();
-    }//GEN-LAST:event_buttonSettingsActionPerformed
-
-    private void bSettingsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsCancelActionPerformed
-        showHomePanel();
-    }//GEN-LAST:event_bSettingsCancelActionPerformed
-
-    private void textFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldPasswordActionPerformed
-
-    private void tf_settingsUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_settingsUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_settingsUsernameActionPerformed
-
-    private void tf_settingsNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_settingsNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_settingsNameActionPerformed
-
-    private void tf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_passwordActionPerformed
-
-    private void tf_lessonNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_lessonNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_lessonNameActionPerformed
-
-    private void bSimulatorCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCompleteActionPerformed
-        ATC atc = new ATC(5, 10);
-        double result = atc.playSimulator();
-        String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString();
-        String eid = currentUser.getEID();
-        String startTime = labelStartTime.getText();
-        String endTime = "" + new Timestamp(System.currentTimeMillis());
-
-        db.takeLesson(lessonID, result, eid, startTime, endTime);
-
-        // Update history log
-        NumberFormat formatter = new DecimalFormat("#0.00"); 
-        
-        db.updateLog(eid, "Scored: " + formatter.format(result) + "% on Lesson " + lessonID);
-        
-        JOptionPane.showMessageDialog(this, "Your score: " + formatter.format(result) + "%");
-        
-        showEmployeeHome();
-    }//GEN-LAST:event_bSimulatorCompleteActionPerformed
 
     /**
      * Set panelContent card to appropriate content panel
@@ -2751,7 +2753,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getEmployees();
         //table.getColumn(titles[0]).setPreferredWidth(10);
         table.setModel(createTableModel(titles, list));
-        
+         table.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -2778,7 +2780,7 @@ public class GUI extends javax.swing.JFrame {
                 + "<br/>" + (int) (total / 1000) % 60 + " Seconds</html>");
         
         table.setModel(createTableModel(titles, list));
-        
+         table.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -2789,7 +2791,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getUserLog(employeeID);
 
         table.setModel(createTableModel(titles, list));
-        
+        table.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -2800,7 +2802,8 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getEmployeeLessons(employeeID);
 
         table.setModel(createTableModel(titles, list));
-       
+        
+       table.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -2811,7 +2814,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getLessons();
 
         table.setModel(createTableModel(titles, list));
-        
+         table.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -2822,7 +2825,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getGoals();
 
         table.setModel(createTableModel(titles, list));
-       
+        table.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -2833,7 +2836,10 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getGoalsByType(type);
 
         table.setModel(createTableModel(titles, list));
-      
+       table.setAutoCreateRowSorter(true);
+       
+       
+       
     }
 
     /**
