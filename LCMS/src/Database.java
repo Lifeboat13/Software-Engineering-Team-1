@@ -670,14 +670,18 @@ public class Database {
     
     public boolean takeLesson(String lesson_ID, double score, String eid, String started, String finished){
         try{
-            Statement query = connection.createStatement();
-            String sql = "INSERT INTO history VALUES ('" + 
-                    lesson_ID + "','" + 
-                    score + "','" + 
-                    eid + "','" + 
-                    started + "','" + 
-                    finished + "')";
-            query.executeUpdate(sql);
+    
+            
+            
+            String sql = "INSERT INTO history VALUES (?,?,?,?,?)";
+            PreparedStatement query = connection.prepareStatement(sql);
+            query.setString(1, lesson_ID);
+            query.setDouble(2, score);
+            query.setString(3, eid);
+            query.setString(4, started);
+            query.setString(5, finished);
+            
+            query.execute();
             query.close();
             return true;
         }
