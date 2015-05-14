@@ -2062,41 +2062,47 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bManagerEmployeeAddActionPerformed
 
     private void bManagerEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeEditActionPerformed
+        try{
+            // Check table for highlighted employee, get employee id
+            String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
 
-        // Check table for highlighted employee, get employee id
-        String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
+            // Change labels for 'Edit Employee'
+            labelEmployeeEdit.setText("Edit Employee");
+            bEmployeeEditSave.setText("Save");
 
-        // Change labels for 'Edit Employee'
-        labelEmployeeEdit.setText("Edit Employee");
-        bEmployeeEditSave.setText("Save");
+            // Show 'Delete Employee' button
+            bEmployeeEditDelete.setVisible(true);
 
-        // Show 'Delete Employee' button
-        bEmployeeEditDelete.setVisible(true);
+            // Fill in text fields with appropriate information
+            tf_username.setText(db.getUserUsername(employeeID));
+            tf_password.setText(db.getUserPassword(employeeID));
+            tf_fName.setText(db.getUserName(employeeID).split(" ")[0]);
+            tf_lName.setText(db.getUserName(employeeID).split(" ")[1]);
+            tf_address.setText(db.getUserAddress(employeeID));
 
-        // Fill in text fields with appropriate information
-        tf_username.setText(db.getUserUsername(employeeID));
-        tf_password.setText(db.getUserPassword(employeeID));
-        tf_fName.setText(db.getUserName(employeeID).split(" ")[0]);
-        tf_lName.setText(db.getUserName(employeeID).split(" ")[1]);
-        tf_address.setText(db.getUserAddress(employeeID));
-
-        // Set card to employee add/edit panel
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-        card.show(panelContent, "pManagerEmployeeEdit");
+            // Set card to employee add/edit panel
+            java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
+            card.show(panelContent, "pManagerEmployeeEdit");
+        }catch(ArrayIndexOutOfBoundsException e){
+            
+        }
     }//GEN-LAST:event_bManagerEmployeeEditActionPerformed
 
     private void bManagerEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeLogActionPerformed
+        try{
+            // Check selected column, get employee id (unless already on Report page, then use that employee)
+            String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
+            labelManagerEmployeeLogName.setText(db.getUserName(employeeID));
 
-        // Check selected column, get employee id (unless already on Report page, then use that employee)
-        String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
-        labelManagerEmployeeLogName.setText(db.getUserName(employeeID));
-        
-        // Fill tManagerLogTable
-        fillLogTable(employeeID, tManagerLogTable);
+            // Fill tManagerLogTable
+            fillLogTable(employeeID, tManagerLogTable);
 
-        // Show card pManagerLogTable
-        java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
-        card.show(pManagerContentPanel, "pManagerLogTable");
+            // Show card pManagerLogTable
+            java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
+            card.show(pManagerContentPanel, "pManagerLogTable");
+        }catch(ArrayIndexOutOfBoundsException e){
+            
+        }
     }//GEN-LAST:event_bManagerEmployeeLogActionPerformed
 
     private void bEmployeeEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditSaveActionPerformed
@@ -2166,38 +2172,41 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bLessonAddActionPerformed
 
     private void bLessonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditActionPerformed
-        
-        // Check table for highlighted lesson, get lesson id
-        String lessonID = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
-        tf_lessonName.setText(db.getLessonName(lessonID));
+        try{
+            // Check table for highlighted lesson, get lesson id
+            String lessonID = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
+            tf_lessonName.setText(db.getLessonName(lessonID));
 
-        // Change labels for 'Edit Lesson'
-        labelLessonEdit.setText("Edit Lesson");
-        bLessonEditSave.setText("Save");
+            // Change labels for 'Edit Lesson'
+            labelLessonEdit.setText("Edit Lesson");
+            bLessonEditSave.setText("Save");
 
-        // Show 'Delete Lesson' button
-        bLessonEditDelete.setVisible(true);
+            // Show 'Delete Lesson' button
+            bLessonEditDelete.setVisible(true);
 
-        // Set lesson edit panel    
-        showLessonEdit();
+            // Set lesson edit panel    
+            showLessonEdit();
 
-        // Select appropriate columns
-        ArrayList<String> goals = db.getGoalsByLesson(lessonID);
-      
-        for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
-            if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i, 0))) {                    
-                tGoalType1.setRowSelectionInterval(i, i);
+            // Select appropriate columns
+            ArrayList<String> goals = db.getGoalsByLesson(lessonID);
+
+            for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
+                if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i, 0))) {                    
+                    tGoalType1.setRowSelectionInterval(i, i);
+                }
             }
-        }
-        for (int i = 0; i < tGoalType2.getModel().getRowCount(); i++) {
-            if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i, 0))) {                 
-                tGoalType2.setRowSelectionInterval(i, i);
+            for (int i = 0; i < tGoalType2.getModel().getRowCount(); i++) {
+                if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i, 0))) {                 
+                    tGoalType2.setRowSelectionInterval(i, i);
+                }
             }
-        }
-        for (int i = 0; i < tGoalType3.getModel().getRowCount(); i++) {
-            if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i, 0))) {                    
-                tGoalType3.setRowSelectionInterval(i, i);
+            for (int i = 0; i < tGoalType3.getModel().getRowCount(); i++) {
+                if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i, 0))) {                    
+                    tGoalType3.setRowSelectionInterval(i, i);
+                }
             }
+        }catch(ArrayIndexOutOfBoundsException e){
+            
         }
     }//GEN-LAST:event_bLessonEditActionPerformed
 
@@ -2270,39 +2279,42 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bGoalAddActionPerformed
 
     private void bGoalEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditActionPerformed
+        try{
+            // Check table for highlighted goal, get goal id
+            String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
+            ArrayList<String> simVarsForGoal = db.getSimVarsByGoalID(goal_id);
+            ArrayList<String> simVarValsForGoal = db.getSimVarValsByGoalID(goal_id);
 
-        // Check table for highlighted goal, get goal id
-        String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
-        ArrayList<String> simVarsForGoal = db.getSimVarsByGoalID(goal_id);
-        ArrayList<String> simVarValsForGoal = db.getSimVarValsByGoalID(goal_id);
-        
-        // Change labels for 'Edit Goal'
-        labelGoalEdit.setText("Edit Goal");
-        bGoalEditSave.setText("Save");
+            // Change labels for 'Edit Goal'
+            labelGoalEdit.setText("Edit Goal");
+            bGoalEditSave.setText("Save");
 
-        // Show 'Delete Goal' button
-        bGoalEditDelete.setVisible(true);
+            // Show 'Delete Goal' button
+            bGoalEditDelete.setVisible(true);
 
-        // Select proper goal simVars 1, 2, 3 comboboxes
-        cb_SimVar1.setSelectedItem(simVarsForGoal.get(0));
-        cb_SimVar2.setSelectedItem(simVarsForGoal.get(1));
-        cb_SimVar3.setSelectedItem(simVarsForGoal.get(2));
+            // Select proper goal simVars 1, 2, 3 comboboxes
+            cb_SimVar1.setSelectedItem(simVarsForGoal.get(0));
+            cb_SimVar2.setSelectedItem(simVarsForGoal.get(1));
+            cb_SimVar3.setSelectedItem(simVarsForGoal.get(2));
 
-        // Fill in goal simVarValue 1, 2, 3 text fields
-        tf_SimVarValue1.setText(simVarValsForGoal.get(0));
-        tf_SimVarValue2.setText(simVarValsForGoal.get(1));
-        tf_SimVarValue3.setText(simVarValsForGoal.get(2));
+            // Fill in goal simVarValue 1, 2, 3 text fields
+            tf_SimVarValue1.setText(simVarValsForGoal.get(0));
+            tf_SimVarValue2.setText(simVarValsForGoal.get(1));
+            tf_SimVarValue3.setText(simVarValsForGoal.get(2));
 
-        // Fill in goal description and text text fields        
-        tf_goalDescription.setText(db.getGoalDescription(goal_id));
-        ta_goalText.setText(db.getGoalText(goal_id));
-        tf_goalName.setText(db.getGoalName(goal_id));
+            // Fill in goal description and text text fields        
+            tf_goalDescription.setText(db.getGoalDescription(goal_id));
+            ta_goalText.setText(db.getGoalText(goal_id));
+            tf_goalName.setText(db.getGoalName(goal_id));
 
-        //Select proper goal type in combo box
-        cb_goalType.setSelectedIndex(Integer.parseInt(db.getGoalType(goal_id)) - 1);
+            //Select proper goal type in combo box
+            cb_goalType.setSelectedIndex(Integer.parseInt(db.getGoalType(goal_id)) - 1);
 
-        // Set goal edit panel
-        showGoalEdit();
+            // Set goal edit panel
+            showGoalEdit();
+        }catch(ArrayIndexOutOfBoundsException e){
+            
+        }
     }//GEN-LAST:event_bGoalEditActionPerformed
 
     private void bGoalEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditSaveActionPerformed
@@ -2724,8 +2736,9 @@ public class GUI extends javax.swing.JFrame {
     private void fillEmployeeTable(javax.swing.JTable table) {
         String[] titles = {"EID", "First Name", "Last name", "Address"};
         ArrayList<String> list = db.getEmployees();
-
+        //table.getColumn(titles[0]).setPreferredWidth(10);
         table.setModel(createTableModel(titles, list));
+        
     }
 
     /**
@@ -2735,6 +2748,7 @@ public class GUI extends javax.swing.JFrame {
 
         ArrayList<String> ls = db.getAllSimVarNames();
         comboBox.setModel(new DefaultComboBoxModel(ls.toArray()));
+        
     }
 
     /**
@@ -2745,6 +2759,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getUserReport(employeeID);
 
         table.setModel(createTableModel(titles, list));
+        
     }
 
     /**
@@ -2755,6 +2770,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getUserLog(employeeID);
 
         table.setModel(createTableModel(titles, list));
+        
     }
 
     /**
@@ -2765,6 +2781,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getEmployeeLessons(employeeID);
 
         table.setModel(createTableModel(titles, list));
+       
     }
 
     /**
@@ -2775,6 +2792,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getLessons();
 
         table.setModel(createTableModel(titles, list));
+        
     }
 
     /**
@@ -2785,6 +2803,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getGoals();
 
         table.setModel(createTableModel(titles, list));
+       
     }
 
     /**
@@ -2795,13 +2814,26 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<String> list = db.getGoalsByType(type);
 
         table.setModel(createTableModel(titles, list));
+      
     }
 
     /**
      * Returns a table model with the appropriate information
      */
     private DefaultTableModel createTableModel(String[] titles, ArrayList<String> list) {
-        DefaultTableModel model = new DefaultTableModel(titles, 0);
+        
+        
+        DefaultTableModel model = new DefaultTableModel(titles, 0){
+            
+            //Makes the table model data not editable
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
+        
+        
         Object[] arr = new Object[list.size()];
         Iterator<String> it = list.listIterator();
 
