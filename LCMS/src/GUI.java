@@ -77,6 +77,7 @@ public class GUI extends javax.swing.JFrame {
         pAuditorSidePanel = new javax.swing.JPanel();
         bAuditorEmployeReport = new javax.swing.JButton();
         bAuditorEmployeeLog = new javax.swing.JButton();
+        label_totalTime = new javax.swing.JLabel();
         pManagerHome = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pManagerEmployees = new javax.swing.JPanel();
@@ -203,6 +204,7 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Air Traffic Control LCMS");
+        setResizable(false);
 
         panelMain.setPreferredSize(new java.awt.Dimension(800, 600));
         panelMain.setLayout(new java.awt.CardLayout());
@@ -329,7 +331,7 @@ public class GUI extends javax.swing.JFrame {
             pEmployeeSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmployeeSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(bEmployeeTakeLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEmployeeSidePanelLayout.setVerticalGroup(
@@ -489,14 +491,14 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(spAuditorEmployeeTable)
                     .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
                         .addComponent(jLabel24)
-                        .addContainerGap(561, Short.MAX_VALUE))))
+                        .addContainerGap(564, Short.MAX_VALUE))))
         );
         pAuditorEmployeeTableLayout.setVerticalGroup(
             pAuditorEmployeeTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAuditorEmployeeTableLayout.createSequentialGroup()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
+                .addComponent(spAuditorEmployeeTable, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
         );
 
         pAuditorContentPanel.add(pAuditorEmployeeTable, "pAuditorEmployeeTable");
@@ -652,11 +654,12 @@ public class GUI extends javax.swing.JFrame {
         pAuditorSidePanel.setLayout(pAuditorSidePanelLayout);
         pAuditorSidePanelLayout.setHorizontalGroup(
             pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAuditorSidePanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAuditorSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                .addGroup(pAuditorSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label_totalTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bAuditorEmployeeLog, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bAuditorEmployeReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pAuditorSidePanelLayout.setVerticalGroup(
@@ -666,7 +669,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(bAuditorEmployeReport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bAuditorEmployeeLog)
-                .addContainerGap(457, Short.MAX_VALUE))
+                .addGap(113, 113, 113)
+                .addComponent(label_totalTime, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(250, 250, 250))
         );
 
         javax.swing.GroupLayout pAuditorHomeLayout = new javax.swing.GroupLayout(pAuditorHome);
@@ -983,7 +988,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bLessonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(bLessonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(bLessonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2380,6 +2385,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void bAuditorEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList1ActionPerformed
         // Go back to auditor's employee table
+        
+        label_totalTime.setText("");
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
         card.show(pAuditorContentPanel, "pAuditorEmployeeTable");
     }//GEN-LAST:event_bAuditorEmployeeList1ActionPerformed
@@ -2759,7 +2766,13 @@ public class GUI extends javax.swing.JFrame {
     private void fillReportTable(String employeeID, javax.swing.JTable table) {
         String[] titles = {"Lesson ID", "Score", "Time Started", "Time Completed"};
         ArrayList<String> list = db.getUserReport(employeeID);
-
+        long total = db.getUserReportTotalTimeMilliSeconds(employeeID);
+        
+        label_totalTime.setText("<html>Total time spent: <br/>Hours: "
+                + (int) ((total / (1000*60*60)) % 24) + "<br/>Minutes: " 
+                + (int) ((total / (1000*60)) % 60)+ "<br/>Seconds: " 
+                + (int) (total / 1000) % 60 + "</html>");
+        
         table.setModel(createTableModel(titles, list));
         
     }
@@ -2938,6 +2951,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelManagerEmployeeReportName;
     private javax.swing.JLabel labelStartTime;
     private javax.swing.JLabel labelUsername;
+    private javax.swing.JLabel label_totalTime;
     private javax.swing.JPanel pATCsim;
     private javax.swing.JPanel pAuditorContentPanel;
     private javax.swing.JPanel pAuditorEmployeeTable;

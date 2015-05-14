@@ -320,6 +320,34 @@ public class Database {
         return null;
     }
    
+    public long getUserReportTotalTimeMilliSeconds(String id){
+        ArrayList<String> toReturn = new ArrayList();
+        try{
+            Statement query = connection.createStatement();
+            String sql = "SELECT TIME_STARTED, TIME_FINISHED FROM history WHERE eid='" + id + "'";
+            Timestamp finished;
+            Timestamp started;
+            long totalTime = 0;
+            ResultSet set = query.executeQuery(sql);
+            while(set.next()){                
+                started = Timestamp.valueOf(set.getString("TIME_STARTED"));   
+                finished = Timestamp.valueOf(set.getString("TIME_FINISHED"));
+                System.out.println(finished.getTime());
+                System.out.println(started.getTime());
+                totalTime += (finished.getTime() - started.getTime());
+            }
+            set.close();
+            query.close();
+            return totalTime;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return -1;
+    }
+    
+    
     public ArrayList<String> getGoals() {
         ArrayList<String> toReturn = new ArrayList();
         try{
