@@ -1,7 +1,8 @@
 
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -1999,7 +2000,11 @@ public class GUI extends javax.swing.JFrame {
 
         // Sign user out, record time, etc...
         db.updateLog(currentUser.getEID(), "Signed Out");
-
+        
+        // Clear out login textfields
+        textFieldUsername.setText("");
+        textFieldPassword.setText("");
+        
         // Switch panelMain card back to login panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelLogin");
@@ -2546,8 +2551,12 @@ public class GUI extends javax.swing.JFrame {
         db.takeLesson(lessonID, result, eid, startTime, endTime);
 
         // Update history log
-        db.updateLog(eid, "Scored: " + result / (int) 1 + " on Lesson " + lessonID);
-
+        NumberFormat formatter = new DecimalFormat("#0.00"); 
+        
+        db.updateLog(eid, "Scored: " + formatter.format(result) + "% on Lesson " + lessonID);
+        
+        JOptionPane.showMessageDialog(this, "Your score: " + formatter.format(result) + "%");
+        
         showEmployeeHome();
     }//GEN-LAST:event_bSimulatorCompleteActionPerformed
 

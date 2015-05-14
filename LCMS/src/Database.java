@@ -219,6 +219,10 @@ public class Database {
             Statement query = connection.createStatement();
             String sql = "DELETE FROM Users WHERE eid='" + id + "'";
             query.executeUpdate(sql);
+            sql = "DELETE FROM history WHERE eid='" + id + "'";
+            query.executeUpdate(sql);
+            sql = "DELETE FROM log WHERE eid='" + id + "'";
+            query.executeUpdate(sql);
             query.close();
             return true;
         }
