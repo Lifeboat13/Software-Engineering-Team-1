@@ -15,7 +15,7 @@ public class GUI extends javax.swing.JFrame {
 
     private final Database db;
     private User currentUser;
-
+    public static int flag = 1;
     /**
      * Creates new form GUI
      */
@@ -2186,6 +2186,8 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
             // Set lesson edit panel
+            
+         
             showLessonEdit();
        
 
@@ -2193,7 +2195,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bLessonEditActionPerformed
 
     private void bLessonEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditSaveActionPerformed
-        try {
+        
             // Get form info
             String lessonName = tf_lessonName.getText();
             String goal1_id = tGoalType1.getModel().getValueAt(tGoalType1.getSelectedRow(), 0).toString();
@@ -2208,22 +2210,20 @@ public class GUI extends javax.swing.JFrame {
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson saved.");
                 // Go back to manager home panel
+               
                 showManagerHome();
-            } // Add new lesson
+            } 
+            // Add new lesson
             else {
 
                 db.addNewLesson(lessonName, goal1_id, goal2_id, goal3_id, lessonText);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson added.");
                 // Go back to manager home panel
+                
                 showManagerHome();
             }
 
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error, action was not completed.");
-        }
     }//GEN-LAST:event_bLessonEditSaveActionPerformed
 
     private void bLessonEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditCancelActionPerformed
@@ -2590,29 +2590,38 @@ public class GUI extends javax.swing.JFrame {
         tGoalType1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             public void valueChanged(ListSelectionEvent event) {
-
-                ta_type1description.setText(db.getFullTextByGoalID(tGoalType1.getValueAt(tGoalType1.getSelectedRow(), 0).toString()));
-
+                
+                try{
+                    ta_type1description.setText(db.getFullTextByGoalID(tGoalType1.getValueAt(tGoalType1.getSelectedRow(), 0).toString()));
+                }catch(ArrayIndexOutOfBoundsException e){
+                   
+                }
             }
 
         });
 
         tGoalType2.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
-            public void valueChanged(ListSelectionEvent event) {
-
-                ta_type2description.setText(db.getFullTextByGoalID(tGoalType2.getValueAt(tGoalType2.getSelectedRow(), 0).toString()));
-
+                public void valueChanged(ListSelectionEvent event) {
+                
+                try{
+                    ta_type2description.setText(db.getFullTextByGoalID(tGoalType2.getValueAt(tGoalType2.getSelectedRow(), 0).toString()));
+                }catch(ArrayIndexOutOfBoundsException e){
+                    
+                }
             }
 
         });
 
         tGoalType3.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
-            public void valueChanged(ListSelectionEvent event) {
-
-                ta_type3description.setText(db.getFullTextByGoalID(tGoalType3.getValueAt(tGoalType3.getSelectedRow(), 0).toString()));
-
+                 public void valueChanged(ListSelectionEvent event) {
+                
+                try{
+                    ta_type3description.setText(db.getFullTextByGoalID(tGoalType3.getValueAt(tGoalType3.getSelectedRow(), 0).toString()));
+                }catch(ArrayIndexOutOfBoundsException e){
+                    
+                }
             }
 
         });
