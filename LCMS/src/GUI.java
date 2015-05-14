@@ -1,3 +1,4 @@
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import static java.util.Collections.list;
@@ -10,24 +11,19 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-
 public class GUI extends javax.swing.JFrame {
+
     private final Database db;
     private User currentUser;
-    
+
     /**
      * Creates new form GUI
      */
     public GUI() {
         db = new Database();
-        initComponents();        
+        initComponents();
     }
 
-    
-    public void displaySimulatior() {
-        
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1938,18 +1934,17 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    /** Log in button clicked */
+    /**
+     * Log in button clicked
+     */
     private void buttonSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignInActionPerformed
-                
+
         // Check user log in code here
-        
         ArrayList<String> userInformation = db.checkLogin(textFieldUsername.getText(), textFieldPassword.getPassword());
-      
-        if(!userInformation.isEmpty()){
-            
+
+        if (!userInformation.isEmpty()) {
+
             // Send user log in time to database
-            // db.updateLog(id, "Signed In", time);
             switch (userInformation.get(6)) {
                 case "1": //Employee
                     currentUser = new Employee(
@@ -1979,45 +1974,42 @@ public class GUI extends javax.swing.JFrame {
                             userInformation.get(5));
                     break;
             }
-            
+
             db.updateLog(currentUser.getEID(), "Signed In");
-            
-            
+
             // Switch panelMain card to main app panel
             java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
             card.show(panelMain, "panelAppMain");
 
             // Set labelUsername to user's name
-            
             labelUsername.setText(currentUser.getfName() + " " + currentUser.getlName());
 
             // Set panelContent card to appropriate content panel
             showHomePanel();
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Invalid Username/Password");
             textFieldPassword.setText("");
             textFieldUsername.setText("");
-            
+
         }
     }//GEN-LAST:event_buttonSignInActionPerformed
 
     private void buttonSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignOutActionPerformed
-        
+
         // Sign user out, record time, etc...
         db.updateLog(currentUser.getEID(), "Signed Out");
-        
+
         // Switch panelMain card back to login panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelMain.getLayout();
-        card.show(panelMain, "panelLogin");        
+        card.show(panelMain, "panelLogin");
     }//GEN-LAST:event_buttonSignOutActionPerformed
 
     private void bManagerEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeReportActionPerformed
-        
+
         // Check selected column, get employee id (unless already on Log page, then use that employee)
         try {
             String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
-        
+
             labelManagerEmployeeReportName.setText(db.getUserName(employeeID));
 
             // Fill tManagerEmployeeTable
@@ -2025,53 +2017,50 @@ public class GUI extends javax.swing.JFrame {
 
             // Show card pManagerReportTable
             java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
-            card.show(pManagerContentPanel, "pManagerReportTable"); 
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
-            
+            card.show(pManagerContentPanel, "pManagerReportTable");
+        } catch (ArrayIndexOutOfBoundsException e) {
+
         }
     }//GEN-LAST:event_bManagerEmployeReportActionPerformed
 
     private void bManagerEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeList1ActionPerformed
         // Go back to manager's employee table
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
-        card.show(pManagerContentPanel, "pManagerEmployeeTable"); 
+        card.show(pManagerContentPanel, "pManagerEmployeeTable");
     }//GEN-LAST:event_bManagerEmployeeList1ActionPerformed
 
     private void bManagerEmployeeList2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeList2ActionPerformed
         // Go back to manager's employee table
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
-        card.show(pManagerContentPanel, "pManagerEmployeeTable");         
+        card.show(pManagerContentPanel, "pManagerEmployeeTable");
     }//GEN-LAST:event_bManagerEmployeeList2ActionPerformed
 
     private void bManagerEmployeeAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeAddActionPerformed
         // Change labels for 'Add Employee'
         labelEmployeeEdit.setText("Add Employee");
         bEmployeeEditSave.setText("Add");
-        
+
         // Hide 'Delete Employee' button
         bEmployeeEditDelete.setVisible(false);
-        
+
         // Set card to employee add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerEmployeeEdit");
     }//GEN-LAST:event_bManagerEmployeeAddActionPerformed
 
     private void bManagerEmployeeEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeEditActionPerformed
-        
+
         // Check table for highlighted employee, get employee id
-//        tManagerEmployeeTable.getSelectedColumn();
         String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
 
         // Change labels for 'Edit Employee'
         labelEmployeeEdit.setText("Edit Employee");
         bEmployeeEditSave.setText("Save");
-        
+
         // Show 'Delete Employee' button
         bEmployeeEditDelete.setVisible(true);
-        
+
         // Fill in text fields with appropriate information
-        
         tf_username.setText(db.getUserUsername(employeeID));
         tf_password.setText(db.getUserPassword(employeeID));
         tf_fName.setText(db.getUserName(employeeID).split(" ")[0]);
@@ -2084,52 +2073,49 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bManagerEmployeeEditActionPerformed
 
     private void bManagerEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bManagerEmployeeLogActionPerformed
-               
+
         // Check selected column, get employee id (unless already on Report page, then use that employee)
         String employeeID = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
-        
+
         // Fill tManagerLogTable
-        fillLogTable(employeeID, tManagerLogTable);        
-        
+        fillLogTable(employeeID, tManagerLogTable);
+
         // Show card pManagerLogTable
         java.awt.CardLayout card = (java.awt.CardLayout) pManagerContentPanel.getLayout();
-        card.show(pManagerContentPanel, "pManagerLogTable");        
+        card.show(pManagerContentPanel, "pManagerLogTable");
     }//GEN-LAST:event_bManagerEmployeeLogActionPerformed
 
     private void bEmployeeEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditSaveActionPerformed
         try {
             // Get form info
-            
-            String username =   tf_username.getText();
-            String password =   String.valueOf(tf_password.getPassword());
-            String fName    =   tf_fName.getText();
-            String lName    =   tf_lName.getText();
-            String address  =   tf_address.getText();
-            
+            String username = tf_username.getText();
+            String password = String.valueOf(tf_password.getPassword());
+            String fName = tf_fName.getText();
+            String lName = tf_lName.getText();
+            String address = tf_address.getText();
+
             // Save existing employee
             if (labelEmployeeEdit.getText().equals("Edit Employee")) {
                 String eid = tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString();
-//               db.updateUs ernfo(id, fName, lName, address);   
                 db.updateUserInfo(eid, username, password, fName, lName, address);
                 db.updateLog(currentUser.getEID(), "Updated User: " + username);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee info saved.");
-            }
+            } 
             // Add new employee
             else {
-//              db.addNewUserid, fName, lName, address, 1);  
+
                 db.addNewUser(username, password, fName, lName, address, 1);
                 db.updateLog(currentUser.getEID(), "Added User: " + username);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Employee added.");
-            }   
-            
+            }
+
             // Go back to manager home panel
             showManagerHome();
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid ID, must be an integer.");
-        }       
+        }
     }//GEN-LAST:event_bEmployeeEditSaveActionPerformed
 
     private void bEmployeeEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditCancelActionPerformed
@@ -2137,11 +2123,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bEmployeeEditCancelActionPerformed
 
     private void bEmployeeEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeEditDeleteActionPerformed
-        
+
         // 'Are you sure?' prompt
         int selection = JOptionPane.showConfirmDialog(this, "Are you sure?");
         //Delete the user if they confirm the deletion
-        if(selection == 0){
+        if (selection == 0) {
             db.deleteUser(tManagerEmployeeTable.getModel().getValueAt(tManagerEmployeeTable.getSelectedRow(), 0).toString());
             db.updateLog(currentUser.getEID(), "Deleted User:" + tf_username.getText());
             showManagerHome();
@@ -2155,7 +2141,7 @@ public class GUI extends javax.swing.JFrame {
         // Change labels for 'Add Lesson'
         labelLessonEdit.setText("Add Lesson");
         bLessonEditSave.setText("Add");
-        
+
         // Hide 'Delete Lesson' button
         bLessonEditDelete.setVisible(false);
 
@@ -2164,7 +2150,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bLessonAddActionPerformed
 
     private void bLessonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditActionPerformed
-        try{
+        try {
             // Check table for highlighted lesson, get lesson id
             String lessonID = tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString();
             tf_lessonName.setText(db.getLessonName(lessonID));
@@ -2176,66 +2162,63 @@ public class GUI extends javax.swing.JFrame {
             // Show 'Delete Lesson' button
             bLessonEditDelete.setVisible(true);
 
-            // Set lesson edit panel
-            showLessonEdit();
-
             ArrayList<String> goals = db.getGoalsByLesson(lessonID);
 
             for (int i = 0; i < tGoalType1.getModel().getRowCount(); i++) {
-                if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i,0))) {
-                    tGoalType1.setRowSelectionInterval(i,i);
+                if (goals.get(0).equals(tGoalType1.getModel().getValueAt(i, 0))) {
+                    tGoalType1.setRowSelectionInterval(i, i);
                 }
             }
 
             for (int i = 0; i < tGoalType2.getModel().getRowCount(); i++) {
-                if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i,0))) {
-                    tGoalType2.setRowSelectionInterval(i,i);
+                if (goals.get(1).equals(tGoalType2.getModel().getValueAt(i, 0))) {
+                    tGoalType2.setRowSelectionInterval(i, i);
                 }
             }
 
             for (int i = 0; i < tGoalType3.getModel().getRowCount(); i++) {
-                if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i,0))) {
-                    tGoalType3.setRowSelectionInterval(i,i);
+                if (goals.get(2).equals(tGoalType3.getModel().getValueAt(i, 0))) {
+                    tGoalType3.setRowSelectionInterval(i, i);
                 }
             }
-
-        }catch(ArrayIndexOutOfBoundsException e){
+            // Set lesson edit panel
+            showLessonEdit();
+        } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
-        
-        
+
+
     }//GEN-LAST:event_bLessonEditActionPerformed
 
     private void bLessonEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditSaveActionPerformed
         try {
             // Get form info
-            String lessonName  = tf_lessonName.getText();
-            String goal1_id    = tGoalType1.getModel().getValueAt(tGoalType1.getSelectedRow(), 0).toString();
-            String goal2_id        = tGoalType2.getModel().getValueAt(tGoalType2.getSelectedRow(), 0).toString();
-            String goal3_id        = tGoalType3.getModel().getValueAt(tGoalType3.getSelectedRow(), 0).toString();
-            String lessonText =     db.getFullTextByGoalID(goal1_id) + "\n\n" + db.getFullTextByGoalID(goal2_id) + "\n\n" + db.getFullTextByGoalID(goal3_id);
-            
-// Save existing lesson
+            String lessonName = tf_lessonName.getText();
+            String goal1_id = tGoalType1.getModel().getValueAt(tGoalType1.getSelectedRow(), 0).toString();
+            String goal2_id = tGoalType2.getModel().getValueAt(tGoalType2.getSelectedRow(), 0).toString();
+            String goal3_id = tGoalType3.getModel().getValueAt(tGoalType3.getSelectedRow(), 0).toString();
+            String lessonText = db.getFullTextByGoalID(goal1_id) + "\n\n" + db.getFullTextByGoalID(goal2_id) + "\n\n" + db.getFullTextByGoalID(goal3_id);
+
+            // Save existing lesson
             if (labelLessonEdit.getText().equals("Edit Lesson")) {
 
                 db.updateLessonInfo(lessonName, lessonName, goal1_id, goal2_id, goal3_id, lessonText);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson saved.");
-            }
-            // Add new lesson
+            } // Add new lesson
             else {
 
                 db.addNewLesson(db.getNextAvailableID("Lesson"), lessonName, goal1_id, goal2_id, goal3_id, lessonText);
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Lesson added.");
-            }   
-            
+            }
+
             // Go back to manager home panel
             showManagerHome();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error, action was not completed.");
-        }    
+        }
     }//GEN-LAST:event_bLessonEditSaveActionPerformed
 
     private void bLessonEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditCancelActionPerformed
@@ -2243,12 +2226,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bLessonEditCancelActionPerformed
 
     private void bLessonEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonEditDeleteActionPerformed
-        
-        // 'Are you sure?' prompt
-        
 
+        // 'Are you sure?' prompt
         // Delete lesson from database
-        db.deleteLesson(tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString());    
+        db.deleteLesson(tManagerLessonTable.getModel().getValueAt(tManagerLessonTable.getSelectedRow(), 0).toString());
         showManagerHome();
     }//GEN-LAST:event_bLessonEditDeleteActionPerformed
 
@@ -2256,7 +2237,7 @@ public class GUI extends javax.swing.JFrame {
         // Change labels for 'Add Goal'
         labelGoalEdit.setText("Add Goal");
         bGoalEditSave.setText("Add");
-        
+
         // Hide 'Delete Goal' button
         bGoalEditDelete.setVisible(false);
 
@@ -2265,7 +2246,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bGoalAddActionPerformed
 
     private void bGoalEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditActionPerformed
-                
+
         // Check table for highlighted goal, get goal id
 //        int goal_id = tManagerGoalTable.getSelectedColumn();
         String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
@@ -2274,76 +2255,72 @@ public class GUI extends javax.swing.JFrame {
         // Change labels for 'Edit Goal'
         labelGoalEdit.setText("Edit Goal");
         bGoalEditSave.setText("Save");
-        
+
         // Show 'Delete Goal' button
         bGoalEditDelete.setVisible(true);
-                
-        
+
         // Select proper goal simVars 1, 2, 3 comboboxes
         cb_SimVar1.setSelectedItem(simVarsForGoal.get(0));
         cb_SimVar2.setSelectedItem(simVarsForGoal.get(1));
         cb_SimVar3.setSelectedItem(simVarsForGoal.get(2));
-        
-        
+
         // Fill in goal simVarValue 1, 2, 3 text fields
         tf_SimVarValue1.setText(simVarValsForGoal.get(0));
         tf_SimVarValue2.setText(simVarValsForGoal.get(1));
         tf_SimVarValue3.setText(simVarValsForGoal.get(2));
-        
+
         // Fill in goal description and text text fields        
         tf_goalDescription.setText(db.getGoalDescription(goal_id));
-        ta_goalText.setText(db.getGoalText(goal_id));               
+        ta_goalText.setText(db.getGoalText(goal_id));
         tf_goalName.setText(db.getGoalName(goal_id));
-        
+
         //Select proper goal type in combo box
         cb_goalType.setSelectedIndex(Integer.parseInt(db.getGoalType(goal_id)) - 1);
-        
+
         // Set goal edit panel
         showGoalEdit();
     }//GEN-LAST:event_bGoalEditActionPerformed
 
     private void bGoalEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditSaveActionPerformed
         try {
-            
+
             // Get form info
-            String goalName     = tf_goalName.getText();
-            String goalType        = "" + (cb_goalType.getSelectedIndex() + 1);
-            String simVar1         = "" + (cb_SimVar1.getSelectedIndex() + 1);
-            String simVar2         = "" + (cb_SimVar2.getSelectedIndex() + 1);
-            String simVar3         = "" + (cb_SimVar3.getSelectedIndex() + 1);
+            String goalName = tf_goalName.getText();
+            String goalType = "" + (cb_goalType.getSelectedIndex() + 1);
+            String simVar1 = "" + (cb_SimVar1.getSelectedIndex() + 1);
+            String simVar2 = "" + (cb_SimVar2.getSelectedIndex() + 1);
+            String simVar3 = "" + (cb_SimVar3.getSelectedIndex() + 1);
             String simVarValue1 = tf_SimVarValue1.getText();
             String simVarValue2 = tf_SimVarValue2.getText();
             String simVarValue3 = tf_SimVarValue3.getText();
-            String goalDescription  = tf_goalDescription.getText();
-            String goalText     = ta_goalText.getText();
-            
+            String goalDescription = tf_goalDescription.getText();
+            String goalText = ta_goalText.getText();
+
             // Save existing goal
             if (labelGoalEdit.getText().equals("Edit Goal")) {
                 String goal_id = tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString();
-                db.updateGoalInfo(goal_id, goalName, goalType, simVar1, simVarValue1, 
+                db.updateGoalInfo(goal_id, goalName, goalType, simVar1, simVarValue1,
                         simVar2, simVarValue2, simVar3, simVarValue3,
-                        goalDescription, goalText);   
-                
+                        goalDescription, goalText);
+
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Goal saved.");
-            }
-            // Add new goal
+            } // Add new goal
             else {
-                db.addNewGoal(goalName, goalType, simVar1, simVarValue1, 
+                db.addNewGoal(goalName, goalType, simVar1, simVarValue1,
                         simVar2, simVarValue2, simVar3, simVarValue3,
-                        goalDescription, goalText);    
-                
+                        goalDescription, goalText);
+
                 // Verification message
                 JOptionPane.showMessageDialog(this, "Goal added.");
-            }   
-            
+            }
+
             // Go back to manager home panel
             showManagerHome();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error, action was not completed.");
-        }   
+        }
     }//GEN-LAST:event_bGoalEditSaveActionPerformed
 
     private void bGoalEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditCancelActionPerformed
@@ -2351,58 +2328,56 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bGoalEditCancelActionPerformed
 
     private void bGoalEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGoalEditDeleteActionPerformed
-        
-        // 'Are you sure?' prompt
-        
 
+        // 'Are you sure?' prompt
         // Delete goal from database
-        db.deleteGoal(tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString());   
+        db.deleteGoal(tManagerGoalTable.getModel().getValueAt(tManagerGoalTable.getSelectedRow(), 0).toString());
         showManagerHome();
     }//GEN-LAST:event_bGoalEditDeleteActionPerformed
 
     private void bAuditorEmployeeList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList1ActionPerformed
         // Go back to auditor's employee table
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
-        card.show(pAuditorContentPanel, "pAuditorEmployeeTable"); 
+        card.show(pAuditorContentPanel, "pAuditorEmployeeTable");
     }//GEN-LAST:event_bAuditorEmployeeList1ActionPerformed
 
     private void bAuditorEmployeeList2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeList2ActionPerformed
-       // Go back to auditor's employee table
+        // Go back to auditor's employee table
         java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
-        card.show(pAuditorContentPanel, "pAuditorEmployeeTable"); 
+        card.show(pAuditorContentPanel, "pAuditorEmployeeTable");
     }//GEN-LAST:event_bAuditorEmployeeList2ActionPerformed
 
     private void bAuditorEmployeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeReportActionPerformed
-        try{       
-        // Check selected column, get employee id (unless already on Log page, then use that employee)
-        String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
-        labelEmployeeName.setText(db.getUserName(employeeID));
-        
-        // Fill tAuditorReportTable
-        fillReportTable(employeeID, tAuditorReportTable);
-        
-        // Show card pAuditorReportTable
-        java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
-        card.show(pAuditorContentPanel, "pAuditorReportTable");   
-        }catch(ArrayIndexOutOfBoundsException e){
+        try {
+            // Check selected column, get employee id (unless already on Log page, then use that employee)
+            String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
+            labelEmployeeName.setText(db.getUserName(employeeID));
+
+            // Fill tAuditorReportTable
+            fillReportTable(employeeID, tAuditorReportTable);
+
+            // Show card pAuditorReportTable
+            java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
+            card.show(pAuditorContentPanel, "pAuditorReportTable");
+        } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_bAuditorEmployeReportActionPerformed
 
     private void bAuditorEmployeeLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAuditorEmployeeLogActionPerformed
-               
+
         // Check selected column, get employee id (unless already on Report page, then use that employee)
-        try{
-        String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
-        labelEmployeeNameLog.setText(db.getUserName(employeeID));
-        
-        // Fill tAuditorLogTable
-        fillLogTable(employeeID, tAuditorLogTable);        
-        
-        // Show card pAuditorLogTable
-        java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
-        card.show(pAuditorContentPanel, "pAuditorLogTable");   
-        }catch(ArrayIndexOutOfBoundsException e){
+        try {
+            String employeeID = tAuditorEmployeeTable.getModel().getValueAt(tAuditorEmployeeTable.getSelectedRow(), 0).toString();
+            labelEmployeeNameLog.setText(db.getUserName(employeeID));
+
+            // Fill tAuditorLogTable
+            fillLogTable(employeeID, tAuditorLogTable);
+
+            // Show card pAuditorLogTable
+            java.awt.CardLayout card = (java.awt.CardLayout) pAuditorContentPanel.getLayout();
+            card.show(pAuditorContentPanel, "pAuditorLogTable");
+        } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_bAuditorEmployeeLogActionPerformed
@@ -2410,32 +2385,29 @@ public class GUI extends javax.swing.JFrame {
     private void bEmployeeTakeLessonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmployeeTakeLessonActionPerformed
 
         // Check selected column, get lesson id        
-       String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString(); 
-        
+        String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString();
+
         // Set lesson panel text
         labelLessonName.setText(db.getLessonName(lessonID));
         ta_lessonText.setText(db.getLessonText(lessonID));
-        
-        
+
         String text1 = db.getGoalText(lessonID, "1");
         String text2 = db.getGoalText(lessonID, "2");
         String text3 = db.getGoalText(lessonID, "3");
-        
+
         ta_lessonText.setText(text1 + "\n\n" + text2 + "\n\n" + text3);
-        
-        
+
         // Show card pLesson
-        showLesson(); 
+        showLesson();
     }//GEN-LAST:event_bEmployeeTakeLessonActionPerformed
 
     private void bLessonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonBackActionPerformed
-        
+
         if (labelLessonName.getText().contains("[Preview]")) {
             // Go back to edit lesson
             java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-            card.show(panelContent, "pManagerLessonEdit");   
-        }
-        else {
+            card.show(panelContent, "pManagerLessonEdit");
+        } else {
             showEmployeeHome();
         }
     }//GEN-LAST:event_bLessonBackActionPerformed
@@ -2448,51 +2420,46 @@ public class GUI extends javax.swing.JFrame {
         ImageIcon image = new ImageIcon(getClass().getResource("PPanim.gif"));
         sim_pic = new JLabel(image);
         pATCsim.add(sim_pic);
-        sim_pic.setBounds(20,20,1280,998);
+        sim_pic.setBounds(20, 20, 1280, 998);
         labelStartTime.setText("" + new Timestamp(System.currentTimeMillis()));
         labelStartTime.setVisible(false);
         // Show card pSimulator
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
-        card.show(panelContent, "pSimulator");  
+        card.show(panelContent, "pSimulator");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bLessonPreviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLessonPreviewActionPerformed
         // Set and append lesson name with [Preview]
         labelLessonName.setText(tf_lessonName.getText() + " [Preview]");
-        
+
         String text1 = ta_type1description.getText();
         String text2 = ta_type2description.getText();
         String text3 = ta_type3description.getText();
-        
+
         ta_lessonText.setText(text1 + "\n\n" + text2 + "\n\n" + text3);
 
         // Show card pLesson
         showLesson();
-        
+
     }//GEN-LAST:event_bLessonPreviewActionPerformed
 
     private void bSimulatorCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCancelActionPerformed
-        
+
         // 'Are you sure?' prompt
-        
-        
-        
         // Go back to pLesson card
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pLesson");
     }//GEN-LAST:event_bSimulatorCancelActionPerformed
 
     private void bSettingsSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsSaveActionPerformed
-        
-        
+
         if (!tf_currentPassword.getText().equals(db.getUserPassword(currentUser.getPassword()))) {
             JOptionPane.showMessageDialog(this, "Error, incorrect password entered.");
         }
-        
+
         if (!tf_newPassword.getText().equals(tf_confirmPassword.getText())) {
             JOptionPane.showMessageDialog(this, "Error, passwords do not match.");
-        }    
-        else {
+        } else {
 
             // Update databse with info
             if (!tf_confirmPassword.getText().equals("")) {
@@ -2500,12 +2467,12 @@ public class GUI extends javax.swing.JFrame {
                 currentUser.setPassword(tf_confirmPassword.getText());
                 db.updateLog(currentUser.getEID(), "Updated Password");
             }
-            
+
             db.updateUserAddress(currentUser.getEID(), tf_settingsAddress.getText());
             currentUser.setAddress(tf_settingsAddress.getText());
             db.updateLog(currentUser.getEID(), "Updated Address");
             // Go back to home panel
-            showHomePanel(); 
+            showHomePanel();
         }
     }//GEN-LAST:event_bSettingsSaveActionPerformed
 
@@ -2514,7 +2481,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSettingsActionPerformed
 
     private void bSettingsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsCancelActionPerformed
-        showHomePanel(); 
+        showHomePanel();
     }//GEN-LAST:event_bSettingsCancelActionPerformed
 
     private void textFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPasswordActionPerformed
@@ -2538,150 +2505,153 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_lessonNameActionPerformed
 
     private void bSimulatorCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSimulatorCompleteActionPerformed
-        ATC atc = new ATC(5,10);
+        ATC atc = new ATC(5, 10);
         double result = atc.playSimulator();
         String lessonID = tEmployeeLessons.getModel().getValueAt(tEmployeeLessons.getSelectedRow(), 0).toString();
         String eid = currentUser.getEID();
         String startTime = labelStartTime.getText();
         String endTime = "" + new Timestamp(System.currentTimeMillis());
-        
+
         db.takeLesson(lessonID, result, eid, startTime, endTime);
-        
+
         db.updateLog(eid, "Scored: " + result / (int) 1 + " on lesson: " + lessonID);
-        
+
         showEmployeeHome();
-        
+
     }//GEN-LAST:event_bSimulatorCompleteActionPerformed
 
-    
-    /** Set panelContent card to appropriate content panel */
+    /**
+     * Set panelContent card to appropriate content panel
+     */
     private void showHomePanel() {
-        
-        if (currentUser.getUserType().equals("1"))
+
+        if (currentUser.getUserType().equals("1")) {
             showEmployeeHome();
-        else if (currentUser.getUserType().equals("2")) 
+        } else if (currentUser.getUserType().equals("2")) {
             showManagerHome();
-        else if (currentUser.getUserType().equals("3")) 
+        } else if (currentUser.getUserType().equals("3")) {
             showAuditorHome();
-        else
+        } else {
             System.out.println("No User type found");
-        
+        }
+
     }
-    
-    /** Shows the employee home panel */
+
+    /**
+     * Shows the employee home panel
+     */
     private void showEmployeeHome() {
         // Populatate employee tables with database info
         fillEmployeeLessonTable(currentUser.getEID(), tEmployeeLessons);
         fillLogTable(currentUser.getEID(), tEmployeeLogTable);
-        
+
         // Set card to employee home panel
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pEmployeeHome");
     }
-    
-    /** Shows the manager home panel */
+
+    /**
+     * Shows the manager home panel
+     */
     private void showManagerHome() {
         // Populatate employee table with database info
-        fillEmployeeTable(tManagerEmployeeTable);    
-        fillLessonTable(tManagerLessonTable);  
-        fillGoalTable(tManagerGoalTable);  
-        
+        fillEmployeeTable(tManagerEmployeeTable);
+        fillLessonTable(tManagerLessonTable);
+        fillGoalTable(tManagerGoalTable);
+
         // Set card to manager home panel
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerHome");
     }
-    
-    /** Shows the auditor home panel */
+
+    /**
+     * Shows the auditor home panel
+     */
     private void showAuditorHome() {
         // Populatate employee table with database info
-        fillEmployeeTable(tAuditorEmployeeTable);   
-        
+        fillEmployeeTable(tAuditorEmployeeTable);
+
         // Set card to auditor home panel
-        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();  
+        java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pAuditorHome");
     }
-    
-    /** Shows the lesson edit panel */
+
+    /**
+     * Shows the lesson edit panel
+     */
     private void showLessonEdit() {
         // Fill lesson panel with appropriate information
-        
-      
-        
-        fillLessonGoalTable("1", tGoalType1);  
-        fillLessonGoalTable("2", tGoalType2); 
-        fillLessonGoalTable("3", tGoalType3); 
-        
-      
-        tGoalType1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-            
+
+        fillLessonGoalTable("1", tGoalType1);
+        fillLessonGoalTable("2", tGoalType2);
+        fillLessonGoalTable("3", tGoalType3);
+
+        tGoalType1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
             public void valueChanged(ListSelectionEvent event) {
-                
+
                 ta_type1description.setText(db.getFullTextByGoalID(tGoalType1.getValueAt(tGoalType1.getSelectedRow(), 0).toString()));
-                
+
             }
-        
+
         });
-        
-        tGoalType2.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-            
+
+        tGoalType2.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
             public void valueChanged(ListSelectionEvent event) {
-                
+
                 ta_type2description.setText(db.getFullTextByGoalID(tGoalType2.getValueAt(tGoalType2.getSelectedRow(), 0).toString()));
-                
+
             }
-        
+
         });
-        
-        
-        tGoalType3.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-            
+
+        tGoalType3.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
             public void valueChanged(ListSelectionEvent event) {
-                
+
                 ta_type3description.setText(db.getFullTextByGoalID(tGoalType3.getValueAt(tGoalType3.getSelectedRow(), 0).toString()));
-                
+
             }
-        
+
         });
-        
-       
+
         // Set card to add lesson add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerLessonEdit");
     }
-    
-    
-    /** Shows the goal edit panel */
+
+    /**
+     * Shows the goal edit panel
+     */
     private void showGoalEdit() {
         // Fill goal panel with appropriate information
-        
-        
-        fillSimVarComboBox(cb_SimVar1);       
-        fillSimVarComboBox(cb_SimVar2);      
+
+        fillSimVarComboBox(cb_SimVar1);
+        fillSimVarComboBox(cb_SimVar2);
         fillSimVarComboBox(cb_SimVar3);
-        
-        
+
         // Set card to add goal add/edit panel
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pManagerGoalEdit");
     }
-    
-    
+
     private void showLesson() {
-        
-        
-        
+
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pLesson");
     }
-    
+
     private void showSettings() {
         // Fill in appropriate info from database
         tf_settingsUsername.setText(currentUser.getUsername());
-        if(currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3"))
+        if (currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3")) {
             tf_settingsUsername.setEnabled(false);
+        }
         tf_settingsName.setText(currentUser.getfName() + " " + currentUser.getlName());
-        if(currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3"))
+        if (currentUser.getUserType().equals("1") || currentUser.getUserType().equals("3")) {
             tf_settingsName.setEnabled(false);
+        }
         tf_settingsAddress.setText(currentUser.getAddress());
         tf_currentPassword.setText("");
         tf_confirmPassword.setText("");
@@ -2690,88 +2660,105 @@ public class GUI extends javax.swing.JFrame {
         java.awt.CardLayout card = (java.awt.CardLayout) panelContent.getLayout();
         card.show(panelContent, "pSettings");
     }
-    
-    
-     /** Fills the employee table with appropriate information */
-    private void fillEmployeeTable(javax.swing.JTable table) {    
-        String[] titles = {"EID","First Name", "Last name", "Address" };
+
+    /**
+     * Fills the employee table with appropriate information
+     */
+    private void fillEmployeeTable(javax.swing.JTable table) {
+        String[] titles = {"EID", "First Name", "Last name", "Address"};
         ArrayList<String> list = db.getEmployees();
-        
-        table.setModel(createTableModel(titles,list));    
+
+        table.setModel(createTableModel(titles, list));
     }
-    
-     /** Fills the employee table with appropriate information */
-    private void fillSimVarComboBox(javax.swing.JComboBox comboBox) {    
-             
+
+    /**
+     * Fills the employee table with appropriate information
+     */
+    private void fillSimVarComboBox(javax.swing.JComboBox comboBox) {
+
         ArrayList<String> ls = db.getAllSimVarNames();
         comboBox.setModel(new DefaultComboBoxModel(ls.toArray()));
-     
+
     }
-    
-    /** Fills an employee report table with appropriate information */
+
+    /**
+     * Fills an employee report table with appropriate information
+     */
     private void fillReportTable(String employeeID, javax.swing.JTable table) {
         String[] titles = {"Lesson ID", "Score", "Time Started", "Time Completed"};
         ArrayList<String> list = db.getUserReport(employeeID);
-        
-        table.setModel(createTableModel(titles,list));   
+
+        table.setModel(createTableModel(titles, list));
     }
-    
-    /** Fills an employee log table with appropriate information */
+
+    /**
+     * Fills an employee log table with appropriate information
+     */
     private void fillLogTable(String employeeID, javax.swing.JTable table) {
-            String[] titles = {"Action", "Timestamp"};
-            ArrayList<String> list = db.getUserLog(employeeID);
-            
-            table.setModel(createTableModel(titles,list));
+        String[] titles = {"Action", "Timestamp"};
+        ArrayList<String> list = db.getUserLog(employeeID);
+
+        table.setModel(createTableModel(titles, list));
     }
-   
-    /** Fills an employee lesson history table with appropriate information */
+
+    /**
+     * Fills an employee lesson history table with appropriate information
+     */
     private void fillEmployeeLessonTable(String employeeID, javax.swing.JTable table) {
-            String[] titles = {"Lesson ID", "Lesson Name", "Lesson Score"};
-            ArrayList<String> list = db.getEmployeeLessons(employeeID);
-            
-            table.setModel(createTableModel(titles,list));  
+        String[] titles = {"Lesson ID", "Lesson Name", "Lesson Score"};
+        ArrayList<String> list = db.getEmployeeLessons(employeeID);
+
+        table.setModel(createTableModel(titles, list));
     }
-    
-     /** Fills a manager/auditor lesson table with appropriate information */
+
+    /**
+     * Fills a manager/auditor lesson table with appropriate information
+     */
     private void fillLessonTable(javax.swing.JTable table) {
-            String[] titles = {"ID", "Name", "Goal 1", "Goal 2", "Goal 3"};
-            ArrayList<String> list = db.getLessons();
-            
-            table.setModel(createTableModel(titles,list));      
+        String[] titles = {"ID", "Name", "Goal 1", "Goal 2", "Goal 3"};
+        ArrayList<String> list = db.getLessons();
+
+        table.setModel(createTableModel(titles, list));
     }
-    
-    /** Fills a manager goal table with appropriate information */
+
+    /**
+     * Fills a manager goal table with appropriate information
+     */
     private void fillGoalTable(javax.swing.JTable table) {
-            String[] titles = {"ID", "Name", "Type", "Description"};
-            ArrayList<String> list = db.getGoals();
-            
-            table.setModel(createTableModel(titles,list)); 
+        String[] titles = {"ID", "Name", "Type", "Description"};
+        ArrayList<String> list = db.getGoals();
+
+        table.setModel(createTableModel(titles, list));
     }
-    
-    /** Fills a manager goal table with appropriate information */
+
+    /**
+     * Fills a manager goal table with appropriate information
+     */
     private void fillLessonGoalTable(String type, javax.swing.JTable table) {
-            String[] titles = {"ID"," Goal"};
-            ArrayList<String> list = db.getGoalsByType(type);
-            
-            table.setModel(createTableModel(titles,list)); 
+        String[] titles = {"ID", " Goal"};
+        ArrayList<String> list = db.getGoalsByType(type);
+
+        table.setModel(createTableModel(titles, list));
     }
-    
-    /** Returns a table model with the appropriate information */
-    private DefaultTableModel createTableModel(String [] titles, ArrayList<String> list) {
+
+    /**
+     * Returns a table model with the appropriate information
+     */
+    private DefaultTableModel createTableModel(String[] titles, ArrayList<String> list) {
         DefaultTableModel model = new DefaultTableModel(titles, 0);
         Object[] arr = new Object[list.size()];
         Iterator<String> it = list.listIterator();
-        
-        while(it.hasNext()){
+
+        while (it.hasNext()) {
             for (int i = 0; i < titles.length; i++) {
                 arr[i] = it.next();
             }
             model.addRow(arr);
         }
-        
+
         return model;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAuditorEmployeReport;
